@@ -350,8 +350,8 @@
 <div class="topbar">
   <div class="wrap topbar-inner">
     <div class="brand">
-      <span class="brand-mark">EK</span>
-      <span>Emmanuel Kamal</span>
+      <span class="brand-mark" id="brandMark">EK</span>
+      <span id="brandName">Emmanuel Kamal</span>
     </div>
     <nav class="navlinks">
       <a href="#work">Work</a>
@@ -374,7 +374,7 @@
 
   <div class="wrap">
     <div class="canvas-inner">
-      <div class="eyebrow mono">BASED IN LAGOS, NIGERIA &middot; OPEN TO SELECT PROJECTS</div>
+      <div class="eyebrow mono" id="heroEyebrow">BASED IN LAGOS, NIGERIA &middot; OPEN TO SELECT PROJECTS</div>
 
       <div class="selection-box" id="tiltBox">
         <span class="handle tl"></span><span class="handle tr"></span>
@@ -382,11 +382,11 @@
         <span class="coord-tag mono x">W: auto &middot; X: 44</span>
         <span class="coord-tag mono y">H: auto &middot; Y: 86</span>
 
-        <h1 class="name">Emmanuel Kamal</h1>
-        <p class="role">Product &amp; UI/UX designer building interfaces, design systems, and the AI&#8209;assisted tools that speed up creative work.</p>
+        <h1 class="name" id="heroName">Emmanuel Kamal</h1>
+        <p class="role" id="heroRole">Product &amp; UI/UX designer building interfaces, design systems, and the AI&#8209;assisted tools that speed up creative work.</p>
       </div>
 
-      <div class="chips">
+      <div class="chips" id="heroChips">
         <span class="chip">UI/UX &amp; Product Design</span>
         <span class="chip">Web Design &amp; Development</span>
         <span class="chip">AI&#8209;Assisted Creative Solutions</span>
@@ -395,8 +395,8 @@
       </div>
 
       <div class="cta-row">
-        <a class="btn primary" href="#work">View selected work</a>
-        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn primary" href="#work" id="ctaPrimary">View selected work</a>
+        <a class="btn" href="#contact" id="ctaSecondary">Get in touch</a>
       </div>
     </div>
   </div>
@@ -406,23 +406,25 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="section-tag mono">01 &mdash; About</div>
-        <h2 class="section-title">A multidisciplinary practice, one thread.</h2>
+        <div class="section-tag mono" id="aboutTag">01 &mdash; About</div>
+        <h2 class="section-title" id="aboutTitle">A multidisciplinary practice, one thread.</h2>
       </div>
-      <p class="section-note">Design system on the left, working notes on the right.</p>
+      <p class="section-note" id="aboutNote">Design system on the left, working notes on the right.</p>
     </div>
 
     <div class="about-grid">
       <div class="frame">
-        <div class="frame-label mono"><span>Frame &mdash; Profile</span><span>4:5</span></div>
-        <div class="portrait"><span class="initials">EK</span></div>
+        <div class="frame-label mono"><span id="aboutFrameLabel">Frame &mdash; Profile</span><span id="aboutFrameRatio">4:5</span></div>
+        <div class="portrait"><span class="initials" id="aboutInitials">EK</span></div>
       </div>
 
       <div class="bio">
-        <p>I'm a product designer and creative technologist working across UI/UX, web development, and applied AI. Most days that means shaping interface systems for financial products &mdash; clear flows, honest data, interactions people trust. Most nights it means prototyping the tools and generative experiments that make the next project faster.</p>
-        <p>I care about the seam between craft and system: the point where a good idea stops being a one-off and becomes a component someone else can reuse.</p>
+        <div id="aboutBio">
+          <p>I'm a product designer and creative technologist working across UI/UX, web development, and applied AI. Most days that means shaping interface systems for financial products &mdash; clear flows, honest data, interactions people trust. Most nights it means prototyping the tools and generative experiments that make the next project faster.</p>
+          <p>I care about the seam between craft and system: the point where a good idea stops being a one-off and becomes a component someone else can reuse.</p>
+        </div>
 
-        <div class="specs mono">
+        <div class="specs mono" id="aboutSpecs">
           <div class="spec-row"><span class="spec-key">LOCATION</span><span class="spec-val">Lagos, Nigeria &middot; WAT (UTC+1)</span></div>
           <div class="spec-row"><span class="spec-key">FOCUS</span><span class="spec-val">Product design, design systems, applied AI</span></div>
           <div class="spec-row"><span class="spec-key">CURRENTLY</span><span class="spec-val">Product &amp; UX design, fintech</span></div>
@@ -437,13 +439,13 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="section-tag mono">02 &mdash; Selected work</div>
-        <h2 class="section-title">Four frames, four disciplines.</h2>
+        <div class="section-tag mono" id="workTag">02 &mdash; Selected work</div>
+        <h2 class="section-title" id="workTitle">Four frames, four disciplines.</h2>
       </div>
-      <p class="section-note">Placeholder case studies &mdash; swap in your own project details.</p>
+      <p class="section-note" id="workNote">Placeholder case studies &mdash; swap in your own project details.</p>
     </div>
 
-    <div class="work-grid">
+    <div class="work-grid" id="workGrid">
       <article class="work-card">
         <div class="work-top">
           <span class="work-index mono">FRAME 01</span>
@@ -503,13 +505,13 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="section-tag mono">03 &mdash; Skills &amp; tools</div>
-        <h2 class="section-title">The layers panel.</h2>
+        <div class="section-tag mono" id="skillsTag">03 &mdash; Skills &amp; tools</div>
+        <h2 class="section-title" id="skillsTitle">The layers panel.</h2>
       </div>
-      <p class="section-note">Grouped the way a project actually gets made.</p>
+      <p class="section-note" id="skillsNote">Grouped the way a project actually gets made.</p>
     </div>
 
-    <div class="layers">
+    <div class="layers" id="skillsLayers">
       <div class="layer">
         <div class="layer-head"><span class="sw" style="background:var(--accent)"></span><span>Design</span></div>
         <ul class="mono">
@@ -552,9 +554,9 @@
 
 <footer id="contact">
   <div class="wrap contact-hero">
-    <div class="section-tag mono">04 &mdash; Contact</div>
-    <h2 class="contact-title">Let's build something worth shipping.</h2>
-    <div class="contact-links mono">
+    <div class="section-tag mono" id="contactTag">04 &mdash; Contact</div>
+    <h2 class="contact-title" id="contactTitle">Let's build something worth shipping.</h2>
+    <div class="contact-links mono" id="contactLinks">
       <a href="mailto:hello@emmanuelkamal.design">hello@emmanuelkamal.design</a>
       <a href="#">LinkedIn</a>
       <a href="#">Instagram</a>
@@ -563,8 +565,8 @@
   </div>
   <div class="wrap">
     <div class="statusbar mono">
-      <div class="status-left"><span class="led"></span><span>OPEN TO WORK &middot; RESPONDS WITHIN 48H</span></div>
-      <div class="foot-links"><span>&copy; 2026 Emmanuel Kamal</span></div>
+      <div class="status-left"><span class="led"></span><span id="contactStatus">OPEN TO WORK &middot; RESPONDS WITHIN 48H</span></div>
+      <div class="foot-links"><span id="contactCopyright">&copy; 2026 Emmanuel Kamal</span></div>
     </div>
   </div>
 </footer>
@@ -751,20 +753,191 @@
   }
 
   // ---- work card tilt + cursor-following highlight ----
-  if(!reduced){
-    document.querySelectorAll('.work-card').forEach(function(card){
-      card.addEventListener('mousemove', function(e){
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width;
-        var py = (e.clientY - r.top) / r.height;
-        card.style.setProperty('--mx', (px*100) + '%');
-        card.style.setProperty('--my', (py*100) + '%');
-        card.style.transform = 'perspective(700px) rotateX(' + ((py-0.5)*-6) + 'deg) rotateY(' + ((px-0.5)*6) + 'deg) translateY(-2px)';
-      });
-      card.addEventListener('mouseleave', function(){
-        card.style.transform = '';
-      });
+  function attachCardTilt(card){
+    if(reduced || card.dataset.tiltBound){ return; }
+    card.dataset.tiltBound = '1';
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--mx', (px*100) + '%');
+      card.style.setProperty('--my', (py*100) + '%');
+      card.style.transform = 'perspective(700px) rotateX(' + ((py-0.5)*-6) + 'deg) rotateY(' + ((px-0.5)*6) + 'deg) translateY(-2px)';
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = '';
     });
   }
+  document.querySelectorAll('.work-card').forEach(attachCardTilt);
+
+  // ---- CMS-driven content (content/portfolio.json, edited via /admin) ----
+  var SWATCH = { accent: 'var(--accent)', guide: 'var(--guide)', violet: '#8B6EFF', green: '#3FBF6B' };
+  var ARROW_SVG = '<svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>';
+
+  function el(tag, className, html){
+    var e = document.createElement(tag);
+    if(className){ e.className = className; }
+    if(html !== undefined){ e.innerHTML = html; }
+    return e;
+  }
+
+  function renderContent(data){
+    if(data.brand){
+      if(data.brand.initials){
+        document.getElementById('brandMark').textContent = data.brand.initials;
+      }
+      if(data.brand.name){
+        document.getElementById('brandName').textContent = data.brand.name;
+      }
+    }
+
+    if(data.hero){
+      var h = data.hero;
+      if(h.eyebrow){ document.getElementById('heroEyebrow').textContent = h.eyebrow; }
+      if(h.name){
+        document.getElementById('heroName').textContent = h.name;
+        document.title = h.name;
+      }
+      if(h.role){ document.getElementById('heroRole').textContent = h.role; }
+      if(h.disciplines){
+        var chips = document.getElementById('heroChips');
+        chips.innerHTML = '';
+        h.disciplines.forEach(function(d){ chips.appendChild(el('span', 'chip', d)); });
+      }
+      if(h.primaryCta){
+        var p = document.getElementById('ctaPrimary');
+        p.textContent = h.primaryCta.label; p.href = h.primaryCta.href;
+      }
+      if(h.secondaryCta){
+        var s = document.getElementById('ctaSecondary');
+        s.textContent = h.secondaryCta.label; s.href = h.secondaryCta.href;
+      }
+    }
+
+    if(data.about){
+      var a = data.about;
+      if(a.sectionTag){ document.getElementById('aboutTag').textContent = a.sectionTag; }
+      if(a.title){ document.getElementById('aboutTitle').textContent = a.title; }
+      if(a.note){ document.getElementById('aboutNote').textContent = a.note; }
+      if(a.frameLabel){ document.getElementById('aboutFrameLabel').textContent = a.frameLabel; }
+      if(a.frameRatio){ document.getElementById('aboutFrameRatio').textContent = a.frameRatio; }
+      if(a.initials){ document.getElementById('aboutInitials').textContent = a.initials; }
+      if(a.bio){
+        var bio = document.getElementById('aboutBio');
+        bio.innerHTML = '';
+        a.bio.forEach(function(para){ bio.appendChild(el('p', null, para)); });
+      }
+      if(a.specs){
+        var specs = document.getElementById('aboutSpecs');
+        specs.innerHTML = '';
+        a.specs.forEach(function(row){
+          var r = el('div', 'spec-row');
+          r.appendChild(el('span', 'spec-key', row.key));
+          r.appendChild(el('span', 'spec-val', row.value));
+          specs.appendChild(r);
+        });
+      }
+    }
+
+    if(data.work){
+      var w = data.work;
+      if(w.sectionTag){ document.getElementById('workTag').textContent = w.sectionTag; }
+      if(w.title){ document.getElementById('workTitle').textContent = w.title; }
+      if(w.note){ document.getElementById('workNote').textContent = w.note; }
+      if(w.items){
+        var grid = document.getElementById('workGrid');
+        grid.innerHTML = '';
+        w.items.forEach(function(item){
+          var card = el('article', 'work-card');
+          var top = el('div', 'work-top');
+          top.appendChild(el('span', 'work-index mono', item.frame || ''));
+          top.appendChild(el('span', 'work-cat mono', item.category || ''));
+          card.appendChild(top);
+          card.appendChild(el('h3', 'work-title', item.title || ''));
+          card.appendChild(el('p', 'work-desc', item.description || ''));
+          var foot = el('div', 'work-foot');
+          var tagsWrap = el('div', 'work-tags');
+          (item.tags || []).forEach(function(tag){ tagsWrap.appendChild(el('span', null, tag)); });
+          foot.appendChild(tagsWrap);
+          var link = el('a', 'work-link mono', 'VIEW ' + ARROW_SVG);
+          link.href = item.link || '#contact';
+          foot.appendChild(link);
+          card.appendChild(foot);
+          grid.appendChild(card);
+        });
+        document.querySelectorAll('#workGrid .work-card').forEach(attachCardTilt);
+      }
+    }
+
+    if(data.skills){
+      var sk = data.skills;
+      if(sk.sectionTag){ document.getElementById('skillsTag').textContent = sk.sectionTag; }
+      if(sk.title){ document.getElementById('skillsTitle').textContent = sk.title; }
+      if(sk.note){ document.getElementById('skillsNote').textContent = sk.note; }
+      if(sk.groups){
+        var layers = document.getElementById('skillsLayers');
+        layers.innerHTML = '';
+        sk.groups.forEach(function(group){
+          var layer = el('div', 'layer');
+          var head = el('div', 'layer-head');
+          var sw = el('span', 'sw');
+          sw.style.background = SWATCH[group.swatch] || SWATCH.accent;
+          head.appendChild(sw);
+          head.appendChild(el('span', null, group.name));
+          layer.appendChild(head);
+          var ul = el('ul', 'mono');
+          (group.items || []).forEach(function(it){
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode(it.label));
+            li.appendChild(el('b', null, it.tag || ''));
+            ul.appendChild(li);
+          });
+          layer.appendChild(ul);
+          layers.appendChild(layer);
+        });
+      }
+    }
+
+    if(data.contact){
+      var c = data.contact;
+      if(c.sectionTag){ document.getElementById('contactTag').textContent = c.sectionTag; }
+      if(c.title){ document.getElementById('contactTitle').textContent = c.title; }
+      if(c.email || c.links){
+        var links = document.getElementById('contactLinks');
+        links.innerHTML = '';
+        if(c.email){
+          var mail = el('a', null, c.email);
+          mail.href = 'mailto:' + c.email;
+          links.appendChild(mail);
+        }
+        (c.links || []).forEach(function(l){
+          var a2 = el('a', null, l.label);
+          a2.href = l.href;
+          links.appendChild(a2);
+        });
+      }
+      if(c.status){ document.getElementById('contactStatus').textContent = c.status; }
+      if(c.copyright){ document.getElementById('contactCopyright').textContent = c.copyright; }
+    }
+  }
+
+  fetch('content/portfolio.json', { cache: 'no-store' })
+    .then(function(r){ if(!r.ok){ throw new Error('content file not found'); } return r.json(); })
+    .then(renderContent)
+    .catch(function(err){ console.warn('Portfolio: using built-in fallback content —', err.message); });
 })();
+</script>
+
+<!-- Netlify Identity: makes the invite/confirmation email links (which land here) open the CMS login/set-password modal -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if(window.netlifyIdentity){
+    window.netlifyIdentity.on('init', function(user){
+      if(!user){
+        window.netlifyIdentity.on('login', function(){
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
 </script>

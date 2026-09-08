@@ -1,0 +1,126 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "content/uploads"
+public_folder: "/content/uploads"
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    files:
+      - name: "site"
+        label: "Site Content"
+        file: "content/portfolio.json"
+        fields:
+          - label: "Brand"
+            name: "brand"
+            widget: "object"
+            fields:
+              - { label: "Initials (topbar mark)", name: "initials", widget: "string" }
+              - { label: "Full name", name: "name", widget: "string" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow line", name: "eyebrow", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role / tagline", name: "role", widget: "text" }
+              - label: "Disciplines"
+                name: "disciplines"
+                widget: "list"
+                field: { label: "Discipline", name: "value", widget: "string" }
+              - label: "Primary button"
+                name: "primaryCta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link (# section or URL)", name: "href", widget: "string" }
+              - label: "Secondary button"
+                name: "secondaryCta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link (# section or URL)", name: "href", widget: "string" }
+
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Section tag", name: "sectionTag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Note (top right of section)", name: "note", widget: "string" }
+              - { label: "Photo frame label", name: "frameLabel", widget: "string" }
+              - { label: "Photo frame ratio", name: "frameRatio", widget: "string" }
+              - { label: "Initials shown in photo frame", name: "initials", widget: "string" }
+              - label: "Bio paragraphs"
+                name: "bio"
+                widget: "list"
+                field: { label: "Paragraph", name: "value", widget: "text" }
+              - label: "Specs"
+                name: "specs"
+                widget: "list"
+                fields:
+                  - { label: "Key", name: "key", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+
+          - label: "Work"
+            name: "work"
+            widget: "object"
+            fields:
+              - { label: "Section tag", name: "sectionTag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Note (top right of section)", name: "note", widget: "string" }
+              - label: "Projects"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Frame label", name: "frame", widget: "string" }
+                  - { label: "Category", name: "category", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Tags"
+                    name: "tags"
+                    widget: "list"
+                    field: { label: "Tag", name: "value", widget: "string" }
+                  - { label: "Link", name: "link", widget: "string" }
+
+          - label: "Skills"
+            name: "skills"
+            widget: "object"
+            fields:
+              - { label: "Section tag", name: "sectionTag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Note (top right of section)", name: "note", widget: "string" }
+              - label: "Groups"
+                name: "groups"
+                widget: "list"
+                fields:
+                  - { label: "Group name", name: "name", widget: "string" }
+                  - label: "Swatch color"
+                    name: "swatch"
+                    widget: "select"
+                    options: ["accent", "guide", "violet", "green"]
+                  - label: "Items"
+                    name: "items"
+                    widget: "list"
+                    fields:
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "Tag", name: "tag", widget: "string" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Section tag", name: "sectionTag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "href", widget: "string" }
+              - { label: "Status line", name: "status", widget: "string" }
+              - { label: "Copyright line", name: "copyright", widget: "string" }
