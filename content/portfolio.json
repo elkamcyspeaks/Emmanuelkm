@@ -1,8 +1,11 @@
 {
-  "brand": { "initials": "EK", "name": "Emmanuel Kamal", "logo": "" },
+  "brand": {
+    "initials": "EK",
+    "name": "Emmanuel Kamal"
+  },
   "hero": {
     "eyebrow": "BASED IN JOS, PLATEAU STATE, NIGERIA · OPEN TO SELECT PROJECTS",
-    "name": "Emmanuel K, MUH'D",
+    "name": "Emmanuel K, Muh'd",
     "role": "Product & UI/UX designer building interfaces, design systems, and the AI-assisted tools that speed up creative work.",
     "disciplines": [
       "UI/UX & Product Design",
@@ -27,7 +30,6 @@
     "frameLabel": "Frame — Profile",
     "frameRatio": "4:5",
     "initials": "EK",
-    "photo": "",
     "bio": [
       "I'm a product designer and creative technologist working across UI/UX, web development, and applied AI. Most days that means shaping interface systems for financial products — clear flows, honest data, interactions people trust. Most nights it means prototyping the tools and generative experiments that make the next project faster.",
       "I care about the seam between craft and system: the point where a good idea stops being a one-off and becomes a component someone else can reuse."
@@ -57,7 +59,6 @@
     "note": "Placeholder case studies — swap in your own project details.",
     "items": [
       {
-        "image": "",
         "frame": "FRAME 01",
         "category": "UI/UX & PRODUCT",
         "title": "Payments dashboard redesign",
@@ -69,7 +70,6 @@
         "link": "#contact"
       },
       {
-        "image": "",
         "frame": "FRAME 02",
         "category": "WEB DESIGN & DEV",
         "title": "Studio site rebuild",
@@ -81,7 +81,6 @@
         "link": "#contact"
       },
       {
-        "image": "",
         "frame": "FRAME 03",
         "category": "AI & GRAPHIC DESIGN",
         "title": "Generative brand toolkit",
@@ -93,7 +92,6 @@
         "link": "#contact"
       },
       {
-        "image": "",
         "frame": "FRAME 04",
         "category": "CREATIVE DIRECTION",
         "title": "Product launch direction",
@@ -204,8 +202,7 @@
   "contact": {
     "sectionTag": "04 — Contact",
     "title": "Let's build something worth shipping.",
-  "email": "ekamcy@gmail.com",
-  "phone": "+234 800 000 0000",
+    "email": "ekamcy@gmail.com",
     "links": [
       {
         "label": "LinkedIn",
