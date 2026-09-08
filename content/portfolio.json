@@ -24,16 +24,15 @@
     }
   },
   "about": {
-    "sectionTag": "01 — About",
-    "title": "A multidisciplinary practice, one thread.",
-    "note": "Design system on the left, working notes on the right.",
     "frameLabel": "Frame — Profile",
-    "frameRatio": "4:5",
-    "initials": "EK",
     "bio": [
       "I'm a product designer and creative technologist working across UI/UX, web development, and applied AI. Most days that means shaping interface systems for financial products — clear flows, honest data, interactions people trust. Most nights it means prototyping the tools and generative experiments that make the next project faster.",
       "I care about the seam between craft and system: the point where a good idea stops being a one-off and becomes a component someone else can reuse."
     ],
+    "initials": "EK",
+    "photo": "/content/uploads/img_3716-1.jpg",
+    "note": "Design system on the left, working notes on the right.",
+    "sectionTag": "01 — About",
     "specs": [
       {
         "key": "LOCATION",
@@ -51,7 +50,9 @@
         "key": "STACK",
         "value": "Figma · Framer · React · Tailwind"
       }
-    ]
+    ],
+    "title": "A multidisciplinary practice, one thread.",
+    "frameRatio": "4:5"
   },
   "work": {
     "sectionTag": "02 — Selected work",
