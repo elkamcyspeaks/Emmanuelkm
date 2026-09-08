@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harvest Co. — Fresh, seasonal, delivered</title>
+<meta name="description" content="Order peak-season produce online and get it delivered, or subscribe to a weekly box.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:      #FBF7EE;
+    --cream-dim:  #F2EBDB;
+    --paper:      #FFFFFF;
+    --forest:     #1B4332;
+    --forest-ink: #0F2A1D;
+    --leaf:       #52B788;
+    --leaf-deep:  #2D6A4F;
+    --leaf-soft:  #DCEFE3;
+    --citrus:     #F4A259;
+    --citrus-soft:#FDEBD8;
+    --clay:       #E76F51;
+    --clay-deep:  #C85A3E;
+    --ink:        #26332C;
+    --ink-soft:   #5C6B62;
+    --line:       rgba(27,67,50,0.13);
+    --shadow-soft: 0 20px 44px -24px rgba(27,67,50,0.28);
+
+    --display: "Fraunces", Georgia, serif;
+    --body:    "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --radius: 20px;
+    --radius-sm: 12px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    font-family:var(--body);
+    background:
+      radial-gradient(1100px 500px at 90% -10%, rgba(82,183,136,0.10), transparent 60%),
+      radial-gradient(900px 460px at -10% 8%, rgba(244,162,89,0.10), transparent 55%),
+      var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+
+  .wrap{ max-width:1200px; margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:var(--body); font-size:0.78rem; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--leaf-deep);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{ content:""; width:16px; height:1px; background:var(--clay); display:inline-block; }
+
+  h1,h2,h3{ font-family:var(--display); color:var(--forest-ink); line-height:1.08; letter-spacing:-0.01em; }
+  section{ position:relative; }
+
+  .fade-in{ opacity:0; transform:translateY(22px); transition:opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .fade-in.is-visible{ opacity:1; transform:translateY(0); }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--clay); outline-offset:3px; border-radius:4px;
+  }
+
+  .sr-only{ position:absolute; left:-9999px; }
+
+  /* ============ NAV ============ */
+  header{
+    position:sticky; top:0; z-index:60;
+    background:rgba(251,247,238,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1200px; margin:0 auto; }
+  .logo{ display:flex; align-items:center; gap:9px; font-family:var(--display); font-weight:600; font-size:1.25rem; color:var(--forest-ink); }
+  .logo svg{ width:26px; height:26px; }
+  .nav-links{ display:flex; gap:32px; font-size:0.93rem; font-weight:600; color:var(--ink-soft); }
+  .nav-links a{ position:relative; padding:4px 0; transition:color 0.2s var(--ease); }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:0; height:2px;
+    background:var(--clay); transition:width 0.25s var(--ease);
+  }
+  .nav-links a:hover{ color:var(--forest-ink); }
+  .nav-links a:hover::after{ width:100%; }
+
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .icon-btn{
+    position:relative; width:42px; height:42px; border-radius:50%;
+    background:var(--paper); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .icon-btn:hover{ transform:translateY(-2px); box-shadow:var(--shadow-soft); }
+  .cart-count{
+    position:absolute; top:-4px; right:-4px; min-width:18px; height:18px; padding:0 4px;
+    border-radius:999px; background:var(--clay); color:#fff; font-size:0.66rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .cart-count.hidden{ display:none; }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:12px 24px; border-radius:999px; font-weight:600; font-size:0.92rem; white-space:nowrap;
+    transition:transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+  }
+  .btn-primary{ background:var(--clay); color:#fff; box-shadow:0 10px 22px -10px rgba(231,111,81,0.6); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 28px -10px rgba(231,111,81,0.72); background:var(--clay-deep); }
+  .btn-outline{
+    border:1.5px solid var(--forest); color:var(--forest-ink); font-weight:600; font-size:0.92rem; padding:10px 22px; border-radius:999px;
+    transition:background 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .btn-outline:hover{ background:var(--forest); color:var(--cream); }
+  .btn-ghost{ color:var(--forest-ink); font-weight:600; font-size:0.92rem; }
+  .btn-ghost:hover{ color:var(--leaf-deep); }
+  .btn-sm{ padding:8px 16px; font-size:0.84rem; }
+  .btn-block{ width:100%; }
+  .btn[disabled]{ opacity:0.55; cursor:not-allowed; transform:none !important; box-shadow:none !important; }
+
+  .hamburger{ display:none; width:42px; height:42px; border-radius:50%; border:1px solid var(--line); align-items:center; justify-content:center; }
+  .hamburger span, .hamburger span::before, .hamburger span::after{
+    content:""; display:block; width:18px; height:2px; background:var(--forest-ink); position:relative; transition:transform 0.2s var(--ease), opacity 0.2s var(--ease);
+  }
+  .hamburger span::before{ position:absolute; top:-6px; }
+  .hamburger span::after{ position:absolute; top:6px; }
+
+  .mobile-panel{
+    display:none; flex-direction:column; gap:4px; background:var(--paper);
+    border-bottom:1px solid var(--line); padding:10px 32px 20px;
+  }
+  .mobile-panel.open{ display:flex; }
+  .mobile-panel a{ padding:12px 4px; font-weight:600; border-bottom:1px solid var(--line); }
+  .mobile-panel a:last-child{ border-bottom:none; }
+
+  /* ============ HERO ============ */
+  .hero{ padding:88px 0 64px; overflow:hidden; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
+  .hero h1{ font-size:clamp(2.6rem, 5vw, 3.9rem); margin:18px 0 22px; }
+  .hero h1 em{ font-style:italic; color:var(--leaf-deep); font-weight:500; }
+  .hero p.lede{ font-size:1.14rem; color:var(--ink-soft); max-width:46ch; margin-bottom:32px; }
+  .hero-actions{ display:flex; align-items:center; gap:20px; margin-bottom:36px; flex-wrap:wrap; }
+  .trust-row{ display:flex; align-items:center; gap:14px; font-size:0.88rem; color:var(--ink-soft); }
+  .avatars{ display:flex; }
+  .avatars span{ width:30px; height:30px; border-radius:50%; border:2px solid var(--cream); margin-left:-9px; background:var(--leaf-soft); }
+  .avatars span:first-child{ margin-left:0; }
+  .avatars span:nth-child(2){ background:var(--citrus-soft); }
+
+  .hero-art{ position:relative; }
+  .basket-illustration{ width:100%; height:auto; animation:sway 7s ease-in-out infinite; transform-origin:50% 85%; }
+  @keyframes sway{ 0%,100%{ transform:rotate(-1deg); } 50%{ transform:rotate(1.3deg); } }
+  .leaf-wiggle{ transform-origin:center; transition:transform 0.4s var(--ease); }
+  .hero-art:hover .leaf-wiggle{ transform:rotate(-8deg) translateY(-3px); }
+
+  .floating-badge{
+    position:absolute; background:var(--paper); border-radius:var(--radius-sm); padding:12px 16px;
+    box-shadow:var(--shadow-soft); font-size:0.85rem; font-weight:700; display:flex; align-items:center; gap:8px;
+  }
+  .badge-top{ top:4%; right:0%; color:var(--forest-ink); }
+  .badge-bottom{ bottom:6%; left:-4%; color:var(--forest-ink); }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--leaf); }
+  .dot.orange{ background:var(--clay); }
+
+  /* ============ TICKER ============ */
+  .ticker{ background:var(--forest); padding:16px 0; overflow:hidden; white-space:nowrap; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); }
+  .ticker-track{ display:inline-flex; animation:scroll-left 32s linear infinite; }
+  @keyframes scroll-left{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .ticker-item{ display:inline-flex; align-items:center; gap:14px; padding:0 28px; font-family:var(--display); font-style:italic; font-weight:500; font-size:1.15rem; color:var(--leaf-soft); }
+  .ticker-item::after{ content:"◆"; font-size:0.5rem; color:var(--citrus); margin-left:28px; }
+
+  .section-head{ max-width:640px; margin-bottom:48px; }
+  .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-top:14px; }
+  .section-head p{ color:var(--ink-soft); font-size:1.04rem; margin-top:14px; }
+  .center{ text-align:center; margin-left:auto; margin-right:auto; }
+  .head-row{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+
+  /* ============ SHOP ============ */
+  .shop{ padding:100px 0 90px; }
+  .product-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; }
+  .product-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 20px 24px; display:flex; flex-direction:column;
+    transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .product-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-soft); }
+  .product-media{
+    height:118px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; position:relative;
+  }
+  .product-media svg{ width:56px; height:56px; }
+  .tag{
+    position:absolute; top:10px; left:10px; background:rgba(255,255,255,0.85); color:var(--forest-ink);
+    font-size:0.66rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    padding:4px 8px; border-radius:999px;
+  }
+  .product-card h3{ font-size:1.08rem; font-weight:600; margin-bottom:2px; }
+  .product-unit{ font-size:0.82rem; color:var(--ink-soft); margin-bottom:12px; }
+  .product-price{ font-family:var(--display); font-weight:600; font-size:1.25rem; color:var(--forest-ink); margin-bottom:16px; }
+  .product-footer{ display:flex; align-items:center; gap:10px; margin-top:auto; }
+  .stepper{
+    display:flex; align-items:center; border:1px solid var(--line); border-radius:999px; overflow:hidden; flex-shrink:0;
+  }
+  .stepper button{ width:30px; height:30px; display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--forest-ink); font-weight:700; }
+  .stepper button:hover{ background:var(--leaf-soft); }
+  .stepper .qty{ width:24px; text-align:center; font-size:0.88rem; font-weight:600; }
+  .add-btn{ flex:1; }
+
+  /* ============ FEATURES ============ */
+  .features{ padding:96px 0; }
+  .feature-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  .feature-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:34px 28px;
+    transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+  }
+  .feature-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-soft); border-color:transparent; }
+  .feature-icon{ width:48px; height:48px; border-radius:12px; background:var(--leaf-soft); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+  .feature-card:nth-child(2) .feature-icon{ background:var(--citrus-soft); }
+  .feature-card h3{ font-size:1.28rem; margin-bottom:10px; font-weight:600; }
+  .feature-card p{ color:var(--ink-soft); font-size:0.98rem; }
+
+  /* ============ HOW IT WORKS ============ */
+  .how{ padding:96px 0; background:var(--cream-dim); }
+  .how-steps{ display:grid; grid-template-columns:repeat(3, 1fr); position:relative; }
+  .how-steps::before{
+    content:""; position:absolute; top:26px; left:8%; right:8%; height:1px;
+    background:repeating-linear-gradient(to right, var(--line) 0 8px, transparent 8px 16px); z-index:0;
+  }
+  .step{ position:relative; z-index:1; padding:0 24px; }
+  .step-num{
+    width:52px; height:52px; border-radius:50%; background:var(--forest); color:var(--cream);
+    font-family:var(--display); font-weight:600; font-size:1.2rem; display:flex; align-items:center; justify-content:center; margin-bottom:22px;
+  }
+  .step:nth-child(2) .step-num{ background:var(--clay); }
+  .step h3{ font-size:1.2rem; margin-bottom:10px; }
+  .step p{ color:var(--ink-soft); font-size:0.96rem; }
+
+  /* ============ QUOTE ============ */
+  .quote{ padding:104px 0; text-align:center; }
+  .quote blockquote{
+    font-family:var(--display); font-style:italic; font-weight:500; font-size:clamp(1.5rem, 3.4vw, 2.3rem);
+    color:var(--forest-ink); max-width:780px; margin:0 auto 28px; line-height:1.35;
+  }
+  .quote cite{ font-style:normal; font-size:0.92rem; color:var(--ink-soft); font-weight:600; }
+
+  /* ============ PRICING ============ */
+  .pricing{ padding:96px 0; }
+  .price-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; align-items:stretch; }
+  .price-card{ background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:36px 30px; display:flex; flex-direction:column; transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+  .price-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-soft); }
+  .price-card.featured{ background:var(--forest); color:var(--cream); position:relative; overflow:hidden; }
+  .price-card.featured::before{
+    content:"Most popular"; position:absolute; top:16px; right:-34px; background:var(--clay); color:#fff;
+    font-size:0.72rem; font-weight:700; letter-spacing:0.06em; padding:5px 40px; transform:rotate(38deg);
+  }
+  .price-card.featured h3, .price-card.featured .price-sub{ color:var(--cream); }
+  .price-card h3{ font-size:1.3rem; margin-bottom:6px; }
+  .price-sub{ color:var(--ink-soft); font-size:0.92rem; margin-bottom:22px; }
+  .price-amount{ font-family:var(--display); font-size:2.5rem; font-weight:600; margin-bottom:4px; }
+  .price-amount span{ font-size:1rem; font-weight:400; opacity:0.7; }
+  .price-list{ margin:26px 0 30px; flex-grow:1; }
+  .price-list li{ display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; margin-bottom:12px; }
+  .price-card:not(.featured) .price-list li{ color:var(--ink-soft); }
+  .check{ color:var(--leaf-deep); font-weight:700; flex-shrink:0; }
+  .price-card.featured .check{ color:var(--citrus); }
+  .price-card:not(.featured) .btn-primary{ background:var(--forest); box-shadow:none; }
+  .price-card:not(.featured) .btn-primary:hover{ background:var(--forest-ink); }
+
+  /* ============ CTA BANNER ============ */
+  .cta-banner{
+    background:var(--forest); border-radius:28px; margin:0 auto 96px; max-width:1200px; padding:72px 56px;
+    text-align:center; position:relative; overflow:hidden;
+  }
+  .cta-banner h2{ color:var(--cream); font-size:clamp(1.8rem, 3.6vw, 2.5rem); margin-bottom:16px; }
+  .cta-banner p{ color:rgba(251,247,238,0.72); max-width:480px; margin:0 auto 32px; }
+  .cta-banner .blob{ position:absolute; border-radius:50%; filter:blur(60px); opacity:0.35; }
+  .cta-banner .blob-1{ width:280px; height:280px; background:var(--leaf); top:-90px; left:-60px; }
+  .cta-banner .blob-2{ width:220px; height:220px; background:var(--citrus); bottom:-80px; right:-40px; }
+
+  /* ============ CONTACT ============ */
+  .contact{ padding:96px 0 110px; background:var(--cream-dim); }
+  .contact-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; align-items:start; }
+  .contact-info-card{
+    background:var(--forest); color:var(--cream); border-radius:var(--radius); padding:38px 32px;
+  }
+  .contact-info-card h3{ color:var(--cream); font-size:1.4rem; margin-bottom:12px; }
+  .contact-info-card p{ color:rgba(251,247,238,0.72); font-size:0.95rem; margin-bottom:26px; }
+  .contact-line{ display:flex; align-items:flex-start; gap:12px; margin-bottom:18px; font-size:0.93rem; }
+  .contact-line svg{ flex-shrink:0; margin-top:2px; }
+  .contact-socials{ display:flex; gap:14px; margin-top:24px; }
+  .contact-socials a{
+    width:38px; height:38px; border-radius:50%; border:1px solid rgba(251,247,238,0.28);
+    display:flex; align-items:center; justify-content:center; transition:background 0.2s var(--ease);
+  }
+  .contact-socials a:hover{ background:rgba(251,247,238,0.14); }
+
+  .contact-form{ background:var(--paper); border-radius:var(--radius); border:1px solid var(--line); padding:34px 32px; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .field label{ display:block; font-size:0.82rem; font-weight:600; color:var(--forest-ink); margin-bottom:6px; }
+  .field input, .field textarea{
+    width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--line);
+    background:var(--cream); font-size:0.92rem; color:var(--ink); font-family:inherit;
+  }
+  .field textarea{ resize:vertical; min-height:110px; }
+  .field{ margin-bottom:16px; }
+  .form-success{
+    display:none; align-items:center; gap:10px; background:var(--leaf-soft); color:var(--leaf-deep);
+    padding:12px 16px; border-radius:10px; font-size:0.88rem; font-weight:600; margin-top:14px;
+  }
+  .form-success.show{ display:flex; }
+
+  /* ============ FOOTER ============ */
+  footer{ padding:60px 0 32px; border-top:1px solid var(--line); }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:44px; }
+  .footer-brand p{ color:var(--ink-soft); font-size:0.92rem; margin:14px 0 20px; max-width:32ch; }
+  .footer-col h4{ font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; color:var(--forest-ink); margin-bottom:16px; }
+  .footer-col li{ margin-bottom:11px; }
+  .footer-col a{ color:var(--ink-soft); font-size:0.94rem; transition:color 0.2s var(--ease); }
+  .footer-col a:hover{ color:var(--clay); }
+  .footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:26px; border-top:1px solid var(--line); font-size:0.85rem; color:var(--ink-soft); flex-wrap:wrap; gap:12px; }
+  .footer-socials{ display:flex; gap:16px; }
+
+  /* ============ CART DRAWER ============ */
+  .cart-fab{
+    position:fixed; bottom:26px; right:26px; z-index:90; width:58px; height:58px; border-radius:50%;
+    background:var(--clay); color:#fff; box-shadow:0 14px 30px -10px rgba(231,111,81,0.55);
+    display:flex; align-items:center; justify-content:center; transition:transform 0.25s var(--ease);
+  }
+  .cart-fab:hover{ transform:translateY(-3px) scale(1.04); }
+  .cart-fab .cart-count{ background:var(--forest); top:-2px; right:-2px; }
+
+  .overlay{
+    position:fixed; inset:0; background:rgba(15,42,29,0.42); z-index:95; opacity:0; visibility:hidden;
+    transition:opacity 0.3s var(--ease), visibility 0.3s var(--ease);
+  }
+  .overlay.open{ opacity:1; visibility:visible; }
+
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:min(420px, 92vw); background:var(--paper); z-index:96;
+    transform:translateX(100%); transition:transform 0.35s var(--ease); display:flex; flex-direction:column;
+  }
+  .drawer.open{ transform:translateX(0); }
+  .drawer-head{ display:flex; align-items:center; justify-content:space-between; padding:22px 24px; border-bottom:1px solid var(--line); }
+  .drawer-head h3{ font-size:1.2rem; }
+  .drawer-close{ width:36px; height:36px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; }
+  .drawer-close:hover{ background:var(--cream-dim); }
+  .drawer-body{ flex:1; overflow-y:auto; padding:20px 24px; }
+  .drawer-empty{ text-align:center; color:var(--ink-soft); padding:60px 10px; font-size:0.95rem; }
+  .drawer-item{ display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); }
+  .drawer-item-media{ width:48px; height:48px; border-radius:10px; background:var(--leaf-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .drawer-item-media svg{ width:26px; height:26px; }
+  .drawer-item-info{ flex:1; }
+  .drawer-item-info h4{ font-size:0.94rem; font-weight:600; margin-bottom:2px; }
+  .drawer-item-info span{ font-size:0.82rem; color:var(--ink-soft); }
+  .drawer-item .stepper button{ width:26px; height:26px; }
+  .drawer-remove{ font-size:0.78rem; color:var(--clay); font-weight:600; margin-top:4px; }
+  .drawer-foot{ padding:20px 24px 26px; border-top:1px solid var(--line); }
+  .drawer-subtotal{ display:flex; justify-content:space-between; font-size:0.98rem; font-weight:700; margin-bottom:16px; color:var(--forest-ink); }
+  .drawer-note{ font-size:0.78rem; color:var(--ink-soft); margin-top:10px; text-align:center; }
+
+  /* ============ CHECKOUT MODAL ============ */
+  .modal{
+    position:fixed; inset:0; z-index:98; display:flex; align-items:center; justify-content:center; padding:20px;
+    opacity:0; visibility:hidden; transition:opacity 0.3s var(--ease), visibility 0.3s var(--ease);
+  }
+  .modal.open{ opacity:1; visibility:visible; }
+  .modal-box{
+    background:var(--paper); border-radius:var(--radius); max-width:440px; width:100%; padding:32px 30px;
+    transform:translateY(16px); transition:transform 0.3s var(--ease); box-shadow:0 40px 80px -30px rgba(15,42,29,0.4);
+  }
+  .modal.open .modal-box{ transform:translateY(0); }
+  .modal-box h3{ font-size:1.35rem; margin-bottom:8px; }
+  .modal-box p.sub{ color:var(--ink-soft); font-size:0.92rem; margin-bottom:22px; }
+  .modal-line{ display:flex; justify-content:space-between; font-size:0.92rem; padding:8px 0; border-bottom:1px dashed var(--line); }
+  .modal-total{ display:flex; justify-content:space-between; font-weight:700; font-size:1.05rem; padding:14px 0; color:var(--forest-ink); }
+  .modal-success{ text-align:center; padding:10px 0; }
+  .modal-success .check-circle{
+    width:56px; height:56px; border-radius:50%; background:var(--leaf-soft); color:var(--leaf-deep);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:1.5rem;
+  }
+  .modal-actions{ display:flex; gap:12px; margin-top:22px; }
+  .modal-actions .btn{ flex:1; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px){
+    .product-grid{ grid-template-columns:repeat(2, 1fr); }
+    .contact-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 900px){
+    .nav-links{ display:none; }
+    .hamburger{ display:flex; }
+    .hero{ padding:44px 0 40px; }
+    .hero-grid{ grid-template-columns:1fr; gap:40px; text-align:center; }
+    .hero p.lede{ margin-left:auto; margin-right:auto; }
+    .hero-actions{ justify-content:center; }
+    .trust-row{ justify-content:center; }
+    .hero-art{ order:-1; max-width:340px; width:80%; margin:0 auto; padding:0 0 46px; }
+    .feature-grid, .price-grid{ grid-template-columns:1fr; }
+    .how-steps{ grid-template-columns:1fr; gap:36px; }
+    .how-steps::before{ display:none; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .cta-banner{ margin-left:20px; margin-right:20px; padding:56px 28px; }
+    .form-row{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 640px){
+    .nav-cta .btn-primary{ display:none; }
+    .logo{ font-size:1.08rem; gap:7px; }
+    .logo svg{ width:22px; height:22px; }
+  }
+  @media (max-width: 560px){
+    .wrap{ padding:0 20px; }
+    .footer-grid{ grid-template-columns:1fr; }
+    .footer-bottom{ flex-direction:column; align-items:flex-start; }
+    .hero{ padding:36px 0 32px; }
+    .hero-art{ max-width:250px; width:72%; padding-bottom:52px; }
+    .hero h1{ font-size:clamp(2rem, 9vw, 2.6rem); }
+    .hero p.lede{ font-size:1rem; max-width:34ch; }
+    .hero-actions{ flex-direction:column; align-items:stretch; gap:12px; width:100%; }
+    .hero-actions .btn, .hero-actions .btn-ghost{ width:100%; display:flex; justify-content:center; text-align:center; }
+    .hero-actions .btn-ghost{ padding:8px 0; }
+    .trust-row{ flex-direction:column; gap:8px; text-align:center; }
+    .floating-badge{ font-size:0.68rem; padding:7px 10px; gap:5px; border-radius:9px; }
+    .badge-top{ top:0; right:2%; }
+    .badge-bottom{ bottom:0; left:2%; }
+    .product-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+    .product-card{ padding:16px 14px 18px; }
+    .product-media{ height:92px; margin-bottom:12px; }
+    .product-media svg{ width:44px; height:44px; }
+    .product-footer{ flex-direction:column; align-items:stretch; gap:10px; }
+    .stepper{ align-self:center; }
+    .nav{ padding:12px 16px; }
+    .contact-info-card{ padding:30px 24px; }
+    .contact-form{ padding:26px 22px; }
+    .drawer{ width:100vw; }
+  }
+  @media (max-width: 380px){
+    .hero-art{ max-width:210px; width:64%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path d="M16 4C10 4 6 9 6 15c0 7 5 13 10 13s10-6 10-13c0-6-4-11-10-11z" fill="#52B788"/>
+        <path d="M16 4c1 3 1 7-2 11" stroke="#1B4332" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M20 3c1.5 1.5 1 4-1 5" fill="#E76F51"/>
+      </svg>
+      Harvest Co.
+    </a>
+    <ul class="nav-links">
+      <li><a href="#shop">Shop produce</a></li>
+      <li><a href="#features">Why it works</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#pricing">Plans</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="icon-btn" id="cartToggle" aria-label="Open cart">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l1.6 9.6a2 2 0 0 0 2 1.7h7.7a2 2 0 0 0 2-1.6L20 8H6" stroke="#1B4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="#1B4332"/><circle cx="17" cy="20" r="1.4" fill="#1B4332"/></svg>
+        <span class="cart-count hidden" id="cartCount">0</span>
+      </button>
+      <a class="btn btn-primary" href="#shop">Order produce</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#shop">Shop produce</a>
+    <a href="#features">Why it works</a>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Plans</a>
+    <a href="#contact">Contact us</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Delivered Tuesdays &amp; Fridays</span>
+        <h1>Produce picked <em>yesterday</em>, not last week.</h1>
+        <p class="lede">Harvest Co. sources direct from 40 regional growers and packs your order within 24 hours of picking — order a la carte, or subscribe to a weekly box on autopilot.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#shop">Shop produce — from ₦800</a>
+          <a class="btn-ghost" href="#how">See how it works ↓</a>
+        </div>
+        <div class="trust-row">
+          <div class="avatars"><span></span><span></span><span></span><span></span></div>
+          <span>Joined by 12,400+ households across the Northeast</span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg class="basket-illustration" viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M70 190 L110 340 Q210 370 310 340 L350 190 Z" fill="#FFFDF8" stroke="#1B4332" stroke-width="3"/>
+          <path d="M70 190 L350 190" stroke="#1B4332" stroke-width="3"/>
+          <path d="M90 210 L330 210 M100 240 L320 240 M108 270 L312 270 M116 300 L304 300" stroke="#D7ECDF" stroke-width="3"/>
+          <path d="M130 190 C130 140 160 110 210 110 C260 110 290 140 290 190" stroke="#1B4332" stroke-width="3" fill="none"/>
+          <g class="leaf-wiggle">
+            <path d="M190 195 L205 105 L225 195 Z" fill="#E76F51"/>
+            <path d="M210 105 C202 88 195 78 186 70 M212 103 C214 84 217 72 220 60 M215 106 C224 92 232 82 240 74" stroke="#52B788" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </g>
+          <g class="leaf-wiggle">
+            <ellipse cx="150" cy="150" rx="34" ry="26" fill="#52B788" transform="rotate(-18 150 150)"/>
+            <ellipse cx="170" cy="130" rx="26" ry="20" fill="#74C69D" transform="rotate(10 170 130)"/>
+          </g>
+          <circle cx="260" cy="150" r="30" fill="#F4A259"/>
+          <path d="M260 122 L260 135 M248 130 L258 138 M272 130 L262 138" stroke="#1B4332" stroke-width="2.5" stroke-linecap="round"/>
+          <g>
+            <ellipse cx="225" cy="165" rx="14" ry="18" fill="#E76F51"/>
+            <path d="M225 148 C220 135 224 125 230 118 M222 149 C214 140 210 132 205 122" stroke="#52B788" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          </g>
+        </svg>
+        <div class="floating-badge badge-top"><span class="dot"></span> Picked within 24h</div>
+        <div class="floating-badge badge-bottom"><span class="dot orange"></span> Zero plastic packaging</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Heirloom Tomatoes</span>
+      <span class="ticker-item">Tuscan Kale</span>
+      <span class="ticker-item">Sweet Carrots</span>
+      <span class="ticker-item">Cara Cara Oranges</span>
+      <span class="ticker-item">French Breakfast Radish</span>
+      <span class="ticker-item">Delicata Squash</span>
+      <span class="ticker-item">Rainbow Chard</span>
+      <span class="ticker-item">Ripe Avocados</span>
+      <span class="ticker-item">Heirloom Tomatoes</span>
+      <span class="ticker-item">Tuscan Kale</span>
+      <span class="ticker-item">Sweet Carrots</span>
+      <span class="ticker-item">Cara Cara Oranges</span>
+      <span class="ticker-item">French Breakfast Radish</span>
+      <span class="ticker-item">Delicata Squash</span>
+      <span class="ticker-item">Rainbow Chard</span>
+      <span class="ticker-item">Ripe Avocados</span>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <section class="shop" id="shop">
+    <div class="wrap">
+      <div class="section-head fade-in">
+        <span class="eyebrow">Available this week</span>
+        <div class="head-row">
+          <h2>Order exactly what you need.</h2>
+        </div>
+        <p>No subscription required — add items to your box and check out once. Prices update weekly with the harvest.</p>
+      </div>
+
+      <div class="product-grid" id="productGrid"><!-- rendered by JS --></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="wrap">
+      <div class="section-head fade-in">
+        <span class="eyebrow">Why households switch</span>
+        <h2>Freshness is a supply chain problem. We just solved it.</h2>
+        <p>Most produce sits in distribution centers for 5–9 days before it reaches a store shelf. We cut out that middle stretch entirely.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v6M12 22c-4-3-7-7-7-12a7 7 0 0 1 14 0c0 5-3 9-7 12z" stroke="#1B4332" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Picked at peak</h3>
+          <p>Every item is harvested within a day of packing, at the point growers consider it ready — not before, for shelf life.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7h13l3 5v6h-3M3 7v11h3M3 7l2-4h9l2 4M8 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" stroke="#E76F51" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>40 regional growers</h3>
+          <p>We route each order from the closest available farm, so nothing travels further than it has to.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v4l-2 12H6L4 8V4z" stroke="#1B4332" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h3>Compostable, always</h3>
+          <p>Boxes, liners and labels break down in a home compost bin — no plastic clamshells, ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="section-head fade-in">
+        <span class="eyebrow">Getting started</span>
+        <h2>Three steps, then it's on autopilot.</h2>
+      </div>
+      <div class="how-steps">
+        <div class="step fade-in">
+          <div class="step-num">1</div>
+          <h3>Choose your items</h3>
+          <p>Order a la carte from the shop above, or pick a weekly box size and tell us what to skip.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="step-num">2</div>
+          <h3>We pack it fresh</h3>
+          <p>Our routing pulls from whichever nearby farm harvested that item most recently.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="step-num">3</div>
+          <h3>It shows up, on time</h3>
+          <p>Pause, skip, or swap any week from your account — no calls, no fees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote">
+    <div class="wrap">
+      <blockquote class="fade-in">"I stopped meal-planning around what I had. Now I plan around what showed up that morning — it's a better way to cook."</blockquote>
+      <cite class="fade-in">— Priya N., subscriber since 2023</cite>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head center fade-in">
+        <span class="eyebrow">Subscription plans</span>
+        <h2>Prefer a weekly box? Pick a size.</h2>
+        <p>Every plan ships weekly with free delivery. Cancel any time, no contract.</p>
+      </div>
+      <div class="price-grid">
+        <div class="price-card fade-in">
+          <h3>The Snack Box</h3>
+          <p class="price-sub">For one, or a light week</p>
+          <div class="price-amount">₦12,000<span>/week</span></div>
+          <ul class="price-list">
+            <li><span class="check">✓</span> 6–7 seasonal items</li>
+            <li><span class="check">✓</span> Free weekly delivery</li>
+            <li><span class="check">✓</span> Swap up to 2 items</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="#contact">Choose Snack Box</a>
+        </div>
+        <div class="price-card featured fade-in">
+          <h3>The Household Box</h3>
+          <p class="price-sub">For 2–4 people cooking most nights</p>
+          <div class="price-amount">₦20,000<span>/week</span></div>
+          <ul class="price-list">
+            <li><span class="check">✓</span> 12–14 seasonal items</li>
+            <li><span class="check">✓</span> Free weekly delivery</li>
+            <li><span class="check">✓</span> Unlimited swaps</li>
+            <li><span class="check">✓</span> One recipe card included</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="#contact">Choose Household Box</a>
+        </div>
+        <div class="price-card fade-in">
+          <h3>The Harvest Table</h3>
+          <p class="price-sub">For big households and big meals</p>
+          <div class="price-amount">₦32,000<span>/week</span></div>
+          <ul class="price-list">
+            <li><span class="check">✓</span> 20+ seasonal items</li>
+            <li><span class="check">✓</span> Free priority delivery</li>
+            <li><span class="check">✓</span> Unlimited swaps</li>
+            <li><span class="check">✓</span> Add-on pantry staples</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="#contact">Choose Harvest Table</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section>
+    <div class="cta-banner fade-in">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <h2>Your first order ships this Friday.</h2>
+      <p>Order by Wednesday at midnight to lock in this week's harvest window.</p>
+      <a class="btn btn-primary" href="#shop">Shop produce now</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head fade-in">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Questions about an order, or your area?</h2>
+        <p>We usually reply within one business day.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info-card fade-in">
+          <h3>Talk to us directly</h3>
+          <p>For delivery-area checks, bulk orders, or anything urgent, reach us here.</p>
+          <div class="contact-line">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 5h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 14l5 2v4c0 1-1 2-2 2C9 22 2 15 2 8c0-1 1-2 2-2z" stroke="#FBF7EE" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <span>+234 801 234 5678</span>
+          </div>
+          <div class="contact-line">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3z" stroke="#FBF7EE" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 7l9 6 9-6" stroke="#FBF7EE" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <span>hello@harvestco.example</span>
+          </div>
+          <div class="contact-line">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="#FBF7EE" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="#FBF7EE" stroke-width="1.6"/></svg>
+            <span>14 Freshwell Lane, Lekki, Lagos</span>
+          </div>
+          <div class="contact-line">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FBF7EE" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="#FBF7EE" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span>Mon–Sat, 8am – 6pm WAT</span>
+          </div>
+          <div class="contact-socials">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="TikTok">TT</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </div>
+
+        <form class="contact-form fade-in" id="contactForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-name">Full name</label>
+              <input id="cf-name" type="text" placeholder="Ada Obi" required>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" type="email" placeholder="ada@example.com" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-subject">Subject</label>
+            <input id="cf-subject" type="text" placeholder="Question about delivery to Ibadan">
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" placeholder="Tell us what you need..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send message</button>
+          <div class="form-success" id="contactSuccess">✓ Thanks — we'll get back to you within a business day.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M16 4C10 4 6 9 6 15c0 7 5 13 10 13s10-6 10-13c0-6-4-11-10-11z" fill="#52B788"/></svg>
+          Harvest Co.
+        </a>
+        <p>Order produce a la carte or subscribe to a weekly box — routed from the nearest grower, packed the day it's picked.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#shop">Browse produce</a></li>
+          <li><a href="#pricing">Subscription plans</a></li>
+          <li><a href="#how">How it works</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#features">Why it works</a></li>
+          <li><a href="#">Our growers</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#contact">Contact us</a></li>
+          <li><a href="#">Delivery areas</a></li>
+          <li><a href="#">Manage subscription</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Harvest Co. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#contact">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART FAB -->
+<button class="cart-fab" id="cartFab" aria-label="Open cart">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l1.6 9.6a2 2 0 0 0 2 1.7h7.7a2 2 0 0 0 2-1.6L20 8H6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="#fff"/><circle cx="17" cy="20" r="1.4" fill="#fff"/></svg>
+  <span class="cart-count hidden" id="cartCountFab">0</span>
+</button>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head">
+    <h3>Your box</h3>
+    <button class="drawer-close" id="drawerClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"><div class="drawer-empty">Your box is empty. Add produce from the shop.</div></div>
+  <div class="drawer-foot">
+    <div class="drawer-subtotal"><span>Subtotal</span><span id="drawerSubtotal">₦0</span></div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>Checkout</button>
+    <p class="drawer-note">Free delivery on all orders over ₦10,000.</p>
+  </div>
+</aside>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-box" id="modalBox">
+    <!-- rendered by JS -->
+  </div>
+</div>
+
+<script>
+  /* ---------- Scroll reveal ---------- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){ entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  /* ---------- Mobile menu ---------- */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobilePanel = document.getElementById('mobilePanel');
+  hamburgerBtn.addEventListener('click', () => mobilePanel.classList.toggle('open'));
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobilePanel.classList.remove('open')));
+
+  /* ---------- Product data ---------- */
+  const PRODUCTS = [
+    { id:'tomato',  name:'Heirloom Tomatoes',       unit:'per kg',    price:1500, tag:'Popular', color:'#FDE4DC',
+      icon:'<circle cx="28" cy="30" r="18" fill="#E76F51"/><path d="M28 12c-3 3-3 6 0 8s6 0 6-4" stroke="#52B788" stroke-width="3" stroke-linecap="round" fill="none"/>' },
+    { id:'kale',    name:'Tuscan Kale',             unit:'per bunch', price:1200, tag:'Leafy', color:'#DCEFE3',
+      icon:'<ellipse cx="22" cy="30" rx="16" ry="12" fill="#52B788" transform="rotate(-16 22 30)"/><ellipse cx="36" cy="24" rx="12" ry="9" fill="#74C69D" transform="rotate(12 36 24)"/>' },
+    { id:'carrot',  name:'Sweet Carrots',           unit:'per kg',    price:900,  tag:'Root', color:'#FDEBD8',
+      icon:'<path d="M28 14 L38 44 L18 44 Z" fill="#F4A259"/><path d="M28 14c-3-4-6-6-11-7 M30 14c1-5 3-8 6-11" stroke="#52B788" stroke-width="3" stroke-linecap="round" fill="none"/>' },
+    { id:'orange',  name:'Cara Cara Oranges',       unit:'per kg',    price:2000, tag:'Citrus', color:'#FDEBD8',
+      icon:'<circle cx="28" cy="30" r="17" fill="#F4A259"/><path d="M28 13 L28 22 M20 18 L26 24 M36 18 L30 24" stroke="#1B4332" stroke-width="2.4" stroke-linecap="round"/>' },
+    { id:'radish',  name:'French Breakfast Radish', unit:'per bunch', price:800,  tag:'Root', color:'#FDE4DC',
+      icon:'<ellipse cx="28" cy="34" rx="13" ry="16" fill="#E76F51"/><path d="M28 18c-4-6-10-9-16-11 M26 19c-6-3-9-8-8-14" stroke="#52B788" stroke-width="3" stroke-linecap="round" fill="none"/>' },
+    { id:'squash',  name:'Delicata Squash',         unit:'per piece', price:1700, tag:'Seasonal', color:'#FDEBD8',
+      icon:'<ellipse cx="28" cy="30" rx="20" ry="13" fill="#F4A259"/><path d="M11 30h34 M15 24h26 M15 36h26" stroke="#1B4332" stroke-width="1.6" opacity="0.5"/>' },
+    { id:'chard',   name:'Rainbow Chard',           unit:'per bunch', price:1300, tag:'Leafy', color:'#DCEFE3',
+      icon:'<path d="M28 46V22" stroke="#E76F51" stroke-width="4" stroke-linecap="round"/><ellipse cx="28" cy="16" rx="17" ry="12" fill="#52B788"/>' },
+    { id:'avocado', name:'Ripe Avocados',           unit:'per kg',    price:2500, tag:'Creamy', color:'#DCEFE3',
+      icon:'<path d="M28 12c10 2 15 12 13 22-1 8-8 13-13 13s-12-5-13-13c-2-10 3-20 13-22z" fill="#52B788"/><circle cx="28" cy="32" r="7" fill="#8B5E3C"/>' }
+  ];
+
+  const naira = (n) => '₦' + n.toLocaleString('en-NG');
+
+  /* ---------- Cart state ---------- */
+  const cart = {}; // id -> qty
+
+  function renderProducts(){
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = PRODUCTS.map(p => `
+      <div class="product-card" data-id="${p.id}">
+        <div class="product-media" style="background:${p.color}">
+          <svg viewBox="0 0 56 56" fill="none">${p.icon}</svg>
+          <span class="tag">${p.tag}</span>
+        </div>
+        <h3>${p.name}</h3>
+        <p class="product-unit">${p.unit}</p>
+        <div class="product-price">${naira(p.price)}</div>
+        <div class="product-footer">
+          <div class="stepper">
+            <button type="button" data-action="dec" data-id="${p.id}" aria-label="Decrease quantity">−</button>
+            <span class="qty" id="qty-${p.id}">0</span>
+            <button type="button" data-action="inc" data-id="${p.id}" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn btn-primary btn-sm add-btn" data-action="add" data-id="${p.id}">Add to box</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  renderProducts();
+
+  document.getElementById('productGrid').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    const action = btn.dataset.action;
+    if (action === 'inc'){ setQtyDisplay(id, getDisplayQty(id) + 1); }
+    if (action === 'dec'){ setQtyDisplay(id, Math.max(0, getDisplayQty(id) - 1)); }
+    if (action === 'add'){
+      const qty = Math.max(1, getDisplayQty(id));
+      cart[id] = (cart[id] || 0) + qty;
+      setQtyDisplay(id, 0);
+      updateCartUI();
+      flashAdded(btn);
+    }
+  });
+
+  function getDisplayQty(id){ return parseInt(document.getElementById('qty-' + id).textContent, 10) || 0; }
+  function setQtyDisplay(id, val){ document.getElementById('qty-' + id).textContent = val; }
+  function flashAdded(btn){
+    const original = btn.textContent;
+    btn.textContent = 'Added ✓';
+    setTimeout(() => { btn.textContent = original; }, 1400);
+  }
+
+  function cartCount(){ return Object.values(cart).reduce((a,b) => a+b, 0); }
+  function cartSubtotal(){
+    return Object.entries(cart).reduce((sum, [id, qty]) => {
+      const p = PRODUCTS.find(x => x.id === id);
+      return sum + (p ? p.price * qty : 0);
+    }, 0);
+  }
+
+  function updateCartUI(){
+    const count = cartCount();
+    [document.getElementById('cartCount'), document.getElementById('cartCountFab')].forEach(el => {
+      el.textContent = count;
+      el.classList.toggle('hidden', count === 0);
+    });
+
+    const body = document.getElementById('drawerBody');
+    const entries = Object.entries(cart).filter(([,qty]) => qty > 0);
+    if (entries.length === 0){
+      body.innerHTML = '<div class="drawer-empty">Your box is empty. Add produce from the shop.</div>';
+    } else {
+      body.innerHTML = entries.map(([id, qty]) => {
+        const p = PRODUCTS.find(x => x.id === id);
+        return `
+          <div class="drawer-item" data-id="${id}">
+            <div class="drawer-item-media" style="background:${p.color}"><svg viewBox="0 0 56 56" fill="none">${p.icon}</svg></div>
+            <div class="drawer-item-info">
+              <h4>${p.name}</h4>
+              <span>${naira(p.price)} × ${qty} = ${naira(p.price * qty)}</span>
+              <div><button class="drawer-remove" data-action="remove" data-id="${id}">Remove</button></div>
+            </div>
+            <div class="stepper">
+              <button type="button" data-action="cart-dec" data-id="${id}" aria-label="Decrease">−</button>
+              <span class="qty">${qty}</span>
+              <button type="button" data-action="cart-inc" data-id="${id}" aria-label="Increase">+</button>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    document.getElementById('drawerSubtotal').textContent = naira(cartSubtotal());
+    document.getElementById('checkoutBtn').disabled = count === 0;
+  }
+
+  document.getElementById('drawerBody').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    const action = btn.dataset.action;
+    if (action === 'cart-inc') cart[id] = (cart[id] || 0) + 1;
+    if (action === 'cart-dec') cart[id] = Math.max(0, (cart[id] || 0) - 1);
+    if (action === 'remove') cart[id] = 0;
+    updateCartUI();
+  });
+
+  /* ---------- Drawer open/close ---------- */
+  const overlay = document.getElementById('overlay');
+  const drawer = document.getElementById('drawer');
+  function openDrawer(){ drawer.classList.add('open'); overlay.classList.add('open'); }
+  function closeDrawer(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+  document.getElementById('cartToggle').addEventListener('click', openDrawer);
+  document.getElementById('cartFab').addEventListener('click', openDrawer);
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', () => { closeDrawer(); closeModal(); });
+
+  /* ---------- Checkout modal (demo only — no real payment gateway wired up) ---------- */
+  const modal = document.getElementById('checkoutModal');
+  const modalBox = document.getElementById('modalBox');
+
+  function openModal(){
+    renderReviewStep();
+    modal.classList.add('open');
+    overlay.classList.add('open');
+  }
+  function closeModal(){ modal.classList.remove('open'); }
+
+  function renderReviewStep(){
+    const entries = Object.entries(cart).filter(([,qty]) => qty > 0);
+    const lines = entries.map(([id, qty]) => {
+      const p = PRODUCTS.find(x => x.id === id);
+      return `<div class="modal-line"><span>${p.name} × ${qty}</span><span>${naira(p.price*qty)}</span></div>`;
+    }).join('');
+    modalBox.innerHTML = `
+      <h3>Review your order</h3>
+      <p class="sub">Demo checkout — no real payment is processed on this preview site.</p>
+      ${lines}
+      <div class="modal-total"><span>Total</span><span>${naira(cartSubtotal())}</span></div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="modalCancel">Cancel</button>
+        <button class="btn btn-primary" id="modalPay">Confirm order</button>
+      </div>
+    `;
+    document.getElementById('modalCancel').addEventListener('click', closeModal);
+    document.getElementById('modalPay').addEventListener('click', renderSuccessStep);
+  }
+
+  function renderSuccessStep(){
+    const total = naira(cartSubtotal());
+    modalBox.innerHTML = `
+      <div class="modal-success">
+        <div class="check-circle">✓</div>
+        <h3>Order confirmed</h3>
+        <p class="sub">${total} — a confirmation would normally be sent to your email. Your delivery window is Tuesday or Friday, whichever comes first.</p>
+        <button class="btn btn-primary btn-block" id="modalDone">Done</button>
+      </div>
+    `;
+    document.getElementById('modalDone').addEventListener('click', () => {
+      Object.keys(cart).forEach(id => cart[id] = 0);
+      updateCartUI();
+      closeModal();
+      closeDrawer();
+    });
+  }
+
+  document.getElementById('checkoutBtn').addEventListener('click', () => {
+    if (cartCount() === 0) return;
+    openModal();
+  });
+
+  updateCartUI();
+
+  /* ---------- Contact form (demo submit) ---------- */
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('contactSuccess').classList.add('show');
+    contactForm.reset();
+    setTimeout(() => document.getElementById('contactSuccess').classList.remove('show'), 5000);
+  });
+</script>
+
+</body>
+</html>
