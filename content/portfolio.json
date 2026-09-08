@@ -1,8 +1,11 @@
 {
-  "brand": { "initials": "EK", "name": "Emmanuel Kamal" },
+  "brand": {
+    "initials": "EK",
+    "name": "Emmanuel Kamal"
+  },
   "hero": {
-    "eyebrow": "BASED IN LAGOS, NIGERIA · OPEN TO SELECT PROJECTS",
-    "name": "Emmanuel Kamal",
+    "eyebrow": "BASED IN JOS, PLATEAU STATE, NIGERIA · OPEN TO SELECT PROJECTS",
+    "name": "Emmanuel K, MUH'D",
     "role": "Product & UI/UX designer building interfaces, design systems, and the AI-assisted tools that speed up creative work.",
     "disciplines": [
       "UI/UX & Product Design",
@@ -11,8 +14,14 @@
       "Graphic Design",
       "Creative Direction & Strategy"
     ],
-    "primaryCta": { "label": "View selected work", "href": "#work" },
-    "secondaryCta": { "label": "Get in touch", "href": "#contact" }
+    "primaryCta": {
+      "label": "View selected work",
+      "href": "#work"
+    },
+    "secondaryCta": {
+      "label": "Get in touch",
+      "href": "#contact"
+    }
   },
   "about": {
     "sectionTag": "01 — About",
@@ -26,10 +35,22 @@
       "I care about the seam between craft and system: the point where a good idea stops being a one-off and becomes a component someone else can reuse."
     ],
     "specs": [
-      { "key": "LOCATION", "value": "Lagos, Nigeria · WAT (UTC+1)" },
-      { "key": "FOCUS", "value": "Product design, design systems, applied AI" },
-      { "key": "CURRENTLY", "value": "Product & UX design, fintech" },
-      { "key": "STACK", "value": "Figma · Framer · React · Tailwind" }
+      {
+        "key": "LOCATION",
+        "value": "Jos, Plateau State, Nigeria · WAT (UTC+1)"
+      },
+      {
+        "key": "FOCUS",
+        "value": "Product design, design systems, applied AI"
+      },
+      {
+        "key": "CURRENTLY",
+        "value": "Product & UX design, fintech"
+      },
+      {
+        "key": "STACK",
+        "value": "Figma · Framer · React · Tailwind"
+      }
     ]
   },
   "work": {
@@ -42,7 +63,10 @@
         "category": "UI/UX & PRODUCT",
         "title": "Payments dashboard redesign",
         "description": "Rebuilt a multi-currency payments dashboard around clarity: fewer states, honest error handling, and a system that scales cleanly to new markets.",
-        "tags": ["Fintech", "Design systems"],
+        "tags": [
+          "Fintech",
+          "Design systems"
+        ],
         "link": "#contact"
       },
       {
@@ -50,7 +74,10 @@
         "category": "WEB DESIGN & DEV",
         "title": "Studio site rebuild",
         "description": "A ground-up rebuild of a design studio's site — a small component library, a CMS-driven case-study template, sub-second loads.",
-        "tags": ["React", "Performance"],
+        "tags": [
+          "React",
+          "Performance"
+        ],
         "link": "#contact"
       },
       {
@@ -58,7 +85,10 @@
         "category": "AI & GRAPHIC DESIGN",
         "title": "Generative brand toolkit",
         "description": "An internal tool that turns a brand's tokens into on-demand social templates, pairing a layout model with a human-in-the-loop review step.",
-        "tags": ["AI tooling", "Brand systems"],
+        "tags": [
+          "AI tooling",
+          "Brand systems"
+        ],
         "link": "#contact"
       },
       {
@@ -66,7 +96,10 @@
         "category": "CREATIVE DIRECTION",
         "title": "Product launch direction",
         "description": "Creative direction for a fintech product launch — naming, visual system, and the campaign that introduced it to market.",
-        "tags": ["Strategy", "Campaign"],
+        "tags": [
+          "Strategy",
+          "Campaign"
+        ],
         "link": "#contact"
       }
     ]
@@ -80,40 +113,88 @@
         "name": "Design",
         "swatch": "accent",
         "items": [
-          { "label": "Figma", "tag": "UI" },
-          { "label": "FigJam", "tag": "FLOW" },
-          { "label": "Illustrator", "tag": "VEC" },
-          { "label": "Photoshop", "tag": "RASTER" }
+          {
+            "label": "Figma",
+            "tag": "UI"
+          },
+          {
+            "label": "FigJam",
+            "tag": "FLOW"
+          },
+          {
+            "label": "Illustrator",
+            "tag": "VEC"
+          },
+          {
+            "label": "Photoshop",
+            "tag": "RASTER"
+          }
         ]
       },
       {
         "name": "Build",
         "swatch": "guide",
         "items": [
-          { "label": "React", "tag": "JS" },
-          { "label": "Next.js", "tag": "SSR" },
-          { "label": "Tailwind", "tag": "CSS" },
-          { "label": "Framer", "tag": "PROTO" }
+          {
+            "label": "React",
+            "tag": "JS"
+          },
+          {
+            "label": "Next.js",
+            "tag": "SSR"
+          },
+          {
+            "label": "Tailwind",
+            "tag": "CSS"
+          },
+          {
+            "label": "Framer",
+            "tag": "PROTO"
+          }
         ]
       },
       {
         "name": "AI & automation",
         "swatch": "violet",
         "items": [
-          { "label": "Midjourney", "tag": "IMG" },
-          { "label": "Runway", "tag": "VID" },
-          { "label": "ComfyUI", "tag": "FLOW" },
-          { "label": "Claude / GPT", "tag": "COPILOT" }
+          {
+            "label": "Midjourney",
+            "tag": "IMG"
+          },
+          {
+            "label": "Runway",
+            "tag": "VID"
+          },
+          {
+            "label": "ComfyUI",
+            "tag": "FLOW"
+          },
+          {
+            "label": "Claude / GPT",
+            "tag": "COPILOT"
+          }
         ]
       },
       {
         "name": "Direction",
         "swatch": "green",
         "items": [
-          { "label": "Brand strategy", "tag": "DIR" },
-          { "label": "Design systems", "tag": "SYS" },
-          { "label": "Workshops", "tag": "FACIL" },
-          { "label": "Naming", "tag": "WORDS" }
+          {
+            "label": "Brand strategy",
+            "tag": "DIR"
+          },
+          {
+            "label": "Design systems",
+            "tag": "SYS"
+          },
+          {
+            "label": "Workshops",
+            "tag": "FACIL"
+          },
+          {
+            "label": "Naming",
+            "tag": "WORDS"
+          }
         ]
       }
     ]
@@ -121,13 +202,22 @@
   "contact": {
     "sectionTag": "04 — Contact",
     "title": "Let's build something worth shipping.",
-    "email": "hello@emmanuelkamal.design",
+    "email": "ekamcy@gmail.com",
     "links": [
-      { "label": "LinkedIn", "href": "#" },
-      { "label": "Instagram", "href": "#" },
-      { "label": "X / Twitter", "href": "#" }
+      {
+        "label": "LinkedIn",
+        "href": "#"
+      },
+      {
+        "label": "Instagram",
+        "href": "#"
+      },
+      {
+        "label": "X / Twitter",
+        "href": "#"
+      }
     ],
-    "status": "OPEN TO WORK · RESPONDS WITHIN 48H",
-    "copyright": "© 2026 Emmanuel Kamal"
+    "status": "OPEN TO WORK · RESPONDS WITHIN 5H",
+    "copyright": "© 2026 Emmanuel K. Muh\"d"
   }
 }
