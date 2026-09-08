@@ -56,6 +56,17 @@ collections:
               - { label: "Photo frame ratio", name: "frameRatio", widget: "string" }
               - { label: "Initials shown in photo frame (used until a photo is uploaded)", name: "initials", widget: "string" }
               - { label: "Photo", name: "photo", widget: "image", required: false }
+              - label: "Photo focus (which part of the photo stays visible — the frame auto-crops to the ratio above)"
+                name: "photoFocus"
+                widget: "select"
+                required: false
+                default: "center"
+                options:
+                  - { label: "Top", value: "top" }
+                  - { label: "Center", value: "center" }
+                  - { label: "Bottom", value: "bottom" }
+                  - { label: "Left", value: "left" }
+                  - { label: "Right", value: "right" }
               - label: "Bio paragraphs"
                 name: "bio"
                 widget: "list"

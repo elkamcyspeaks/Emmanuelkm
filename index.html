@@ -1,3 +1,5 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emmanuel Kamal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -37,7 +39,7 @@
     --muted: #9195A0;
     --line: #262B33;
     --line-strong: #363C46;
-    --accent: #6E8CFF;
+    --accent: #3ECF9A;
     --accent-ink: #0B0D10;
     --guide: #F2678F;
     --shadow: 0 1px 0 rgba(0,0,0,0.4);
@@ -405,12 +407,25 @@
     .layers{ grid-template-columns:1fr 1fr; }
     .layer:nth-child(3){ border-left:none; }
     .layer{ border-bottom:1px solid var(--line); }
+    .navlinks{ gap:16px; font-size:11px; }
   }
   @media (max-width:560px){
     .layers{ grid-template-columns:1fr; }
     .layer{ border-left:none !important; }
     .section-note{ text-align:left; }
-    .canvas-inner{ padding-left:20px; margin-left:22px; }
+    .canvas-inner{ padding:44px 0 56px 20px; margin-left:14px; margin-top:14px; }
+    .wrap{ padding:0 18px; }
+    section{ padding:56px 0; }
+    .work-card{ padding:20px 20px 18px; }
+    .modal-body{ padding:20px; }
+    h1.name{ line-height:1.05; }
+  }
+  @media (max-width:480px){
+    .topbar-inner{ height:auto; padding:12px 0; flex-wrap:wrap; row-gap:10px; }
+    #brandName{ display:none; }
+    .navlinks{ display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; width:100%; font-size:11px; }
+    .contact-title{ max-width:none; }
+    .cta-row .btn{ flex:1 1 auto; justify-content:center; text-align:center; }
   }
 </style>
 
@@ -1019,6 +1034,8 @@
         if(!existingImg){ existingImg = el('img', null); portrait.insertBefore(existingImg, portrait.firstChild); }
         existingImg.src = a.photo;
         existingImg.alt = a.initials ? (a.initials + ' portrait') : 'Portrait photo';
+        var focusMap = { top:'center top', center:'center center', bottom:'center bottom', left:'left center', right:'right center' };
+        existingImg.style.objectPosition = focusMap[a.photoFocus] || 'center center';
       }
       if(a.bio){
         var bio = document.getElementById('aboutBio');
