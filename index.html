@@ -9,7 +9,7 @@
     --muted: #6B6F76;
     --line: #C9CCC4;
     --line-strong: #A9ACA3;
-    --accent: #2A4CE0;
+    --accent: #12805E;
     --accent-ink: #FFFFFF;
     --guide: #E24E7B;
     --shadow: 0 1px 0 rgba(20,23,28,0.06);
@@ -24,7 +24,7 @@
       --muted: #9195A0;
       --line: #262B33;
       --line-strong: #363C46;
-      --accent: #6E8CFF;
+      --accent: #3ECF9A;
       --accent-ink: #0B0D10;
       --guide: #F2678F;
       --shadow: 0 1px 0 rgba(0,0,0,0.4);
@@ -93,9 +93,10 @@
   .brand{display:flex; align-items:center; gap:10px; font-size:14px; letter-spacing:.02em;}
   .brand-mark{
     width:22px; height:22px; border:1.5px solid var(--ink); border-radius:2px;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
     font-size:10px; font-weight:600; letter-spacing:0;
   }
+  .brand-mark img{ width:100%; height:100%; object-fit:cover; display:block; }
   .navlinks{display:flex; gap:26px; font-size:12px; letter-spacing:.06em; text-transform:uppercase;}
   .navlinks a{text-decoration:none; color:var(--muted); transition:color .15s;}
   .navlinks a:hover{color:var(--ink);}
@@ -258,6 +259,10 @@
   .portrait .initials{
     font-family:'Fraunces', serif; font-weight:500; font-size:3.6rem; color:var(--ink); opacity:.85;
   }
+  .portrait img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .portrait.has-photo .initials{ display:none; }
   .portrait::after{
     content:""; position:absolute; inset:14px; border:1px dashed var(--line-strong); border-radius:2px;
   }
@@ -288,6 +293,22 @@
   .work-card:hover{ border-color:var(--accent); }
   .work-card:hover::before{ opacity:1; }
   @media (prefers-reduced-motion: reduce){ .work-card{ transition:border-color .15s ease; } }
+
+  .work-card.has-image{
+    background-size:cover; background-position:center; border-color:rgba(255,255,255,0.18);
+    min-height:320px; justify-content:flex-end;
+  }
+  .work-card.has-image::after{
+    content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(8,10,12,0.05) 0%, rgba(8,10,12,0.5) 55%, rgba(6,8,10,0.9) 100%);
+  }
+  .work-card.has-image:hover{ border-color:var(--accent); }
+  .work-card.has-image .work-index,
+  .work-card.has-image .work-cat{ color:rgba(255,255,255,0.85); }
+  .work-card.has-image .work-title{ color:#FFFFFF; font-weight:700; }
+  .work-card.has-image .work-desc{ color:rgba(255,255,255,0.88); }
+  .work-card.has-image .work-tags span{ color:#FFFFFF; border-color:rgba(255,255,255,0.35); background:rgba(255,255,255,0.08); }
+  .work-card.has-image .work-link{ color:#FFFFFF; }
   .work-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
   .work-index{ font-size:11px; color:var(--muted); }
   .work-cat{ font-size:11px; color:var(--accent); text-align:right; letter-spacing:.02em; }
@@ -328,6 +349,55 @@
   .foot-links{ display:flex; gap:18px; }
   .foot-links a{ color:var(--muted); text-decoration:none; }
   .foot-links a:hover{ color:var(--ink); }
+
+  /* ---------- project modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:300; display:flex; align-items:center; justify-content:center;
+    background:rgba(8,10,12,0.6); padding:24px;
+    opacity:0; visibility:hidden; transition:opacity .2s ease, visibility 0s linear .2s;
+  }
+  .modal-overlay.open{ opacity:1; visibility:visible; transition:opacity .2s ease; }
+  .modal-card{
+    position:relative; width:100%; max-width:640px; max-height:88vh; overflow-y:auto;
+    background:var(--bg-raised); border:1px solid var(--line-strong); border-radius:4px;
+    box-shadow:0 24px 60px rgba(0,0,0,0.35);
+    transform:translateY(12px); transition:transform .2s ease;
+  }
+  .modal-overlay.open .modal-card{ transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .modal-overlay, .modal-card{ transition:none; } }
+  .modal-close{
+    position:absolute; top:12px; right:12px; z-index:2; width:30px; height:30px; border-radius:50%;
+    border:1px solid var(--line-strong); background:var(--bg-raised); color:var(--ink); font-size:16px; line-height:1;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0;
+  }
+  .modal-image{
+    aspect-ratio:16/10; background-size:cover; background-position:center;
+    background-color:var(--line); border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:11px;
+  }
+  .modal-body{ padding:26px 28px 28px; }
+  .modal-cat{ font-size:11px; color:var(--accent); letter-spacing:.03em; margin-bottom:10px; }
+  .modal-title{ font-family:'Fraunces', serif; font-size:1.6rem; font-weight:500; margin-bottom:14px; text-wrap:balance; }
+  .modal-desc{ color:var(--muted); font-size:14px; line-height:1.6; margin-bottom:18px; }
+  .modal-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:22px; }
+  .modal-tags span{ font-size:10px; color:var(--muted); border:1px solid var(--line); padding:3px 7px; border-radius:2px; }
+
+  /* ---------- contact form ---------- */
+  .contact-form{ margin-top:38px; max-width:480px; display:flex; flex-direction:column; gap:16px; }
+  .contact-form .field label{
+    display:block; font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;
+  }
+  .contact-form input, .contact-form textarea{
+    width:100%; padding:10px 12px; border:1px solid var(--line-strong); border-radius:2px;
+    background:var(--bg-raised); color:var(--ink); font-family:'Sora', sans-serif; font-size:14px;
+  }
+  .contact-form input:focus, .contact-form textarea:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+  .contact-form textarea{ resize:vertical; min-height:110px; }
+  .hp-field{ position:absolute; left:-9999px; top:auto; }
+  .form-status{ font-size:13px; display:none; }
+  .form-status.show{ display:block; }
+  .form-status.ok{ color:#3FBF6B; }
+  .form-status.err{ color:var(--guide); }
 
   @media (max-width:860px){
     .about-grid{ grid-template-columns:1fr; }
@@ -415,7 +485,7 @@
     <div class="about-grid">
       <div class="frame">
         <div class="frame-label mono"><span id="aboutFrameLabel">Frame &mdash; Profile</span><span id="aboutFrameRatio">4:5</span></div>
-        <div class="portrait"><span class="initials" id="aboutInitials">EK</span></div>
+        <div class="portrait" id="aboutPortrait"><span class="initials" id="aboutInitials">EK</span></div>
       </div>
 
       <div class="bio">
@@ -562,6 +632,29 @@
       <a href="#">Instagram</a>
       <a href="#">X / Twitter</a>
     </div>
+
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm">
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hp-field"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+      <div class="field">
+        <label class="mono" for="cf-name">Name</label>
+        <input type="text" id="cf-name" name="name" required />
+      </div>
+      <div class="field">
+        <label class="mono" for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" required />
+      </div>
+      <div class="field">
+        <label class="mono" for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" required></textarea>
+      </div>
+
+      <div style="display:flex;">
+        <button type="submit" class="btn primary">Send message</button>
+      </div>
+      <p class="form-status mono" id="formStatus" role="status"></p>
+    </form>
   </div>
   <div class="wrap">
     <div class="statusbar mono">
@@ -570,6 +663,20 @@
     </div>
   </div>
 </footer>
+
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-image" id="modalImage"></div>
+    <div class="modal-body">
+      <div class="modal-cat mono" id="modalCat"></div>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-tags" id="modalTags"></div>
+      <a class="btn primary" id="modalLink" href="#" target="_blank" rel="noopener">Visit project &#8594;</a>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -770,6 +877,82 @@
   }
   document.querySelectorAll('.work-card').forEach(attachCardTilt);
 
+  // ---- project detail modal ----
+  var modalOverlay = document.getElementById('modalOverlay');
+  var modalImage = document.getElementById('modalImage');
+  var modalCat = document.getElementById('modalCat');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalDesc = document.getElementById('modalDesc');
+  var modalTags = document.getElementById('modalTags');
+  var modalLink = document.getElementById('modalLink');
+  var modalClose = document.getElementById('modalClose');
+
+  function openWorkModal(item){
+    if(item.image){
+      modalImage.style.backgroundImage = 'url(' + item.image + ')';
+      modalImage.textContent = '';
+    } else {
+      modalImage.style.backgroundImage = 'none';
+      modalImage.textContent = 'No image yet';
+    }
+    modalCat.textContent = item.category || '';
+    modalTitle.textContent = item.title || '';
+    modalDesc.textContent = item.description || '';
+    modalTags.innerHTML = '';
+    (item.tags || []).forEach(function(tag){ modalTags.appendChild(el('span', null, tag)); });
+    var hasRealLink = item.link && item.link.trim() && item.link !== '#' && item.link !== '#contact';
+    if(hasRealLink){
+      modalLink.style.display = '';
+      modalLink.href = item.link;
+    } else {
+      modalLink.style.display = 'none';
+    }
+    modalOverlay.classList.add('open');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeWorkModal(){
+    modalOverlay.classList.remove('open');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  modalClose.addEventListener('click', closeWorkModal);
+  modalOverlay.addEventListener('click', function(e){
+    if(e.target === modalOverlay){ closeWorkModal(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modalOverlay.classList.contains('open')){ closeWorkModal(); }
+  });
+
+  // ---- contact form (Netlify Forms, submitted via fetch so the page doesn't reload) ----
+  var contactForm = document.getElementById('contactForm');
+  var formStatus = document.getElementById('formStatus');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = new FormData(contactForm);
+      var body = new URLSearchParams();
+      data.forEach(function(value, key){ body.append(key, value); });
+      var submitBtn = contactForm.querySelector('button[type="submit"]');
+      if(submitBtn){ submitBtn.disabled = true; }
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString()
+      }).then(function(r){
+        if(!r.ok){ throw new Error('submit failed'); }
+        formStatus.textContent = "Thanks — I'll get back to you soon.";
+        formStatus.className = 'form-status mono show ok';
+        contactForm.reset();
+      }).catch(function(){
+        formStatus.textContent = 'Something went wrong — try emailing me directly instead.';
+        formStatus.className = 'form-status mono show err';
+      }).finally(function(){
+        if(submitBtn){ submitBtn.disabled = false; }
+      });
+    });
+  }
+
   // ---- CMS-driven content (content/portfolio.json, edited via /admin) ----
   var SWATCH = { accent: 'var(--accent)', guide: 'var(--guide)', violet: '#8B6EFF', green: '#3FBF6B' };
   var ARROW_SVG = '<svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>';
@@ -783,8 +966,15 @@
 
   function renderContent(data){
     if(data.brand){
-      if(data.brand.initials){
-        document.getElementById('brandMark').textContent = data.brand.initials;
+      var mark = document.getElementById('brandMark');
+      if(data.brand.logo){
+        mark.innerHTML = '';
+        var logoImg = el('img', null);
+        logoImg.src = data.brand.logo;
+        logoImg.alt = data.brand.name || '';
+        mark.appendChild(logoImg);
+      } else if(data.brand.initials){
+        mark.textContent = data.brand.initials;
       }
       if(data.brand.name){
         document.getElementById('brandName').textContent = data.brand.name;
@@ -822,6 +1012,14 @@
       if(a.frameLabel){ document.getElementById('aboutFrameLabel').textContent = a.frameLabel; }
       if(a.frameRatio){ document.getElementById('aboutFrameRatio').textContent = a.frameRatio; }
       if(a.initials){ document.getElementById('aboutInitials').textContent = a.initials; }
+      if(a.photo){
+        var portrait = document.getElementById('aboutPortrait');
+        portrait.classList.add('has-photo');
+        var existingImg = portrait.querySelector('img');
+        if(!existingImg){ existingImg = el('img', null); portrait.insertBefore(existingImg, portrait.firstChild); }
+        existingImg.src = a.photo;
+        existingImg.alt = a.initials ? (a.initials + ' portrait') : 'Portrait photo';
+      }
       if(a.bio){
         var bio = document.getElementById('aboutBio');
         bio.innerHTML = '';
@@ -849,6 +1047,10 @@
         grid.innerHTML = '';
         w.items.forEach(function(item){
           var card = el('article', 'work-card');
+          if(item.image){
+            card.classList.add('has-image');
+            card.style.backgroundImage = 'url(' + item.image + ')';
+          }
           var top = el('div', 'work-top');
           top.appendChild(el('span', 'work-index mono', item.frame || ''));
           top.appendChild(el('span', 'work-cat mono', item.category || ''));
@@ -860,7 +1062,11 @@
           (item.tags || []).forEach(function(tag){ tagsWrap.appendChild(el('span', null, tag)); });
           foot.appendChild(tagsWrap);
           var link = el('a', 'work-link mono', 'VIEW ' + ARROW_SVG);
-          link.href = item.link || '#contact';
+          link.href = item.link || '#';
+          link.addEventListener('click', function(e){
+            e.preventDefault();
+            openWorkModal(item);
+          });
           foot.appendChild(link);
           card.appendChild(foot);
           grid.appendChild(card);
@@ -902,13 +1108,18 @@
       var c = data.contact;
       if(c.sectionTag){ document.getElementById('contactTag').textContent = c.sectionTag; }
       if(c.title){ document.getElementById('contactTitle').textContent = c.title; }
-      if(c.email || c.links){
+      if(c.email || c.phone || c.links){
         var links = document.getElementById('contactLinks');
         links.innerHTML = '';
         if(c.email){
           var mail = el('a', null, c.email);
           mail.href = 'mailto:' + c.email;
           links.appendChild(mail);
+        }
+        if(c.phone){
+          var tel = el('a', null, c.phone);
+          tel.href = 'tel:' + c.phone.replace(/[^+\d]/g, '');
+          links.appendChild(tel);
         }
         (c.links || []).forEach(function(l){
           var a2 = el('a', null, l.label);

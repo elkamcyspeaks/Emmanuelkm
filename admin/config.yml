@@ -19,6 +19,7 @@ collections:
             fields:
               - { label: "Initials (topbar mark)", name: "initials", widget: "string" }
               - { label: "Full name", name: "name", widget: "string" }
+              - { label: "Logo (optional — replaces the initials mark if uploaded)", name: "logo", widget: "image", required: false }
 
           - label: "Hero"
             name: "hero"
@@ -53,7 +54,8 @@ collections:
               - { label: "Note (top right of section)", name: "note", widget: "string" }
               - { label: "Photo frame label", name: "frameLabel", widget: "string" }
               - { label: "Photo frame ratio", name: "frameRatio", widget: "string" }
-              - { label: "Initials shown in photo frame", name: "initials", widget: "string" }
+              - { label: "Initials shown in photo frame (used until a photo is uploaded)", name: "initials", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
               - label: "Bio paragraphs"
                 name: "bio"
                 widget: "list"
@@ -76,6 +78,7 @@ collections:
                 name: "items"
                 widget: "list"
                 fields:
+                  - { label: "Image", name: "image", widget: "image", required: false }
                   - { label: "Frame label", name: "frame", widget: "string" }
                   - { label: "Category", name: "category", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
@@ -84,7 +87,7 @@ collections:
                     name: "tags"
                     widget: "list"
                     field: { label: "Tag", name: "value", widget: "string" }
-                  - { label: "Link", name: "link", widget: "string" }
+                  - { label: "Link (optional — a real URL for the project, shown as \"Visit project\" in the popup)", name: "link", widget: "string", required: false }
 
           - label: "Skills"
             name: "skills"
@@ -116,6 +119,7 @@ collections:
               - { label: "Section tag", name: "sectionTag", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
+              - { label: "Phone number", name: "phone", widget: "string", required: false }
               - label: "Links"
                 name: "links"
                 widget: "list"
