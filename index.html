@@ -528,6 +528,43 @@
     .topbar .navlinks a:hover { background:var(--bg-raised); }
   }
 
+
+  /* Rotating photo-frame design elements */
+  #aboutPortrait::after { content:none; }
+  #portraitDesignElements {
+    position:absolute; inset:0; z-index:2;
+    pointer-events:none;
+  }
+  .portrait-symbol {
+    position:absolute; width:30px; height:30px;
+    display:grid; place-items:center;
+    color:var(--accent); background:var(--bg-raised);
+    border:1px solid var(--line-strong); border-radius:50%;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+  }
+  .portrait-symbol svg {
+    display:block; width:20px; height:20px;
+    transform-origin:center;
+    animation:portrait-symbol-spin 18s linear infinite;
+  }
+  .symbol-1 { top:12px; left:12px; }
+  .symbol-2 { top:12px; right:12px; color:var(--guide); }
+  .symbol-3 { top:calc(50% - 15px); left:10px; }
+  .symbol-4 { top:calc(50% - 15px); right:10px; color:var(--guide); }
+  .symbol-5 { bottom:12px; left:12px; color:var(--guide); }
+  .symbol-6 { bottom:12px; right:12px; }
+  .symbol-2 svg, .symbol-4 svg, .symbol-6 svg {
+    animation-direction:reverse; animation-duration:24s;
+  }
+  .symbol-3 svg { animation-delay:-6s; }
+  .symbol-5 svg { animation-delay:-12s; }
+  @keyframes portrait-symbol-spin {
+    to { transform:rotate(360deg); }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .portrait-symbol svg { animation:none; }
+  }
+
 </style>
 
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -613,7 +650,7 @@
     <div class="about-grid">
       <div class="frame">
         <div class="frame-label mono"><span id="aboutFrameLabel">Frame &mdash; Profile</span><span id="aboutFrameRatio">4:5</span></div>
-        <div class="portrait" id="aboutPortrait"><span class="initials" id="aboutInitials">EK</span></div>
+        <div class="portrait" id="aboutPortrait"><div id="portraitDesignElements" aria-hidden="true"><span class="portrait-symbol symbol-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></svg></span><span class="portrait-symbol symbol-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 9-9 9-9-9z"/><path d="M12 7l5 5-5 5-5-5z"/></svg></span><span class="portrait-symbol symbol-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6 3 2 7 2 12s4 9 9 9h2a3 3 0 003-3c0-2-2-2-2-4s2-2 4-2h1c4 0 3-9-7-9z"/><circle cx="7" cy="10" r="1"/><circle cx="11" cy="7" r="1"/><circle cx="16" cy="8" r="1"/></svg></span><span class="portrait-symbol symbol-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 13-8 7-8-7z"/><circle cx="12" cy="13" r="2"/><path d="M12 2v9M12 15v7"/></svg></span><span class="portrait-symbol symbol-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5 5l14 14M5 19L19 5"/></svg></span><span class="portrait-symbol symbol-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="11" height="11" rx="1"/><rect x="9" y="9" width="11" height="11" rx="1"/></svg></span></div><span class="initials" id="aboutInitials">EK</span></div>
       </div>
 
       <div class="bio">
