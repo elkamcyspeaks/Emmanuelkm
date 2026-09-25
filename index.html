@@ -416,6 +416,25 @@
     .contact-title{ max-width:none; }
     .cta-row .btn{ flex:1 1 auto; justify-content:center; text-align:center; }
   }
+
+  /* Compact project previews */
+  .work-card { cursor:pointer; min-width:0; }
+  .work-card .work-desc {
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
+    overflow:hidden;
+  }
+  .work-card:focus-within {
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+  .modal-desc { white-space:pre-line; }
+  .modal-image {
+    background-size:contain;
+    background-repeat:no-repeat;
+  }
+
 </style>
 
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -1079,6 +1098,12 @@
           });
           foot.appendChild(link);
           card.appendChild(foot);
+          card.addEventListener('click', function(e){
+            if(e.target.closest('a, button')) return;
+            openWorkModal(item);
+          });
+          link.setAttribute('aria-label', 'View ' + (item.title || 'project'));
+          link.setAttribute('aria-haspopup', 'dialog');
           grid.appendChild(card);
         });
         document.querySelectorAll('#workGrid .work-card').forEach(attachCardTilt);
