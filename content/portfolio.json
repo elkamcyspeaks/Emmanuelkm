@@ -150,31 +150,31 @@
         "items": [
           {
             "label": "Figma",
-            "tag": ""
+            "tag": "Figma"
           },
           {
             "label": "Canva",
-            "tag": ""
+            "tag": "Canva"
           },
           {
             "label": "CorelDRAW",
-            "tag": ""
+            "tag": "CorelDRAW"
           },
           {
             "label": "ChatGPT",
-            "tag": ""
+            "tag": "ChatGPT"
           },
           {
             "label": "Claude",
-            "tag": ""
+            "tag": "Claude"
           },
           {
             "label": "Google Flow",
-            "tag": ""
+            "tag": "Google Flow"
           },
           {
             "label": "Google AI Studio",
-            "tag": ""
+            "tag": "Google AI Studio"
           }
         ]
       }
@@ -199,7 +199,9 @@
       }
     ],
     "status": "OPEN TO SELECT PROJECTS",
-    "copyright": "© 2026 Emmanuel K. Muh’d"
+    "copyright": "© 2026 Emmanuel K. Muh’d",
+    "cv": "/content/uploads/emmanuel_kamal_muhammed_cv-1-.docx",
+    "phone": "08130400445"
   },
   "flyers": {
     "items": [
