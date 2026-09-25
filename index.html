@@ -640,6 +640,35 @@
     #skillsLayers .layer:first-child ul { grid-template-columns:1fr; gap:20px; }
   }
 
+
+  /* Portfolio finishing touches */
+  #testimonials[hidden] { display:none; }
+  #testimonialGrid {
+    display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;
+  }
+  #testimonialGrid figure {
+    margin:0; padding:28px; background:var(--bg-raised);
+    border:1px solid var(--line); border-radius:4px;
+  }
+  #testimonialGrid blockquote { margin:0 0 20px; font-size:16px; line-height:1.7; }
+  #testimonialGrid figcaption { font-size:12px; color:var(--muted); }
+  #projectCaseStudy > div { margin:24px 0; }
+  #projectCaseStudy h4 { margin:0 0 8px; font-size:16px; }
+  #projectCaseStudy p {
+    font-size:14px; line-height:1.7; color:var(--muted); white-space:pre-line;
+  }
+  #projectCaseStudy figure { margin:24px 0; }
+  #projectCaseStudy img { display:block; width:100%; height:auto; }
+  #projectCaseStudy figcaption { margin-top:8px; font-size:12px; color:var(--muted); }
+  #cursorDot, #cursorRing, #trail, #readout { display:none !important; }
+  html.custom-cursor { cursor:auto; }
+  html.custom-cursor a, html.custom-cursor button { cursor:pointer; }
+  #workGrid .work-card { transform:none !important; }
+  .selection-box::before { animation:none !important; }
+  @media(max-width:680px) {
+    #testimonialGrid { grid-template-columns:1fr; }
+  }
+
 </style>
 
 <style id="contactEditorialStyle">
@@ -1209,6 +1238,18 @@
   </div>
 </section>
 
+
+<section id="testimonials" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag mono">Client feedback</div>
+        <h2 class="section-title">Words from people I've worked with.</h2>
+      </div>
+    </div>
+    <div id="testimonialGrid"></div>
+  </div>
+</section>
 <footer id="contact">
   <div class="wrap contact-hero">
     <div class="section-tag mono" id="contactTag">04 &mdash; Contact</div>
@@ -1485,6 +1526,7 @@
     modalCat.textContent = item.category || '';
     modalTitle.textContent = item.title || '';
     modalDesc.textContent = item.description || '';
+    showProjectDetails(item);
     modalTags.innerHTML = '';
     (item.tags || []).forEach(function(tag){ modalTags.appendChild(el('span', null, tag)); });
     var hasRealLink = item.link && item.link.trim() && item.link !== '#' && item.link !== '#contact';
@@ -1549,6 +1591,88 @@
     if(className){ e.className = className; }
     if(html !== undefined){ e.innerHTML = html; }
     return e;
+  }
+
+
+  // portfolio-polish-v1
+  function portfolioSafeUrl(value, allowLocal){
+    if(typeof value !== 'string' || !value.trim()) return '';
+    value = value.trim();
+    if(allowLocal && /^\/(?!\/)/.test(value)) return value;
+    try {
+      var url = new URL(value);
+      return /^(https?:|mailto:|tel:)$/.test(url.protocol) ? url.href : '';
+    } catch(error) { return ''; }
+  }
+
+  function polishPortfolio(data){
+    var links = document.getElementById('contactLinks');
+    links.querySelectorAll('a').forEach(function(link){
+      if(!portfolioSafeUrl(link.getAttribute('href'), false)) link.remove();
+    });
+
+    var cv = portfolioSafeUrl((data.contact || {}).cv, true);
+    if(cv){
+      var button = document.createElement('a');
+      button.href = cv;
+      button.textContent = 'View CV ↗';
+      button.target = '_blank';
+      button.rel = 'noopener noreferrer';
+      links.appendChild(button);
+    }
+
+    var grid = document.getElementById('testimonialGrid');
+    grid.replaceChildren();
+    (data.testimonials || []).filter(function(item){
+      return item.approved && item.name && item.quote;
+    }).forEach(function(item){
+      var card = document.createElement('figure');
+      var quote = document.createElement('blockquote');
+      quote.textContent = item.quote;
+      var caption = document.createElement('figcaption');
+      caption.textContent = item.name + (item.role ? ' — ' + item.role : '');
+      card.append(quote, caption);
+      grid.appendChild(card);
+    });
+    document.getElementById('testimonials').hidden = !grid.children.length;
+  }
+
+  function showProjectDetails(item){
+    var details = document.getElementById('projectCaseStudy');
+    if(!details){
+      details = document.createElement('div');
+      details.id = 'projectCaseStudy';
+      modalDesc.after(details);
+    }
+    details.replaceChildren();
+    var study = item.caseStudy || {};
+    [['role','My role'], ['problem','The problem'],
+     ['decisions','Design decisions'], ['result','Outcome']].forEach(function(pair){
+      if(!study[pair[0]]) return;
+      var section = document.createElement('div');
+      var heading = document.createElement('h4');
+      heading.textContent = pair[1];
+      var paragraph = document.createElement('p');
+      paragraph.textContent = study[pair[0]];
+      section.append(heading, paragraph);
+      details.appendChild(section);
+    });
+    (study.gallery || []).forEach(function(item){
+      var source = portfolioSafeUrl(item.image, true);
+      if(!source) return;
+      var figure = document.createElement('figure');
+      var image = document.createElement('img');
+      image.src = source;
+      image.alt = item.caption || 'Project design screenshot';
+      image.loading = 'lazy';
+      figure.appendChild(image);
+      if(item.caption){
+        var caption = document.createElement('figcaption');
+        caption.textContent = item.caption;
+        figure.appendChild(caption);
+      }
+      details.appendChild(figure);
+    });
   }
 
   function renderContent(data){
@@ -1634,7 +1758,7 @@
       if(w.items){
         var grid = document.getElementById('workGrid');
         grid.innerHTML = '';
-        w.items.forEach(function(item){
+        w.items.filter(function(item){ return item.published !== false; }).forEach(function(item){
           var card = el('article', 'work-card');
           if(item.image){
             var preview = el('img', 'work-image');
@@ -1797,7 +1921,7 @@
 
   fetch('content/portfolio.json', { cache: 'no-store' })
     .then(function(r){ if(!r.ok){ throw new Error('content file not found'); } return r.json(); })
-    .then(renderContent)
+    .then(function(data){ renderContent(data); polishPortfolio(data); })
     .catch(function(err){ console.warn('Portfolio: using built-in fallback content —', err.message); });
 })();
 </script>

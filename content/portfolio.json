@@ -5,7 +5,7 @@
   },
   "hero": {
     "eyebrow": "BASED IN JOS, PLATEAU STATE, NIGERIA · OPEN TO SELECT PROJECTS",
-    "name": "Emmanuel K, Muh'd",
+    "name": "Emmanuel K. Muh’d",
     "role": "Product & UI/UX designer building interfaces, design systems, and the AI-assisted tools that speed up creative work.",
     "disciplines": [
       "UI/UX & Product Design",
@@ -26,12 +26,12 @@
   "about": {
     "frameLabel": "Frame — Profile",
     "bio": [
-      "I'm a product designer and creative technologist working across UI/UX, web development, and applied AI. Most days that means shaping interface systems for financial products — clear flows, honest data, interactions people trust. Most nights it means prototyping the tools and generative experiments that make the next project faster.",
-      "I care about the seam between craft and system: the point where a good idea stops being a one-off and becomes a component someone else can reuse."
+      "I'm Emmanuel, a UI/UX designer and creative based in Jos, Nigeria. I design digital products, build websites, and create visual identities and graphics that help businesses communicate clearly.",
+      "My work brings together interface design, branding, and AI-assisted creative production. I use tools such as Figma, Canva, CorelDRAW, ChatGPT, and Claude to explore ideas and develop them into finished work."
     ],
     "initials": "EK",
     "photo": "/content/uploads/img_3716-1.jpg",
-    "note": "Design system on the left, working notes on the right.",
+    "note": "Based in Jos. Working across digital and visual design.",
     "sectionTag": "01 — About",
     "specs": [
       {
@@ -41,23 +41,15 @@
       {
         "key": "FOCUS",
         "value": "Product design, design systems, Web Design & Development, applied AI"
-      },
-      {
-        "key": "CURRENTLY",
-        "value": "Product & UX design, Fintech, Web Design & Development"
-      },
-      {
-        "key": "STACK",
-        "value": "Figma · Framer · Netlify · Tailwind · React · WordPress"
       }
     ],
-    "title": "A multidisciplinary practice, one thread.",
+    "title": "A little about me.",
     "frameRatio": "4:5"
   },
   "work": {
     "sectionTag": "02 — Selected work",
-    "title": "Four frames, four disciplines.",
-    "note": "Placeholder case studies — swap in your own project details.",
+    "title": "Selected Projects",
+    "note": "A selection of websites and digital experiences I've designed.",
     "items": [
       {
         "frame": "FRAME 01",
@@ -74,11 +66,11 @@
       {
         "frame": "FRAME 02",
         "category": "FINTECH WEBSITE DESIGN ",
-        "title": "Website Design",
+        "title": "Belema Fintech Website",
         "description": "I designed the Belema Fintech website to showcase its payment solutions and build confidence with potential business clients. The design pairs a dark interface with vibrant lime accents, bold typography, and technology-inspired imagery to create a modern visual identity. Clear navigation, prominent trust indicators, and a focused “Talk to Sales” call to action help visitors explore the company’s offerings and connect with its team.",
         "tags": [
-          "React",
-          "Performance"
+          "Fintech",
+          "Website design"
         ],
         "link": "https://belemafintech.com/",
         "image": "/content/uploads/screenshot-2026-09-25-at-12.29.29 pm.png"
@@ -92,7 +84,8 @@
           "AI tooling",
           "Brand systems"
         ],
-        "link": "#contact"
+        "link": "#contact",
+        "published": false
       },
       {
         "frame": "FRAME 04",
@@ -103,7 +96,8 @@
           "Strategy",
           "Campaign"
         ],
-        "link": "#contact"
+        "link": "#contact",
+        "published": false
       }
     ]
   },
@@ -204,8 +198,8 @@
         "href": "#"
       }
     ],
-    "status": "OPEN TO WORK · RESPONDS WITHIN 5H",
-    "copyright": "© 2026 Emmanuel K. Muh\"d"
+    "status": "OPEN TO SELECT PROJECTS",
+    "copyright": "© 2026 Emmanuel K. Muh’d"
   },
   "flyers": {
     "items": [

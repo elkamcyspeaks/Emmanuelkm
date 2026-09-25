@@ -99,6 +99,25 @@ collections:
                     required: false
                     hint: "Paste the full https:// address for this project. Displays a Visit project button."
                   - { label: "Description", name: "description", widget: "text" }
+
+                  - { label: "Show on website", name: "published", widget: "boolean", default: true, required: false }
+                  - label: "Case study details"
+                    name: "caseStudy"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - { label: "Your role", name: "role", widget: "text", required: false }
+                      - { label: "The problem", name: "problem", widget: "text", required: false }
+                      - { label: "Key design decisions", name: "decisions", widget: "text", required: false }
+                      - { label: "Outcome", name: "result", widget: "text", required: false }
+                      - label: "Additional screenshots"
+                        name: "gallery"
+                        widget: "list"
+                        required: false
+                        fields:
+                          - { label: "Image", name: "image", widget: "image" }
+                          - { label: "Caption", name: "caption", widget: "string", required: false }
+
                   - label: "Tags"
                     name: "tags"
                     widget: "list"
@@ -144,6 +163,18 @@ collections:
                       - { label: "Label", name: "label", widget: "string" }
                       - { label: "Tag", name: "tag", widget: "string" }
 
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            required: false
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role or company", name: "role", widget: "string", required: false }
+              - { label: "Testimonial", name: "quote", widget: "text" }
+              - { label: "Permission received to publish", name: "approved", widget: "boolean", default: false }
+
           - label: "Contact"
             name: "contact"
             widget: "object"
@@ -151,6 +182,7 @@ collections:
               - { label: "Section tag", name: "sectionTag", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
+              - { label: "CV (PDF)", name: "cv", widget: "file", required: false }
               - { label: "Phone number", name: "phone", widget: "string", required: false }
               - label: "Links"
                 name: "links"
