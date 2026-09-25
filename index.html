@@ -435,6 +435,56 @@
     background-repeat:no-repeat;
   }
 
+
+  /* Flyer design gallery */
+  #flyers[hidden], #flyerVisit[hidden] { display:none; }
+  .flyer-grid {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:22px;
+  }
+  .flyer-card {
+    padding:0; overflow:hidden; cursor:pointer;
+    text-align:left; font:inherit; color:var(--ink);
+    background:var(--bg-raised);
+    border:1px solid var(--line-strong); border-radius:2px;
+  }
+  .flyer-card:hover { border-color:var(--accent); }
+  .flyer-card:focus-visible, .flyer-close:focus-visible {
+    outline:2px solid var(--accent); outline-offset:4px;
+  }
+  .flyer-card img {
+    display:block; width:100%; aspect-ratio:4/5;
+    object-fit:contain; background:var(--bg);
+  }
+  .flyer-caption { display:block; padding:18px; }
+  .flyer-dialog {
+    width:calc(100% - 32px); max-width:960px;
+    max-height:90vh; margin:auto; padding:16px;
+    overflow:auto; color:var(--ink);
+    background:var(--bg-raised);
+    border:1px solid var(--line-strong);
+  }
+  .flyer-dialog::backdrop { background:rgba(0,0,0,.8); }
+  .flyer-close {
+    display:block; margin:0 0 14px auto; padding:8px 12px;
+    font:inherit; cursor:pointer; color:var(--ink);
+    background:var(--bg); border:1px solid var(--line-strong);
+  }
+  .flyer-full-image {
+    display:block; width:100%; max-height:70vh; object-fit:contain;
+  }
+  .flyer-details { padding:20px 4px 4px; }
+  .flyer-details p {
+    margin:12px 0 20px; color:var(--muted); white-space:pre-line;
+  }
+  @media(max-width:900px) {
+    .flyer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  }
+  @media(max-width:600px) {
+    .flyer-grid { grid-template-columns:1fr; }
+  }
+
 </style>
 
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -593,6 +643,30 @@
     </div>
   </div>
 </section>
+
+
+<section id="flyers" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag mono">Graphic design</div>
+        <h2 class="section-title">Flyer Designs</h2>
+      </div>
+      <p class="section-note">Visual stories for events, brands, and communities.</p>
+    </div>
+    <div class="flyer-grid" id="flyerGrid"></div>
+  </div>
+</section>
+
+<dialog id="flyerDialog" class="flyer-dialog" aria-labelledby="flyerHeading">
+  <button type="button" class="flyer-close" aria-label="Close flyer">Close ×</button>
+  <img id="flyerFullImage" class="flyer-full-image" alt="">
+  <div class="flyer-details">
+    <h2 id="flyerHeading"></h2>
+    <p id="flyerDescription"></p>
+    <a id="flyerVisit" class="btn" target="_blank" rel="noopener noreferrer" hidden>Visit project ↗</a>
+  </div>
+</dialog>
 
 <section id="skills">
   <div class="wrap">
@@ -1109,6 +1183,70 @@
         document.querySelectorAll('#workGrid .work-card').forEach(attachCardTilt);
       }
     }
+
+
+    // Flyer gallery
+    var flyerItems = ((data.flyers || {}).items || []).filter(function(item){
+      return item.image;
+    });
+    var flyerSection = document.getElementById('flyers');
+    var flyerGrid = document.getElementById('flyerGrid');
+    var flyerDialog = document.getElementById('flyerDialog');
+    flyerGrid.replaceChildren();
+    flyerSection.hidden = flyerItems.length === 0;
+
+    flyerDialog.querySelector('.flyer-close').onclick = function(){
+      flyerDialog.close();
+    };
+    flyerDialog.onclick = function(event){
+      if(event.target !== flyerDialog) return;
+      var bounds = flyerDialog.getBoundingClientRect();
+      if(event.clientX < bounds.left || event.clientX > bounds.right ||
+         event.clientY < bounds.top || event.clientY > bounds.bottom){
+        flyerDialog.close();
+      }
+    };
+
+    flyerItems.forEach(function(item){
+      var title = item.title || 'Flyer design';
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'flyer-card';
+      card.setAttribute('aria-label', 'View ' + title);
+      card.setAttribute('aria-haspopup', 'dialog');
+
+      var image = document.createElement('img');
+      image.src = item.image;
+      image.alt = '';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+
+      var caption = document.createElement('span');
+      caption.className = 'flyer-caption';
+      caption.textContent = title;
+      card.append(image, caption);
+
+      card.onclick = function(){
+        var fullImage = document.getElementById('flyerFullImage');
+        fullImage.src = item.image;
+        fullImage.alt = title;
+        document.getElementById('flyerHeading').textContent = title;
+        document.getElementById('flyerDescription').textContent = item.description || '';
+        var visit = document.getElementById('flyerVisit');
+        visit.hidden = true;
+        visit.removeAttribute('href');
+        try {
+          var url = new URL(item.link || '');
+          if(url.protocol === 'https:' || url.protocol === 'http:'){
+            visit.href = url.href;
+            visit.hidden = false;
+          }
+        } catch(error) {}
+        flyerDialog.showModal();
+        flyerDialog.scrollTop = 0;
+      };
+      flyerGrid.appendChild(card);
+    });
 
     if(data.skills){
       var sk = data.skills;

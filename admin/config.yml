@@ -104,6 +104,23 @@ collections:
                     widget: "list"
                     field: { label: "Tag", name: "value", widget: "string" }
 
+
+          - label: "Flyer Designs"
+            name: "flyers"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Flyers"
+                name: "items"
+                widget: "list"
+                required: false
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Flyer image", name: "image", widget: "image" }
+                  - { label: "Description", name: "description", widget: "text", required: false }
+                  - { label: "Project URL", name: "link", widget: "string", required: false }
+
           - label: "Skills"
             name: "skills"
             widget: "object"
