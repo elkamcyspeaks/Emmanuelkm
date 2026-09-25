@@ -93,12 +93,16 @@ collections:
                   - { label: "Frame label", name: "frame", widget: "string" }
                   - { label: "Category", name: "category", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
+                  - label: "Project URL"
+                    name: "link"
+                    widget: "string"
+                    required: false
+                    hint: "Paste the full https:// address for this project. Displays a Visit project button."
                   - { label: "Description", name: "description", widget: "text" }
                   - label: "Tags"
                     name: "tags"
                     widget: "list"
                     field: { label: "Tag", name: "value", widget: "string" }
-                  - { label: "Link (optional — a real URL for the project, shown as \"Visit project\" in the popup)", name: "link", widget: "string", required: false }
 
           - label: "Skills"
             name: "skills"
