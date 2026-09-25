@@ -73,14 +73,15 @@
       },
       {
         "frame": "FRAME 02",
-        "category": "WEB DESIGN & DEV",
-        "title": "Studio site rebuild",
-        "description": "A ground-up rebuild of a design studio's site — a small component library, a CMS-driven case-study template, sub-second loads.",
+        "category": "FINTECH WEBSITE DESIGN ",
+        "title": "WEBSITE DESIGN",
+        "description": "I designed the Belema Fintech website to showcase its payment solutions and build confidence with potential business clients. The design pairs a dark interface with vibrant lime accents, bold typography, and technology-inspired imagery to create a modern visual identity. Clear navigation, prominent trust indicators, and a focused “Talk to Sales” call to action help visitors explore the company’s offerings and connect with its team.",
         "tags": [
           "React",
           "Performance"
         ],
-        "link": "#contact"
+        "link": "https://belemafintech.com/",
+        "image": "/content/uploads/screenshot-2026-09-25-at-12.29.29 pm.png"
       },
       {
         "frame": "FRAME 03",
