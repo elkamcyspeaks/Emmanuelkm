@@ -642,6 +642,187 @@
 
 </style>
 
+<style id="contactEditorialStyle">
+  #contact {
+    border-top:1px solid var(--line-strong);
+    background:
+      radial-gradient(ellipse at top left,
+        color-mix(in srgb,var(--accent) 7%,transparent),
+        transparent 65%),
+      var(--bg);
+  }
+  #contact .contact-hero {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows:auto auto 1fr;
+    column-gap:72px;
+    row-gap:24px;
+    align-items:start;
+    padding-top:80px;
+    padding-bottom:72px;
+  }
+  #contactTag {
+    grid-column:1;
+    grid-row:1;
+    margin:8px 0 0;
+    font-size:11px;
+    letter-spacing:.12em;
+  }
+  #contact #contactTitle {
+    grid-column:1;
+    grid-row:2;
+    margin:0;
+    max-width:12ch;
+    font-size:clamp(2.3rem,4.5vw,3.7rem);
+    font-weight:500;
+    line-height:1.1;
+    letter-spacing:-.035em;
+    text-wrap:balance;
+    overflow-wrap:break-word;
+  }
+  #contact #contactLinks {
+    grid-column:1;
+    grid-row:3;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:14px 22px;
+    margin-top:12px;
+    min-width:0;
+    font-family:inherit;
+  }
+  #contactLinks a {
+    max-width:100%;
+    padding:8px 0;
+    font-size:13px;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+    color:var(--ink);
+    border-bottom:1px solid var(--line-strong);
+  }
+  #contactLinks a[href^="mailto:"] {
+    flex-basis:100%;
+    width:fit-content;
+    padding:0 0 16px;
+    margin-bottom:8px;
+    font-size:clamp(1rem,1.8vw,1.25rem);
+  }
+  #contactLinks a:hover {
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+  #contact #contactForm {
+    grid-column:2;
+    grid-row:1 / 4;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    width:100%;
+    min-width:0;
+    max-width:none;
+    margin:0;
+    padding:32px;
+    border:1px solid var(--line-strong);
+    border-radius:8px;
+    background:var(--bg-raised);
+    box-shadow:0 10px 35px rgba(0,0,0,.035);
+  }
+  #contactForm .field label {
+    margin-bottom:9px;
+    color:var(--ink);
+    font-family:inherit;
+    font-size:12px;
+    font-weight:500;
+    text-transform:none;
+    letter-spacing:0;
+  }
+  #contactForm .field input,
+  #contactForm .field textarea {
+    display:block;
+    width:100%;
+    padding:13px 14px;
+    color:var(--ink);
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    border-radius:4px;
+    font-family:inherit;
+    font-size:16px;
+    line-height:1.5;
+  }
+  #contactForm .field textarea {
+    min-height:140px;
+    resize:vertical;
+  }
+  #contactForm .field input:focus,
+  #contactForm .field textarea:focus {
+    border-color:var(--accent);
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+  #contactForm button[type="submit"] {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    min-height:50px;
+    padding:14px 18px;
+    border-radius:4px;
+    font-size:13px;
+  }
+  #contactForm button[type="submit"]::after {
+    content:"↗";
+    font-size:19px;
+    line-height:1;
+  }
+  #contactForm button:disabled {
+    opacity:.6;
+    cursor:wait;
+  }
+  #contact #formStatus {
+    margin:0;
+    line-height:1.6;
+  }
+  #contact .statusbar {
+    gap:18px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+    font-size:10px;
+    line-height:1.7;
+  }
+  #contact .status-left { min-width:0; }
+  #contact .status-left .led { flex-shrink:0; }
+  #contact .foot-links { min-width:0; overflow-wrap:anywhere; }
+
+  @media(max-width:860px) {
+    #contact .contact-hero { column-gap:32px; }
+    #contact #contactForm { padding:24px; }
+  }
+  @media(max-width:680px) {
+    #contact .contact-hero {
+      grid-template-columns:minmax(0,1fr);
+      grid-template-rows:auto;
+      gap:22px;
+      padding-top:52px;
+      padding-bottom:40px;
+    }
+    #contact #contactTag,
+    #contact #contactTitle,
+    #contact #contactLinks,
+    #contact #contactForm {
+      grid-column:1;
+      grid-row:auto;
+    }
+    #contact #contactLinks { margin:0 0 10px; }
+    #contact #contactForm { padding:22px; }
+    #contact .statusbar {
+      flex-direction:column;
+      align-items:flex-start;
+      gap:10px;
+    }
+  }
+</style>
+
+
 <style id="skillsEditorialStyle">
   /* Editorial skills section */
   #skills .section-head {
