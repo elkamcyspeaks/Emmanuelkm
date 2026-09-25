@@ -296,21 +296,10 @@
   .work-card:hover::before{ opacity:1; }
   @media (prefers-reduced-motion: reduce){ .work-card{ transition:border-color .15s ease; } }
 
-  .work-card.has-image{
-    background-size:cover; background-position:center; border-color:rgba(255,255,255,0.18);
-    min-height:320px; justify-content:flex-end;
+  .work-image{
+    display:block; width:100%; height:auto; flex-shrink:0;
+    border:1px solid var(--line); border-radius:2px;
   }
-  .work-card.has-image::after{
-    content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-    background:linear-gradient(180deg, rgba(8,10,12,0.05) 0%, rgba(8,10,12,0.5) 55%, rgba(6,8,10,0.9) 100%);
-  }
-  .work-card.has-image:hover{ border-color:var(--accent); }
-  .work-card.has-image .work-index,
-  .work-card.has-image .work-cat{ color:rgba(255,255,255,0.85); }
-  .work-card.has-image .work-title{ color:#FFFFFF; font-weight:700; }
-  .work-card.has-image .work-desc{ color:rgba(255,255,255,0.88); }
-  .work-card.has-image .work-tags span{ color:#FFFFFF; border-color:rgba(255,255,255,0.35); background:rgba(255,255,255,0.08); }
-  .work-card.has-image .work-link{ color:#FFFFFF; }
   .work-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
   .work-index{ font-size:11px; color:var(--muted); }
   .work-cat{ font-size:11px; color:var(--accent); text-align:right; letter-spacing:.02em; }
@@ -1065,8 +1054,12 @@
         w.items.forEach(function(item){
           var card = el('article', 'work-card');
           if(item.image){
-            card.classList.add('has-image');
-            card.style.backgroundImage = 'url(' + item.image + ')';
+            var preview = el('img', 'work-image');
+            preview.src = item.image;
+            preview.alt = (item.title || 'Project') + ' design preview';
+            preview.loading = 'lazy';
+            preview.decoding = 'async';
+            card.appendChild(preview);
           }
           var top = el('div', 'work-top');
           top.appendChild(el('span', 'work-index mono', item.frame || ''));
