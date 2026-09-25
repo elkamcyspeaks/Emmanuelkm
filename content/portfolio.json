@@ -108,95 +108,79 @@
     ]
   },
   "skills": {
-    "sectionTag": "03 — Skills & tools",
-    "title": "The layers panel.",
-    "note": "Grouped the way a project actually gets made.",
+    "sectionTag": "Skills & tools",
+    "title": "What I do. What I use.",
+    "note": "Design, development, and creative production.",
     "groups": [
       {
-        "name": "Design",
+        "name": "My skills",
+        "swatch": "accent",
+        "items": [
+          {
+            "label": "UI/UX Design",
+            "tag": "Clear, easy-to-use digital experiences."
+          },
+          {
+            "label": "Website Design & Development",
+            "tag": "Designing and building working websites."
+          },
+          {
+            "label": "Graphic Design",
+            "tag": "Flyers, campaign visuals, and social media designs."
+          },
+          {
+            "label": "AI-Assisted Creative Production",
+            "tag": "Images, videos, and visual content created with AI."
+          },
+          {
+            "label": "Brand Identity Design",
+            "tag": "Logos, colours, typography, and brand guidelines."
+          },
+          {
+            "label": "Design Systems",
+            "tag": "Reusable components and consistent interface styles."
+          },
+          {
+            "label": "Prototyping & Interaction Design",
+            "tag": "Interactive demos, transitions, and animations."
+          },
+          {
+            "label": "Creative Direction",
+            "tag": "Guiding a project's visual style and creative approach."
+          }
+        ]
+      },
+      {
+        "name": "Tools I use",
         "swatch": "accent",
         "items": [
           {
             "label": "Figma",
-            "tag": "UI"
+            "tag": ""
           },
           {
-            "label": "FigJam",
-            "tag": "FLOW"
+            "label": "Canva",
+            "tag": ""
           },
           {
-            "label": "Illustrator",
-            "tag": "VEC"
+            "label": "CorelDRAW",
+            "tag": ""
           },
           {
-            "label": "Photoshop",
-            "tag": "RASTER"
-          }
-        ]
-      },
-      {
-        "name": "Build",
-        "swatch": "guide",
-        "items": [
-          {
-            "label": "React",
-            "tag": "JS"
+            "label": "ChatGPT",
+            "tag": ""
           },
           {
-            "label": "Next.js",
-            "tag": "SSR"
+            "label": "Claude",
+            "tag": ""
           },
           {
-            "label": "Tailwind",
-            "tag": "CSS"
+            "label": "Google Flow",
+            "tag": ""
           },
           {
-            "label": "Framer",
-            "tag": "PROTO"
-          }
-        ]
-      },
-      {
-        "name": "AI & automation",
-        "swatch": "violet",
-        "items": [
-          {
-            "label": "Midjourney",
-            "tag": "IMG"
-          },
-          {
-            "label": "Runway",
-            "tag": "VID"
-          },
-          {
-            "label": "ComfyUI",
-            "tag": "FLOW"
-          },
-          {
-            "label": "Claude / GPT",
-            "tag": "COPILOT"
-          }
-        ]
-      },
-      {
-        "name": "Direction",
-        "swatch": "green",
-        "items": [
-          {
-            "label": "Brand strategy",
-            "tag": "DIR"
-          },
-          {
-            "label": "Design systems",
-            "tag": "SYS"
-          },
-          {
-            "label": "Workshops",
-            "tag": "FACIL"
-          },
-          {
-            "label": "Naming",
-            "tag": "WORDS"
+            "label": "Google AI Studio",
+            "tag": ""
           }
         ]
       }
