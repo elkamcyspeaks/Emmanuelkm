@@ -591,6 +591,55 @@
     .portrait-micro-symbol svg { animation:none; }
   }
 
+
+  /* Simplified skills and tools */
+  #skillsLayers {
+    display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr);
+    gap:48px; border:0; background:transparent; box-shadow:none;
+  }
+  #skillsLayers .layer {
+    min-width:0; padding:0; border:0;
+  }
+  #skillsLayers .layer-head {
+    margin-bottom:24px; padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  #skillsLayers .layer-head .sw { display:none; }
+  #skillsLayers .layer-head span {
+    font-family:inherit; font-size:14px; font-weight:600;
+    text-transform:none; letter-spacing:0; color:var(--ink);
+  }
+  #skillsLayers ul { font-family:inherit; }
+  #skillsLayers .layer:first-child ul {
+    display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px 28px;
+  }
+  #skillsLayers li {
+    display:block; font-size:14px; line-height:1.5;
+    color:var(--ink);
+  }
+  #skillsLayers li::after { content:none; }
+  #skillsLayers li b {
+    display:block; margin-top:6px; font-family:inherit;
+    font-size:12px; line-height:1.65; font-weight:400;
+    color:var(--muted);
+  }
+  #skillsLayers .layer:last-child ul {
+    display:flex; flex-direction:row; flex-wrap:wrap; gap:10px;
+  }
+  #skillsLayers .layer:last-child li {
+    padding:9px 13px; border:1px solid var(--line);
+    border-radius:4px; background:var(--bg-raised);
+    font-size:13px;
+  }
+  #skillsLayers .layer:last-child li b { display:none; }
+  @media(max-width:760px) {
+    #skillsLayers { grid-template-columns:1fr; gap:32px; }
+  }
+  @media(max-width:480px) {
+    #skillsLayers .layer:first-child ul { grid-template-columns:1fr; gap:20px; }
+  }
+
 </style>
 
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
