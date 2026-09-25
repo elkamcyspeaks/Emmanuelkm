@@ -485,6 +485,49 @@
     .flyer-grid { grid-template-columns:1fr; }
   }
 
+
+  /* Mobile navigation */
+  .mobile-menu-toggle { display:none; }
+  section[id], footer[id] { scroll-margin-top:80px; }
+  @media(max-width:760px) {
+    .topbar { background:var(--bg); }
+    .topbar .topbar-inner {
+      height:64px; padding:0 18px; flex-wrap:nowrap; gap:16px;
+    }
+    .topbar .brand { min-width:0; gap:10px; }
+    .topbar .brand-mark { flex-shrink:0; }
+    .topbar #brandName {
+      display:block; overflow:hidden; white-space:nowrap;
+      text-overflow:ellipsis; font-size:14px;
+    }
+    .mobile-menu-toggle {
+      display:inline-flex; align-items:center; gap:8px;
+      flex-shrink:0; min-height:44px; padding:8px 12px;
+      color:var(--ink); background:var(--bg-raised);
+      border:1px solid var(--line-strong); border-radius:4px;
+      font:inherit; font-size:12px; cursor:pointer;
+    }
+    .topbar .navlinks {
+      display:none; position:absolute;
+      top:100%; left:0; right:0; width:auto;
+      padding:12px 18px 18px; gap:0;
+      max-height:calc(100dvh - 64px); overflow-y:auto;
+      background:var(--bg);
+      border-bottom:1px solid var(--line-strong);
+      box-shadow:0 12px 20px rgba(0,0,0,.08);
+    }
+    .topbar.menu-open .navlinks {
+      display:flex; flex-direction:column;
+    }
+    .topbar .navlinks a {
+      display:flex; align-items:center; min-height:48px;
+      padding:12px; color:var(--ink); font-size:13px;
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .navlinks a:last-child { border-bottom:0; }
+    .topbar .navlinks a:hover { background:var(--bg-raised); }
+  }
+
 </style>
 
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -496,7 +539,19 @@
       <span class="brand-mark" id="brandMark">EK</span>
       <span id="brandName">Emmanuel Kamal</span>
     </div>
-    <nav class="navlinks">
+    
+    <button type="button" class="mobile-menu-toggle"
+      id="mobileMenuToggle" aria-expanded="false"
+      aria-controls="primaryNavigation">
+      <span class="menu-label">Menu</span>
+      <svg width="20" height="20" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="1.6"
+        aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+    <nav class="navlinks" id="primaryNavigation" aria-label="Main navigation">
+
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -1324,4 +1379,56 @@
       }
     });
   }
+</script>
+
+
+<script>
+(function(){
+  var button = document.getElementById('mobileMenuToggle');
+  var nav = document.getElementById('primaryNavigation');
+  var bar = button.closest('.topbar');
+  var mobile = window.matchMedia('(max-width:760px)');
+
+  function setMenu(open){
+    bar.classList.toggle('menu-open', open);
+    button.setAttribute('aria-expanded', String(open));
+    button.querySelector('.menu-label').textContent = open ? 'Close' : 'Menu';
+  }
+
+  button.addEventListener('click', function(){
+    setMenu(button.getAttribute('aria-expanded') !== 'true');
+  });
+
+  nav.addEventListener('click', function(event){
+    if(event.target.closest('a')){
+      if(mobile.matches) button.focus();
+      setMenu(false);
+    }
+  });
+
+  document.addEventListener('click', function(event){
+    if(!bar.contains(event.target)) setMenu(false);
+  });
+
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape' && bar.classList.contains('menu-open')){
+      setMenu(false);
+      button.focus();
+    }
+  });
+
+  bar.addEventListener('focusout', function(){
+    setTimeout(function(){
+      if(!bar.contains(document.activeElement)) setMenu(false);
+    }, 0);
+  });
+
+  mobile.addEventListener('change', function(){
+    if(mobile.matches && nav.contains(document.activeElement)) button.focus();
+    if(!mobile.matches && document.activeElement === button){
+      nav.querySelector('a').focus();
+    }
+    setMenu(false);
+  });
+})();
 </script>
