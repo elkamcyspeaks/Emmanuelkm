@@ -222,5 +222,13 @@
     ],
     "status": "OPEN TO WORK · RESPONDS WITHIN 5H",
     "copyright": "© 2026 Emmanuel K. Muh\"d"
+  },
+  "flyers": {
+    "items": [
+      {
+        "image": "/content/uploads/mauludd.png",
+        "title": "Maulud Flyer Design"
+      }
+    ]
   }
 }
