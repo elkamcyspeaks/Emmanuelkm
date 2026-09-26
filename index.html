@@ -1117,6 +1117,100 @@
   }
 </style>
 
+<style id="trainingSliderStyle">
+  #trainingMentorship #trainingPhotos.training-slider {
+    display:block;
+    min-width:0;
+  }
+  #trainingMentorship #trainingPhotos[hidden],
+  #trainingMentorship #trainingPhotos [hidden] {
+    display:none !important;
+  }
+  #trainingMentorship #trainingPhotos.training-slider > figure {
+    margin:0;
+  }
+  #trainingMentorship #trainingPhotos.training-slider > figure > a {
+    display:block;
+    aspect-ratio:16/10;
+    background:var(--bg-raised);
+  }
+  #trainingMentorship #trainingPhotos.training-slider > figure > a > img {
+    width:100%;
+    height:100%;
+    aspect-ratio:auto;
+    object-fit:contain;
+    transform:none;
+  }
+  #trainingMentorship #trainingPhotos.training-slider > figure > figcaption {
+    height:3.2em;
+    overflow-y:auto;
+    margin:10px 0 0;
+    line-height:1.6;
+    font-size:12px;
+  }
+  #trainingMentorship #trainingPhotos.training-slider > figure:not(:has(figcaption))::after {
+    content:"";
+    display:block;
+    height:calc(3.2 * 12px + 10px);
+  }
+  .training-slider-controls {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:14px;
+  }
+  .training-slider-controls button {
+    width:44px;
+    height:44px;
+    flex-shrink:0;
+    border:1px solid var(--line-strong);
+    border-radius:50%;
+    background:var(--bg-raised);
+    color:var(--ink);
+    font:inherit;
+    font-size:20px;
+    cursor:pointer;
+  }
+  .training-slider-controls button:hover {
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+  .training-slider-counter {
+    margin:auto;
+    font-size:12px;
+    color:var(--muted);
+  }
+  #trainingMentorship .training-thumbnails {
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:8px;
+    margin-top:16px;
+  }
+  #trainingMentorship .training-thumbnails button {
+    display:block;
+    min-width:0;
+    min-height:44px;
+    padding:3px;
+    border:2px solid transparent;
+    border-radius:4px;
+    background:transparent;
+    cursor:pointer;
+  }
+  #trainingMentorship .training-thumbnails button[aria-pressed="true"] {
+    border-color:var(--accent);
+  }
+  #trainingMentorship .training-thumbnails img {
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border-radius:2px;
+  }
+</style>
+
+
 
 
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -1817,6 +1911,105 @@
     });
   }
 
+
+  // training-slider-v1
+  function setupTrainingSlider(){
+    var gallery = document.getElementById('trainingPhotos');
+    var slides = Array.from(gallery.querySelectorAll('figure'));
+    if(!slides.length) return;
+
+    gallery.classList.add('training-slider');
+    gallery.setAttribute('role', 'region');
+    gallery.setAttribute('aria-label', 'Training photos');
+    gallery.setAttribute('aria-roledescription', 'carousel');
+
+    var controls = document.createElement('div');
+    controls.className = 'training-slider-controls';
+
+    function makeButton(label, text){
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', label);
+      button.textContent = text;
+      return button;
+    }
+
+    var previous = makeButton('Previous training photo', '←');
+    var next = makeButton('Next training photo', '→');
+    var counter = document.createElement('span');
+    counter.className = 'training-slider-counter';
+    counter.setAttribute('aria-live', 'polite');
+    counter.setAttribute('aria-atomic', 'true');
+    controls.append(previous, counter, next);
+
+    var thumbnails = document.createElement('div');
+    thumbnails.className = 'training-thumbnails';
+    thumbnails.setAttribute('role', 'group');
+    thumbnails.setAttribute('aria-label', 'Choose a training photo');
+
+    var current = 0;
+    var thumbButtons = [];
+
+    slides.forEach(function(slide, index){
+      slide.id = 'training-slide-' + index;
+      slide.setAttribute('role', 'group');
+      slide.setAttribute('aria-roledescription', 'slide');
+      slide.setAttribute('aria-label',
+        'Photo ' + (index + 1) + ' of ' + slides.length);
+
+      var original = slide.querySelector('img');
+      var button = makeButton('Show training photo ' + (index + 1), '');
+      button.setAttribute('aria-controls', slide.id);
+
+      var thumbnail = document.createElement('img');
+      thumbnail.alt = '';
+      thumbnail.loading = 'lazy';
+      thumbnail.decoding = 'async';
+      thumbnail.dataset.source = original.src;
+      thumbnail.style.objectPosition = original.style.objectPosition;
+      button.appendChild(thumbnail);
+
+      button.addEventListener('click', function(){
+        show(index);
+      });
+      thumbButtons.push(button);
+      thumbnails.appendChild(button);
+    });
+
+    function show(index){
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function(slide, position){
+        slide.hidden = position !== current;
+      });
+
+      // Keep only five thumbnails visible around the selected photo.
+      var start = Math.max(0,
+        Math.min(current - 2, slides.length - 5));
+      thumbButtons.forEach(function(button, position){
+        var visible = position >= start && position < start + 5;
+        button.hidden = !visible;
+        button.setAttribute('aria-pressed', String(position === current));
+        if(visible){
+          var image = button.querySelector('img');
+          if(!image.hasAttribute('src')) image.src = image.dataset.source;
+        }
+      });
+      counter.textContent = 'Photo ' + (current + 1) + ' of ' + slides.length;
+    }
+
+    previous.addEventListener('click', function(){ show(current - 1); });
+    next.addEventListener('click', function(){ show(current + 1); });
+
+    if(slides.length === 1){
+      previous.hidden = true;
+      next.hidden = true;
+      thumbnails.hidden = true;
+    }
+
+    gallery.append(controls, thumbnails);
+    show(0);
+  }
+
   function renderContent(data){
     if(data.brand){
       var mark = document.getElementById('brandMark');
@@ -2066,6 +2259,8 @@
       'without-photos', !gallery.children.length
     );
     trainingSection.hidden = !hasCount && !gallery.children.length;
+
+    setupTrainingSlider();
 
     if(data.skills){
       var sk = data.skills;
