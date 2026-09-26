@@ -993,6 +993,131 @@
   }
 </style>
 
+<style id="trainingCountStyle">
+  /* training-count-gallery-v2 */
+  #trainingMentorship[hidden],
+  #trainingMentorship [hidden] { display:none; }
+  #trainingMentorship {
+    border-top:1px solid var(--line);
+    background:
+      radial-gradient(ellipse at top left,
+        color-mix(in srgb,var(--accent) 8%,transparent),transparent 65%),
+      var(--bg);
+  }
+  #trainingMentorship .training-layout {
+    display:grid;
+    grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+    gap:64px;
+    align-items:start;
+  }
+  #trainingMentorship .training-story { min-width:0; }
+  #trainingTitle {
+    margin:18px 0 0;
+    max-width:15ch;
+    font-size:clamp(2rem,3.5vw,3.2rem);
+    font-weight:500;
+    line-height:1.15;
+    letter-spacing:-.025em;
+  }
+  #trainingStat {
+    margin-top:34px;
+    padding:26px 0;
+    border-top:1px solid var(--line-strong);
+    border-bottom:1px solid var(--line-strong);
+  }
+  #trainingCount {
+    display:block;
+    font-size:clamp(4.5rem,9vw,8rem);
+    line-height:1;
+    font-weight:500;
+    letter-spacing:-.07em;
+    color:var(--accent);
+    overflow-wrap:anywhere;
+  }
+  #trainingMentorship .training-stat-label {
+    display:block;
+    margin-top:12px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  #trainingIntro {
+    margin:24px 0 0;
+    max-width:40ch;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.8;
+    white-space:pre-line;
+  }
+  #trainingMentorship .training-gallery {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:22px 18px;
+    min-width:0;
+  }
+  #trainingMentorship .training-gallery figure {
+    margin:0; min-width:0;
+  }
+  #trainingMentorship .training-gallery figure:first-child {
+    grid-column:1 / -1;
+  }
+  #trainingMentorship .training-gallery a {
+    position:relative;
+    display:block;
+    overflow:hidden;
+    border-radius:6px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+  }
+  #trainingMentorship .training-gallery img {
+    display:block;
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    transition:transform .3s ease;
+  }
+  #trainingMentorship .training-gallery figure:first-child img {
+    aspect-ratio:16/10;
+  }
+  #trainingMentorship .training-gallery a:hover img {
+    transform:scale(1.025);
+  }
+  #trainingMentorship .training-gallery a::after {
+    content:"↗";
+    position:absolute; right:12px; bottom:12px;
+    display:grid; place-items:center;
+    width:34px; height:34px;
+    border-radius:50%;
+    background:var(--bg-raised);
+    color:var(--ink);
+  }
+  #trainingMentorship .training-gallery figcaption {
+    margin-top:10px;
+    font-size:12px;
+    line-height:1.6;
+    color:var(--muted);
+  }
+  #trainingMentorship .training-layout.without-photos {
+    grid-template-columns:minmax(0,650px);
+  }
+  @media(max-width:760px) {
+    #trainingMentorship .training-layout {
+      grid-template-columns:minmax(0,1fr); gap:32px;
+    }
+    #trainingTitle { max-width:20ch; }
+    #trainingStat { margin-top:26px; }
+  }
+  @media(max-width:420px) {
+    #trainingMentorship .training-gallery {
+      grid-template-columns:minmax(0,1fr);
+    }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    #trainingMentorship .training-gallery img { transition:none; }
+    #trainingMentorship .training-gallery a:hover img { transform:none; }
+  }
+</style>
+
+
 
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
@@ -1187,6 +1312,23 @@
   </div>
 </dialog>
 
+
+<section id="trainingMentorship" hidden>
+  <div class="wrap">
+    <div class="training-layout">
+      <div class="training-story">
+        <div class="section-tag mono">Training & mentorship</div>
+        <h2 id="trainingTitle">Helping others take their next step.</h2>
+        <div class="training-stat" id="trainingStat" hidden>
+          <span id="trainingCount"></span>
+          <span class="training-stat-label">People trained</span>
+        </div>
+        <p id="trainingIntro" hidden></p>
+      </div>
+      <div class="training-gallery" id="trainingPhotos" hidden></div>
+    </div>
+  </div>
+</section>
 <section id="skills">
   <div class="wrap">
     <div class="section-head">
@@ -1861,6 +2003,69 @@
       };
       flyerGrid.appendChild(card);
     });
+
+
+    // Training count and gallery
+    var training = data.training || {};
+    var trainingSection = document.getElementById('trainingMentorship');
+    var gallery = document.getElementById('trainingPhotos');
+    gallery.replaceChildren();
+
+    var rawCount = training.count;
+    var hasCount = rawCount !== undefined && rawCount !== null &&
+      String(rawCount).trim() !== '' &&
+      Number.isFinite(Number(rawCount)) && Number(rawCount) >= 0;
+
+    document.getElementById('trainingTitle').textContent =
+      training.title || 'Helping others take their next step.';
+    document.getElementById('trainingStat').hidden = !hasCount;
+    document.getElementById('trainingCount').textContent = hasCount
+      ? Number(rawCount).toLocaleString() + (training.showPlus ? '+' : '')
+      : '';
+    var introduction = document.getElementById('trainingIntro');
+    introduction.textContent = training.introduction || '';
+    introduction.hidden = !training.introduction;
+
+    (training.photos || []).forEach(function(photo){
+      if(typeof photo.image !== 'string' || !photo.image.trim()) return;
+      var source = photo.image.trim();
+      if(!/^\/(?!\/)/.test(source)){
+        try {
+          var url = new URL(source);
+          if(!/^https?:$/.test(url.protocol)) return;
+          source = url.href;
+        } catch(error) { return; }
+      }
+      var figure = document.createElement('figure');
+      var link = document.createElement('a');
+      link.href = source;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label',
+        'Open full photo: ' + (photo.caption || 'Training session'));
+
+      var image = document.createElement('img');
+      image.src = source;
+      image.alt = photo.caption || 'Training session';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.style.objectPosition = photo.focus || 'center';
+      link.appendChild(image);
+      figure.appendChild(link);
+
+      if(photo.caption){
+        var caption = document.createElement('figcaption');
+        caption.textContent = photo.caption;
+        figure.appendChild(caption);
+      }
+      gallery.appendChild(figure);
+    });
+
+    gallery.hidden = !gallery.children.length;
+    trainingSection.querySelector('.training-layout').classList.toggle(
+      'without-photos', !gallery.children.length
+    );
+    trainingSection.hidden = !hasCount && !gallery.children.length;
 
     if(data.skills){
       var sk = data.skills;

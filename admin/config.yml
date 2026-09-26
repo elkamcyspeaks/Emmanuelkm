@@ -140,6 +140,26 @@ collections:
                   - { label: "Description", name: "description", widget: "text", required: false }
                   - { label: "Project URL", name: "link", widget: "string", required: false }
 
+
+          - label: "Training & Mentorship"
+            name: "training"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Section title", name: "title", widget: "string", default: "Helping others take their next step.", required: false }
+              - { label: "Number of people trained", name: "count", widget: "number", value_type: "int", min: 0, required: false }
+              - { label: "Show + after the number", name: "showPlus", widget: "boolean", default: false, required: false }
+              - { label: "Introduction", name: "introduction", widget: "text", required: false }
+              - label: "Training photos"
+                name: "photos"
+                widget: "list"
+                required: false
+                summary: "{{fields.caption}}"
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Caption", name: "caption", widget: "string", required: false }
+                  - { label: "Photo focus", name: "focus", widget: "select", options: ["center", "top", "bottom"], default: "center", required: false }
+
           - label: "Skills"
             name: "skills"
             widget: "object"
