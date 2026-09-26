@@ -210,5 +210,25 @@
         "title": "Maulud Flyer Design"
       }
     ]
+  },
+  "training": {
+    "title": "Training & Mentorship.",
+    "count": 60,
+    "showPlus": true,
+    "introduction": "I believe knowledge becomes more valuable when shared. Through training and mentorship, I help aspiring designers build practical skills, find their confidence, and take their next step.",
+    "photos": [
+      {
+        "focus": "center",
+        "image": "/content/uploads/47ef7b2b-fc54-4b06-a80f-74c30d56b724.jpg"
+      },
+      {
+        "focus": "center",
+        "image": "/content/uploads/img_0633.jpg"
+      },
+      {
+        "focus": "center",
+        "image": "/content/uploads/59e5b7ad-2c59-4bef-b345-a58ae338b1af.jpg"
+      }
+    ]
   }
 }
