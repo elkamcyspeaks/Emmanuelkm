@@ -258,7 +258,39 @@
 .flyer-dialog{border-radius:18px}
 .flyer-dialog h2{font-size:28px}
 .flyer-dialog a{color:#a8dbb3}
-</style></head><body><div id="pageTop"></div><a class="skip" href="#main">Skip to content</a><header>
+</style>
+<style id="flyerMotionStyle">
+.flyer-artwork{
+  display:block;overflow:hidden;
+  background:#090b09;transform-origin:center;
+  transition:transform .3s ease;
+}
+.flyer-artwork img{
+  display:block;
+  transition:transform .55s cubic-bezier(.2,.7,.2,1);
+}
+.flyer-card:focus-visible{
+  outline:2px solid #a8dbb3;outline-offset:5px;
+}
+@media(hover:hover) and (pointer:fine){
+  .flyer-card[data-motion="zoom"]:hover .flyer-artwork img{
+    transform:scale(1.035);
+  }
+}
+.flyer-card[data-motion="zoom"]:focus-visible .flyer-artwork img{
+  transform:scale(1.035);
+}
+.flyer-card[data-motion="tilt"]:focus-visible .flyer-artwork{
+  transform:perspective(900px) rotateY(-2deg) scale(.985);
+}
+@media(prefers-reduced-motion:reduce){
+  .flyer-artwork,.flyer-artwork img{
+    transform:none!important;
+    transition:none!important;
+  }
+}
+</style>
+</head><body><div id="pageTop"></div><a class="skip" href="#main">Skip to content</a><header>
     <div class="wrap nav">
       <a class="brand" href="/" aria-label="EmmanuelKM home">
         <span class="monogram" id="brandMark">EK</span>
@@ -368,7 +400,37 @@
       var caption = document.createElement('span');
       caption.className = 'flyer-caption';
       caption.textContent = title;
-      card.append(image, caption);
+      
+      // flyer-motion-v1
+      var motion = ['none','zoom','tilt'].includes(item.motion)
+        ? item.motion : 'zoom';
+      card.dataset.motion = motion;
+
+      var artwork = document.createElement('span');
+      artwork.className = 'flyer-artwork';
+      artwork.appendChild(image);
+      card.append(artwork, caption);
+
+      if(motion === 'tilt'){
+        var motionQuery = window.matchMedia(
+          '(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)'
+        );
+        card.addEventListener('pointermove', function(event){
+          if(!motionQuery.matches || event.pointerType === 'touch') return;
+          var box = card.getBoundingClientRect();
+          var x = (event.clientX - box.left) / box.width - .5;
+          var y = (event.clientY - box.top) / box.height - .5;
+          artwork.style.transform =
+            'perspective(900px) rotateX(' + (-y * 6) +
+            'deg) rotateY(' + (x * 6) + 'deg) scale(.985)';
+        });
+        function resetTilt(){ artwork.style.transform = ''; }
+        card.addEventListener('pointerleave', resetTilt);
+        card.addEventListener('pointercancel', resetTilt);
+        card.addEventListener('blur', resetTilt);
+        motionQuery.addEventListener('change', resetTilt);
+      }
+
 
       card.onclick = function(){
         var fullImage = document.getElementById('flyerFullImage');

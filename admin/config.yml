@@ -287,5 +287,16 @@ collections:
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Flyer image", name: "image", widget: "image" }
+                  - label: "Preview animation"
+                    name: "motion"
+                    widget: "select"
+                    required: false
+                    default: "zoom"
+                    options:
+                      - {label: "No animation", value: "none"}
+                      - {label: "Gentle zoom", value: "zoom"}
+                      - {label: "3D tilt", value: "tilt"}
+                    hint: "Runs on hover or keyboard focus. Touch devices show the original artwork."
+
                   - { label: "Description", name: "description", widget: "text", required: false }
                   - { label: "Project URL", name: "link", widget: "string", required: false }
