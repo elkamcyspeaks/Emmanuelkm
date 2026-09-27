@@ -1,0 +1,103 @@
+
+/* Full-width, overlapping project cards */
+#work{overflow:visible}
+#work>.wrap{overflow:visible}
+#workGrid{
+  display:flex;flex-direction:column;gap:24px;
+  position:relative;isolation:isolate;overflow:visible
+}
+#workGrid .work-card{
+  position:relative;
+  height:auto;
+  padding:26px;
+  border-radius:22px;
+  background:#101310;
+  border:1px solid #354139;
+  box-shadow:0 -12px 36px rgba(0,0,0,.22);
+  transform:none!important;
+  display:flex;flex-direction:column;gap:12px;
+  transition:border-color .2s;
+  scroll-margin-top:var(--work-pin-top,90px);
+}
+#workGrid .work-card.stack-enabled{
+  position:sticky;top:var(--work-pin-top,90px);
+}
+#workGrid .work-top{order:0}
+#workGrid .work-title{
+  order:1;margin:0;font-family:Fraunces,Georgia,serif;
+  font-size:clamp(25px,3vw,38px);line-height:1.15;max-width:850px
+}
+#workGrid .work-desc{
+  order:2;margin:0;max-width:75ch;line-height:1.6;
+  display:-webkit-box;-webkit-box-orient:vertical;
+  -webkit-line-clamp:2;overflow:hidden
+}
+#workGrid .work-image{
+  order:3;display:block;width:100%;
+  height:clamp(220px,42vh,410px);
+  object-fit:contain;object-position:center;
+  background:#090b09;border:0;border-radius:12px;
+  flex-shrink:1;min-height:0
+}
+#workGrid .work-foot{order:4;margin-top:auto;padding-top:8px}
+#workGrid .work-link{
+  border:1px solid #536b59;border-radius:999px;
+  padding:10px 16px;white-space:nowrap
+}
+#workGrid .work-link:focus-visible{
+  outline:2px solid #a8dbb3;outline-offset:4px
+}
+
+/* Seamless teams strip */
+#heroCompanies{
+  display:block;overflow:hidden;position:relative;
+  width:100%;max-width:100%;
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)
+}
+#heroCompanies .teams-track{
+  display:flex;width:max-content;
+  animation:teams-drift var(--teams-duration,30s) linear infinite
+}
+#heroCompanies .teams-group{
+  display:flex;align-items:center;flex:none;
+  gap:64px;padding-right:64px;
+  min-width:var(--teams-width,0px);box-sizing:border-box;
+  justify-content:space-around
+}
+#heroCompanies .teams-group span{
+  display:block;flex:none;max-width:none;
+  white-space:nowrap;color:#dedede;
+  font-size:clamp(16px,1.7vw,22px)
+}
+#heroCompanies:hover .teams-track,
+#heroCompanies.is-paused .teams-track{
+  animation-play-state:paused
+}
+.teams-pause{
+  display:block;margin:18px 0 0 auto;padding:7px 12px;
+  background:transparent;color:#b9c2bb;
+  border:1px solid #39423c;border-radius:99px;
+  font:inherit;font-size:11px;cursor:pointer
+}
+.teams-pause:focus-visible{outline:2px solid #a8dbb3;outline-offset:4px}
+@keyframes teams-drift{to{transform:translateX(-50%)}}
+@media(max-width:600px){
+  #workGrid{gap:18px}
+  #workGrid .work-card{padding:18px;border-radius:16px}
+  #workGrid .work-image{height:230px}
+  #workGrid .work-title{font-size:25px}
+  #workGrid .work-foot{gap:10px}
+  #heroCompanies .teams-group{gap:38px;padding-right:38px}
+}
+@media(prefers-reduced-motion:reduce){
+  #workGrid .work-card.stack-enabled{position:relative;top:auto}
+  #heroCompanies{mask-image:none;-webkit-mask-image:none}
+  #heroCompanies .teams-track{animation:none;width:100%}
+  #heroCompanies .teams-group{
+    min-width:0;width:100%;padding:0;
+    flex-wrap:wrap;justify-content:center;gap:24px
+  }
+  #heroCompanies .teams-group[aria-hidden="true"]{display:none}
+  .teams-pause{display:none}
+}
