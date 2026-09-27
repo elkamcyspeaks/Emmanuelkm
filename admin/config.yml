@@ -55,71 +55,24 @@ collections:
                   - { label: "Label", name: "label", widget: "string" }
                   - { label: "Link (# section or URL)", name: "href", widget: "string" }
 
-          - label: "About"
-            name: "about"
-            widget: "object"
-            fields:
-              - { label: "Section tag", name: "sectionTag", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Note (top right of section)", name: "note", widget: "string" }
-              - { label: "Photo frame label", name: "frameLabel", widget: "string" }
-              - { label: "Photo frame ratio", name: "frameRatio", widget: "string" }
-              - { label: "Initials shown in photo frame (used until a photo is uploaded)", name: "initials", widget: "string" }
-              - { label: "Photo", name: "photo", widget: "image", required: false }
-              - label: "Photo focus (which part of the photo stays visible — the frame auto-crops to the ratio above)"
-                name: "photoFocus"
-                widget: "select"
-                required: false
-                default: "center"
-                options:
-                  - { label: "Top", value: "top" }
-                  - { label: "Center", value: "center" }
-                  - { label: "Bottom", value: "bottom" }
-                  - { label: "Left", value: "left" }
-                  - { label: "Right", value: "right" }
-              - label: "Bio paragraphs"
-                name: "bio"
-                widget: "list"
-                field: { label: "Paragraph", name: "value", widget: "text" }
-              - label: "Specs"
-                name: "specs"
-                widget: "list"
-                fields:
-                  - { label: "Key", name: "key", widget: "string" }
-                  - { label: "Value", name: "value", widget: "string" }
 
-          - label: "About page"
-            name: "aboutPage"
+          - label: "Homepage Professional Journey"
+            name: "homeJourney"
             widget: "object"
             fields:
-              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
-              - {label: "Headline", name: "title", widget: "string"}
-              - {label: "Introduction", name: "intro", widget: "text"}
-              - {label: "Story heading", name: "storyTitle", widget: "string"}
-              - label: "Photo strip (first three displayed)"
-                name: "photos"
+              - {label: "Show section", name: "enabled", widget: "boolean", default: true}
+              - {label: "Heading", name: "title", widget: "string"}
+              - {label: "Experience rows to display", name: "limit", widget: "number", value_type: "int", min: 1, max: 10, default: 2}
+              - {label: "Full experience link text", name: "linkLabel", widget: "string"}
+              - label: "Statistic cards"
+                name: "stats"
                 widget: "list"
-                required: false
+                min: 1
+                max: 4
+                summary: "{{fields.value}} — {{fields.label}}"
                 fields:
-                  - {label: "Image", name: "image", widget: "image"}
-                  - {label: "Caption", name: "caption", widget: "string"}
-                  - {label: "Focus", name: "focus", widget: "select", options: [top, center, bottom, left, right], default: center}
-              - label: "Story sections (journey, interests, aspirations)"
-                name: "chapters"
-                widget: "list"
-                required: false
-                fields:
-                  - {label: "Heading", name: "title", widget: "string"}
-                  - {label: "Text", name: "body", widget: "text"}
-              - label: "Professional journey"
-                name: "experience"
-                widget: "list"
-                required: false
-                fields:
-                  - {label: "Organisation", name: "company", widget: "string"}
-                  - {label: "Role", name: "role", widget: "string"}
-                  - {label: "Dates", name: "dates", widget: "string"}
-                  - {label: "Location", name: "location", widget: "string", required: false}
+                  - {label: "Number or value", name: "value", widget: "string", hint: 'Examples: 60+, 8+, 20'}
+                  - {label: "Description", name: "label", widget: "string"}
 
           - label: "Work"
             name: "work"
@@ -167,23 +120,6 @@ collections:
                     field: { label: "Tag", name: "value", widget: "string" }
 
 
-          - label: "Flyer Designs"
-            name: "flyers"
-            widget: "object"
-            required: false
-            fields:
-              - label: "Flyers"
-                name: "items"
-                widget: "list"
-                required: false
-                summary: "{{fields.title}}"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Flyer image", name: "image", widget: "image" }
-                  - { label: "Description", name: "description", widget: "text", required: false }
-                  - { label: "Project URL", name: "link", widget: "string", required: false }
-
-
           - label: "Training & Mentorship"
             name: "training"
             widget: "object"
@@ -202,30 +138,6 @@ collections:
                   - { label: "Image", name: "image", widget: "image" }
                   - { label: "Caption", name: "caption", widget: "string", required: false }
                   - { label: "Photo focus", name: "focus", widget: "select", options: ["center", "top", "bottom"], default: "center", required: false }
-
-          - label: "Skills"
-            name: "skills"
-            widget: "object"
-            fields:
-              - { label: "Section tag", name: "sectionTag", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Note (top right of section)", name: "note", widget: "string" }
-              - label: "Groups"
-                name: "groups"
-                widget: "list"
-                fields:
-                  - { label: "Group name", name: "name", widget: "string" }
-                  - label: "Swatch color"
-                    name: "swatch"
-                    widget: "select"
-                    options: ["accent", "guide", "violet", "green"]
-                  - label: "Items"
-                    name: "items"
-                    widget: "list"
-                    fields:
-                      - { label: "Label", name: "label", widget: "string" }
-                      - { label: "Tag", name: "tag", widget: "string" }
-
 
           - label: "Testimonials"
             name: "testimonials"
@@ -258,3 +170,122 @@ collections:
                   - { label: "URL", name: "href", widget: "string" }
               - { label: "Status line", name: "status", widget: "string" }
               - { label: "Copyright line", name: "copyright", widget: "string" }
+
+  - name: "about_page"
+    label: "About Page"
+    files:
+      - name: "content"
+        label: "About Page"
+        file: "content/about.json"
+        fields:
+          - label: "About page"
+            name: "aboutPage"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "title", widget: "string"}
+              - {label: "Introduction", name: "intro", widget: "text"}
+              - {label: "Story heading", name: "storyTitle", widget: "string"}
+              - label: "Photo strip (first three displayed)"
+                name: "photos"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Image", name: "image", widget: "image"}
+                  - {label: "Caption", name: "caption", widget: "string"}
+                  - {label: "Focus", name: "focus", widget: "select", options: [top, center, bottom, left, right], default: center}
+              - label: "Story sections (journey, interests, aspirations)"
+                name: "chapters"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Heading", name: "title", widget: "string"}
+                  - {label: "Text", name: "body", widget: "text"}
+              - label: "Professional journey"
+                name: "experience"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Organisation", name: "company", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Dates", name: "dates", widget: "string"}
+                  - {label: "Location", name: "location", widget: "string", required: false}
+
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Section tag", name: "sectionTag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Note (top right of section)", name: "note", widget: "string" }
+              - { label: "Photo frame label", name: "frameLabel", widget: "string" }
+              - { label: "Photo frame ratio", name: "frameRatio", widget: "string" }
+              - { label: "Initials shown in photo frame (used until a photo is uploaded)", name: "initials", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - label: "Photo focus (which part of the photo stays visible — the frame auto-crops to the ratio above)"
+                name: "photoFocus"
+                widget: "select"
+                required: false
+                default: "center"
+                options:
+                  - { label: "Top", value: "top" }
+                  - { label: "Center", value: "center" }
+                  - { label: "Bottom", value: "bottom" }
+                  - { label: "Left", value: "left" }
+                  - { label: "Right", value: "right" }
+              - label: "Bio paragraphs"
+                name: "bio"
+                widget: "list"
+                field: { label: "Paragraph", name: "value", widget: "text" }
+              - label: "Specs"
+                name: "specs"
+                widget: "list"
+                fields:
+                  - { label: "Key", name: "key", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+
+          - label: "Skills"
+            name: "skills"
+            widget: "object"
+            fields:
+              - { label: "Section tag", name: "sectionTag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Note (top right of section)", name: "note", widget: "string" }
+              - label: "Groups"
+                name: "groups"
+                widget: "list"
+                fields:
+                  - { label: "Group name", name: "name", widget: "string" }
+                  - label: "Swatch color"
+                    name: "swatch"
+                    widget: "select"
+                    options: ["accent", "guide", "violet", "green"]
+                  - label: "Items"
+                    name: "items"
+                    widget: "list"
+                    fields:
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "Tag", name: "tag", widget: "string" }
+
+  - name: "playground_page"
+    label: "Playground"
+    files:
+      - name: "content"
+        label: "Playground"
+        file: "content/playground.json"
+        fields:
+          - label: "Flyer Designs"
+            name: "flyers"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Flyers"
+                name: "items"
+                widget: "list"
+                required: false
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Flyer image", name: "image", widget: "image" }
+                  - { label: "Description", name: "description", widget: "text", required: false }
+                  - { label: "Project URL", name: "link", widget: "string", required: false }

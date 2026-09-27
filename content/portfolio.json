@@ -33,29 +33,6 @@
       "Revelation City Music"
     ]
   },
-  "about": {
-    "frameLabel": "Frame — Profile",
-    "bio": [
-      "I'm Emmanuel, a UI/UX designer and creative based in Jos, Nigeria. I design digital products, build websites, and create visual identities and graphics that help businesses communicate clearly.",
-      "My work brings together interface design, branding, and AI-assisted creative production. I use tools such as Figma, Canva, CorelDRAW, ChatGPT, and Claude to explore ideas and develop them into finished work."
-    ],
-    "initials": "EK",
-    "photo": "/content/uploads/img_3716-1.jpg",
-    "note": "Based in Jos. Working across digital and visual design.",
-    "sectionTag": "01 — About",
-    "specs": [
-      {
-        "key": "LOCATION",
-        "value": "Jos, Plateau State, Nigeria · WAT (UTC+1)"
-      },
-      {
-        "key": "FOCUS",
-        "value": "Product design, design systems, Web Design & Development, applied AI"
-      }
-    ],
-    "title": "A little about me.",
-    "frameRatio": "4:5"
-  },
   "work": {
     "sectionTag": "02 — Selected work",
     "title": "Selected Projects",
@@ -132,85 +109,6 @@
       }
     ]
   },
-  "skills": {
-    "sectionTag": "Skills & tools",
-    "title": "What I do. What I use.",
-    "note": "Design, development, and creative production.",
-    "groups": [
-      {
-        "name": "My skills",
-        "swatch": "accent",
-        "items": [
-          {
-            "label": "UI/UX Design",
-            "tag": "Clear, easy-to-use digital experiences."
-          },
-          {
-            "label": "Website Design & Development",
-            "tag": "Designing and building working websites."
-          },
-          {
-            "label": "Graphic Design",
-            "tag": "Flyers, campaign visuals, and social media designs."
-          },
-          {
-            "label": "AI-Assisted Creative Production",
-            "tag": "Images, videos, and visual content created with AI."
-          },
-          {
-            "label": "Brand Identity Design",
-            "tag": "Logos, colours, typography, and brand guidelines."
-          },
-          {
-            "label": "Design Systems",
-            "tag": "Reusable components and consistent interface styles."
-          },
-          {
-            "label": "Prototyping & Interaction Design",
-            "tag": "Interactive demos, transitions, and animations."
-          },
-          {
-            "label": "Creative Direction",
-            "tag": "Guiding a project's visual style and creative approach."
-          }
-        ]
-      },
-      {
-        "name": "Tools I use",
-        "swatch": "accent",
-        "items": [
-          {
-            "label": "Figma",
-            "tag": "Figma"
-          },
-          {
-            "label": "Canva",
-            "tag": "Canva"
-          },
-          {
-            "label": "CorelDRAW",
-            "tag": "CorelDRAW"
-          },
-          {
-            "label": "ChatGPT",
-            "tag": "ChatGPT"
-          },
-          {
-            "label": "Claude",
-            "tag": "Claude"
-          },
-          {
-            "label": "Google Flow",
-            "tag": "Google Flow"
-          },
-          {
-            "label": "Google AI Studio",
-            "tag": "Google AI Studio"
-          }
-        ]
-      }
-    ]
-  },
   "contact": {
     "sectionTag": "04 — Contact",
     "title": "Let’s create something great together.",
@@ -239,14 +137,6 @@
     "phone": "+234 813 040 0445",
     "footerIntro": "Have a project, an opportunity, or an idea you’d like to explore? I’d love to hear from you.",
     "footerSignoff": "Made with care, curiosity, and a love for good design."
-  },
-  "flyers": {
-    "items": [
-      {
-        "image": "/content/uploads/mauludd.png",
-        "title": "Maulud Flyer Design"
-      }
-    ]
   },
   "training": {
     "title": "Training & Mentorship.",
@@ -280,71 +170,27 @@
       }
     ]
   },
-  "aboutPage": {
-    "title": "The person behind the work.",
-    "eyebrow": "ABOUT EMMANUEL",
-    "intro": "Designer, web developer, and creative based in Jos, Nigeria.",
-    "storyTitle": "A little about me.",
-    "chapters": [],
-    "photos": [
+  "homeJourney": {
+    "enabled": true,
+    "title": "My Professional Journey",
+    "limit": 2,
+    "linkLabel": "See full work experience",
+    "stats": [
       {
-        "image": "/content/uploads/img_3716-1.jpg",
-        "caption": "Emmanuel / Jos, Nigeria",
-        "focus": "center"
+        "value": "2",
+        "label": "Featured projects"
       },
       {
-        "image": "/content/uploads/47ef7b2b-fc54-4b06-a80f-74c30d56b724.jpg",
-        "caption": "Sharing knowledge through design training",
-        "focus": "center"
+        "value": "60+",
+        "label": "People trained"
       },
       {
-        "image": "/content/uploads/img_0633.jpg",
-        "caption": "Sharing knowledge through design training",
-        "focus": "center"
-      }
-    ],
-    "experience": [
-      {
-        "company": "Belema Financial Technology",
-        "role": "Product Designer (UI/UX)",
-        "dates": "Aug 2023 – Aug 2026",
-        "location": "Nigeria"
+        "value": "1",
+        "label": "Flyer designs"
       },
       {
-        "company": "Edatech",
-        "role": "Product Designer",
-        "dates": "Dec 2022 – Oct 2023",
-        "location": "London, United Kingdom · Remote"
-      },
-      {
-        "company": "Skill Seeds Limited",
-        "role": "UI Designer · Contract",
-        "dates": "Oct 2022 – Jul 2023",
-        "location": "Nigeria"
-      },
-      {
-        "company": "O.C.H.E",
-        "role": "Social Media Manager · Contract",
-        "dates": "Jan 2023 – Jul 2023",
-        "location": "Abuja, Nigeria"
-      },
-      {
-        "company": "Revelation City Music",
-        "role": "Graphic Designer · Part-time",
-        "dates": "Apr 2021 – Aug 2026",
-        "location": "Nigeria"
-      },
-      {
-        "company": "Faithmoves Foundation",
-        "role": "Brand Designer & Social Media Manager",
-        "dates": "Mar 2018 – Aug 2023",
-        "location": "Kaduna, Nigeria"
-      },
-      {
-        "company": "Abba’s House Church",
-        "role": "Brand Designer, then Product Designer",
-        "dates": "Mar 2018 – Jan 2023",
-        "location": "Bauchi, Nigeria"
+        "value": "7",
+        "label": "Organisations worked with"
       }
     ]
   }

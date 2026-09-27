@@ -2600,7 +2600,7 @@ html,body {
     }
   }
 
-  fetch('content/portfolio.json', { cache: 'no-store' })
+  fetchPortfolioContent()
     .then(function(r){ if(!r.ok){ throw new Error('content file not found'); } return r.json(); })
     .then(function(data){ renderContent(data); polishPortfolio(data); renderSharedFooter(data); })
     .catch(function(err){ console.warn('Portfolio: using built-in fallback content —', err.message); });
@@ -2677,3 +2677,6 @@ html,body {
 <script>
 if(location.hash === "#about") location.replace("/about.html");
 </script>
+
+<link rel="stylesheet" href="/homepage-journey.css">
+<script src="/homepage-journey.js"></script>

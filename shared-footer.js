@@ -60,3 +60,20 @@ function openFooterMessage() {
 }
 window.addEventListener('hashchange', openFooterMessage);
 window.addEventListener('DOMContentLoaded', openFooterMessage);
+
+
+// separate-page-content-v1
+async function fetchPortfolioContent(){
+  const parts = await Promise.all([
+    '/content/portfolio.json',
+    '/content/about.json',
+    '/content/playground.json'
+  ].map(async path => {
+    const response = await fetch(path, {cache:'no-store'});
+    if(!response.ok) throw new Error('Could not load ' + path);
+    return response.json();
+  }));
+  return new Response(JSON.stringify(Object.assign({}, ...parts)), {
+    headers: {'Content-Type':'application/json'}
+  });
+}

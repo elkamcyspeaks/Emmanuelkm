@@ -167,7 +167,7 @@
     console.error(error);
   }
 
-  fetch('/content/portfolio.json', {cache:'no-store'})
+  fetchPortfolioContent()
     .then(response => {
       if(!response.ok) throw Error('Content unavailable');
       return response.json();
