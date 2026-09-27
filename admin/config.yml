@@ -97,22 +97,51 @@ collections:
                   - { label: "Description", name: "description", widget: "text" }
 
                   - { label: "Show on website", name: "published", widget: "boolean", default: true, required: false }
-                  - label: "Case study details"
+
+                  - label: "Project page address"
+                    name: "slug"
+                    widget: "string"
+                    pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Use lowercase letters, numbers and hyphens."]
+                    hint: "Keep this unique. Changing it changes the shared project link."
+
+                  - label: "Case study page"
                     name: "caseStudy"
                     widget: "object"
                     required: false
                     fields:
-                      - { label: "Your role", name: "role", widget: "text", required: false }
-                      - { label: "The problem", name: "problem", widget: "text", required: false }
-                      - { label: "Key design decisions", name: "decisions", widget: "text", required: false }
-                      - { label: "Outcome", name: "result", widget: "text", required: false }
-                      - label: "Additional screenshots"
-                        name: "gallery"
+                      - {label: "Your role", name: "role", widget: "text", required: false}
+                      - {label: "Timeline", name: "timeline", widget: "string", required: false}
+                      - {label: "Tools used", name: "tools", widget: "string", required: false}
+                      - {label: "Opening summary", name: "summary", widget: "text", required: false, hint: "Leave blank to use the project description."}
+                      - {label: "Case-study cover image", name: "cover", widget: "image", required: false, hint: "Leave blank to use the project card image."}
+                      - label: "Page sections"
+                        name: "sections"
                         widget: "list"
                         required: false
+                        summary: "{{fields.heading}}"
+                        hint: "Add and reorder sections to tell this project's story."
                         fields:
-                          - { label: "Image", name: "image", widget: "image" }
-                          - { label: "Caption", name: "caption", widget: "string", required: false }
+                          - {label: "Show this section", name: "visible", widget: "boolean", default: true, required: false}
+                          - {label: "Heading", name: "heading", widget: "string"}
+                          - {label: "Description", name: "body", widget: "text", required: false, hint: "Use a blank line between paragraphs."}
+                          - label: "Layout"
+                            name: "layout"
+                            widget: "select"
+                            default: "full"
+                            options:
+                              - {label: "Text above full-width images", value: "full"}
+                              - {label: "Text beside images", value: "split"}
+                              - {label: "Two-column image gallery", value: "gallery"}
+                              - {label: "Mobile-screen gallery", value: "phones"}
+                          - label: "Images"
+                            name: "images"
+                            widget: "list"
+                            required: false
+                            summary: "{{fields.caption}}"
+                            fields:
+                              - {label: "Image", name: "image", widget: "image"}
+                              - {label: "Caption", name: "caption", widget: "string", required: false}
+                              - {label: "Image description for accessibility", name: "alt", widget: "string", required: false}
 
                   - label: "Tags"
                     name: "tags"

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project — EmmanuelKM</title>
+<meta name="description" content="Selected design work by Emmanuel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Sora:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/about.css">
+<link rel="stylesheet" href="/shared-footer.css">
+<link rel="stylesheet" href="/project.css">
+<script src="/shared-footer.js"></script>
+</head>
+<body>
+<div id="pageTop"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="EmmanuelKM home">
+        <span class="monogram" id="brandMark">EK</span>
+        <span id="brandName">EmmanuelKM</span>
+      </a>
+      <button class="menu" id="menu"
+        aria-expanded="false" aria-controls="navigation">Menu</button>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="/#work">Work</a>
+        <a href="/about.html">About</a>
+        <a href="/playground.html">Playground</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+<main id="main" class="wrap case-main">
+  <a class="case-back" href="/#work">← All projects</a>
+  <p id="caseStatus" role="status">Loading project…</p>
+  <article id="caseArticle" hidden>
+    <div class="case-opening">
+      <p id="caseCategory" class="case-eyebrow"></p>
+      <h1 id="caseTitle"></h1>
+      <p id="caseIntro"></p>
+      <a id="visitProject" class="case-visit" target="_blank"
+         rel="noopener noreferrer" hidden>Visit live project ↗</a>
+    </div>
+    <div id="caseCover"></div>
+    <dl id="caseFacts"></dl>
+    <nav id="caseContents" aria-label="Case-study sections"></nav>
+    <div id="caseSections"></div>
+    <div class="case-end">
+      <a href="/#work">← All projects</a>
+      <a id="nextProject" hidden></a>
+    </div>
+  </article>
+  <noscript>Please enable JavaScript to view this case study.</noscript>
+</main>
+<dialog id="imageViewer" aria-label="Enlarged project image">
+  <button id="closeImage" type="button">Close ×</button>
+  <img id="largeImage" alt="">
+  <p id="imageCaption"></p>
+</dialog>
+<footer id="contact" class="site-footer">
+  <div class="sf-inner">
+    <span id="contactTag" hidden></span>
+    <h2 id="contactTitle">Let’s create something great together.</h2>
+    <p id="footerIntro">
+      Have a project, an opportunity, or an idea you’d like to explore?
+      I’d love to hear from you.
+    </p>
+    <nav class="sf-nav" aria-label="Footer navigation">
+      <a href="/#work">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/playground.html">Playground</a>
+      <a id="footerCV" hidden>Resume</a>
+    </nav>
+    <div class="sf-socials" id="social"></div>
+    <a class="footer-message-link" id="email" href="/#footerMessage">Send a message ↗</a>
+    <p id="footerSignoff">
+      Made with care, curiosity, and a love for good design.
+    </p>
+    <small id="copyright"></small>
+    <span id="contactStatus" hidden></span>
+  </div>
+  <a class="sf-top" href="#pageTop" aria-label="Back to top">↑</a>
+</footer>
+<script src="/project.js"></script>
+</body></html>

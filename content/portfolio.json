@@ -64,12 +64,56 @@
               "image": "/content/uploads/img_1889.jpg",
               "caption": "Mobile product cards for exploring personal and business banking."
             }
+          ],
+          "sections": [
+            {
+              "heading": "The challenge",
+              "body": "Ineba Gogo Microfinance Bank needed a new website where prospective customers could find the business, understand its services, and learn how to open an account. The design needed to introduce the bank clearly and make its personal and business banking offerings easy to explore.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            },
+            {
+              "heading": "Design decisions",
+              "body": "I organised the content into distinct sections covering the bank, its services, its values, and its banking products. This gives visitors a clear path from learning about the business to exploring a relevant service.\n\nThe interface combines dark backgrounds, lighter content sections, and bright accents to distinguish information and highlight calls to action. Product cards separate personal and business banking, while icons support the service descriptions and values.\n\nOn mobile, the content follows a single-column layout with stacked cards and a compact navigation menu.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            },
+            {
+              "heading": "The final design",
+              "body": "",
+              "layout": "phones",
+              "visible": true,
+              "images": [
+                {
+                  "image": "/content/uploads/img_1887.jpg",
+                  "caption": "Mobile overview introducing the bank and its financial services"
+                },
+                {
+                  "image": "/content/uploads/img_1888.jpg",
+                  "caption": "Core values presented as individual cards on mobile."
+                },
+                {
+                  "image": "/content/uploads/img_1889.jpg",
+                  "caption": "Mobile product cards for exploring personal and business banking."
+                }
+              ]
+            },
+            {
+              "heading": "The outcome",
+              "body": "The new website gave people a place to discover the bank, understand what it offers, and find a route to opening an account. It established an online presence that supports both learning about the business and taking the next step towards becoming a customer.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            }
           ]
         },
         "link": "https://igmfb.com/",
         "image": "/content/uploads/screenshot-2026-09-25-at-11.08.40 am.png",
         "description": "A new website for Ineba Gogo Microfinance Bank, helping visitors discover the bank, understand its services, and take the next step towards opening an account.",
-        "category": "UI/UX & PRODUCT"
+        "category": "UI/UX & PRODUCT",
+        "slug": "ineba-gogo-mfb"
       },
       {
         "frame": "FRAME 02",
@@ -81,7 +125,11 @@
           "Website design"
         ],
         "link": "https://belemafintech.com/",
-        "image": "/content/uploads/screenshot-2026-09-25-at-12.29.29 pm.png"
+        "image": "/content/uploads/screenshot-2026-09-25-at-12.29.29 pm.png",
+        "slug": "belema-fintech-website",
+        "caseStudy": {
+          "sections": []
+        }
       },
       {
         "frame": "FRAME 03",
@@ -93,7 +141,11 @@
           "Brand systems"
         ],
         "link": "#contact",
-        "published": false
+        "published": false,
+        "slug": "generative-brand-toolkit",
+        "caseStudy": {
+          "sections": []
+        }
       },
       {
         "frame": "FRAME 04",
@@ -105,7 +157,11 @@
           "Campaign"
         ],
         "link": "#contact",
-        "published": false
+        "published": false,
+        "slug": "product-launch-direction",
+        "caseStudy": {
+          "sections": []
+        }
       }
     ]
   },

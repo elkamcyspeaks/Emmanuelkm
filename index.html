@@ -2458,19 +2458,16 @@ html,body {
           (item.tags || []).forEach(function(tag){ tagsWrap.appendChild(el('span', null, tag)); });
           foot.appendChild(tagsWrap);
           var link = el('a', 'work-link mono', 'VIEW ' + ARROW_SVG);
-          link.href = item.link || '#';
-          link.addEventListener('click', function(e){
-            e.preventDefault();
-            openWorkModal(item);
-          });
+          link.href = '/project.html?project=' + encodeURIComponent(item.slug);
           foot.appendChild(link);
           card.appendChild(foot);
           card.addEventListener('click', function(e){
             if(e.target.closest('a, button')) return;
-            openWorkModal(item);
+            if(window.getSelection().toString()) return;
+            link.click();
           });
           link.setAttribute('aria-label', 'View ' + (item.title || 'project'));
-          link.setAttribute('aria-haspopup', 'dialog');
+
           grid.appendChild(card);
         });
         document.querySelectorAll('#workGrid .work-card').forEach(attachCardTilt);
@@ -2683,3 +2680,5 @@ if(location.hash === "#about") location.replace("/about.html");
 
 <link rel="stylesheet" href="/portfolio-motion.css">
 <script src="/portfolio-motion.js"></script>
+
+<!-- dedicated-case-studies-v1 -->
