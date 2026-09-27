@@ -4,9 +4,6 @@
     "name": "EmmanuelKM"
   },
   "hero": {
-    "eyebrow": "PRODUCT & UI/UX DESIGNER",
-    "name": "Emmanuel K. Muh’d",
-    "role": "I’m Emmanuel, a designer and web developer based in Jos, Nigeria. With 7+ years across product and brand design, I turn ideas into clear interfaces, working websites, and thoughtful visual experiences.",
     "disciplines": [
       "UI/UX & Product Design",
       "Web Design & Development",
@@ -14,24 +11,27 @@
       "Graphic Design",
       "Creative Direction & Strategy"
     ],
+    "photoFocus": "top",
+    "eyebrow": "PRODUCT & UI/UX DESIGNER",
+    "name": "Emmanuel K. Muh’d",
     "primaryCta": {
       "label": "View selected work",
       "href": "#work"
     },
-    "secondaryCta": {
-      "label": "Let’s talk",
-      "href": "#contact"
-    },
-    "headline": "I make digital experiences feel simple.",
     "photo": "/content/uploads/img_3716-1.jpg",
-    "photoFocus": "top",
+    "headline": "I make digital experiences feel simple.",
+    "role": "I’m Emmanuel, a designer and web developer based in Jos, Nigeria. With 7+ years across product and brand design, I turn ideas into clear interfaces, working websites, and thoughtful visual experiences.",
     "signature": "Hello, I’m Emmanuel!",
     "companies": [
       "Belema Fintech",
       "Edatech",
       "Skill Seeds",
       "Revelation City Music"
-    ]
+    ],
+    "secondaryCta": {
+      "label": "Let’s talk",
+      "href": "#contact"
+    }
   },
   "work": {
     "sectionTag": "02 — Selected work",
@@ -110,9 +110,14 @@
     ]
   },
   "contact": {
+    "copyright": "© 2026 Emmanuel K. Muh’d",
+    "phone": "+234 813 040 0445",
+    "footerIntro": "Have a project, an opportunity, or an idea you’d like to explore? I’d love to hear from you.",
+    "status": "OPEN TO SELECT PROJECTS",
+    "cv": "/content/uploads/emmanuel_kamal_muhammed_cv.pdf",
     "sectionTag": "04 — Contact",
+    "footerSignoff": "Made with care, curiosity, and a love for good design.",
     "title": "Let’s create something great together.",
-    "email": "ekamcy@gmail.com",
     "links": [
       {
         "label": "Instagram",
@@ -131,12 +136,7 @@
         "href": "https://www.behance.net/elkamcy"
       }
     ],
-    "status": "OPEN TO SELECT PROJECTS",
-    "copyright": "© 2026 Emmanuel K. Muh’d",
-    "cv": "/content/uploads/emmanuel_kamal_muhammed_cv.pdf",
-    "phone": "+234 813 040 0445",
-    "footerIntro": "Have a project, an opportunity, or an idea you’d like to explore? I’d love to hear from you.",
-    "footerSignoff": "Made with care, curiosity, and a love for good design."
+    "email": "ekamcy@gmail.com"
   },
   "training": {
     "title": "Training & Mentorship.",
@@ -177,19 +177,19 @@
     "linkLabel": "See full work experience",
     "stats": [
       {
-        "value": "2",
-        "label": "Featured projects"
+        "value": "60+",
+        "label": "Projects Completed"
       },
       {
-        "value": "60+",
+        "value": "100+",
         "label": "People trained"
       },
       {
-        "value": "1",
-        "label": "Flyer designs"
+        "value": "7+",
+        "label": "Years of Experience"
       },
       {
-        "value": "7",
+        "value": "10+",
         "label": "Organisations worked with"
       }
     ]
