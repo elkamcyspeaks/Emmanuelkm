@@ -213,7 +213,7 @@
   },
   "contact": {
     "sectionTag": "04 — Contact",
-    "title": "Let's build something worth shipping.",
+    "title": "Let’s create something great together.",
     "email": "ekamcy@gmail.com",
     "links": [
       {
@@ -236,7 +236,9 @@
     "status": "OPEN TO SELECT PROJECTS",
     "copyright": "© 2026 Emmanuel K. Muh’d",
     "cv": "/content/uploads/emmanuel_kamal_muhammed_cv.pdf",
-    "phone": "+234 813 040 0445"
+    "phone": "+234 813 040 0445",
+    "footerIntro": "Have a project, an opportunity, or an idea you’d like to explore? I’d love to hear from you.",
+    "footerSignoff": "Made with care, curiosity, and a love for good design."
   },
   "flyers": {
     "items": [

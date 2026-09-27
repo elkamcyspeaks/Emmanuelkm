@@ -132,6 +132,7 @@
       `).join('');
 
     $('copyright').textContent = c.copyright || 'EmmanuelKM';
+    renderSharedFooter(data);
   }
 
   const menu = $('menu');

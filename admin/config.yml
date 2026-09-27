@@ -245,6 +245,9 @@ collections:
               - { label: "Section tag", name: "sectionTag", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
+              - { label: "Footer invitation", name: "footerIntro", widget: "text", required: false }
+              - { label: "Footer sign-off", name: "footerSignoff", widget: "string", required: false }
+
               - { label: "CV (PDF)", name: "cv", widget: "file", required: false }
               - { label: "Phone number", name: "phone", widget: "string", required: false }
               - label: "Links"

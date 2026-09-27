@@ -1,0 +1,194 @@
+
+/* shared-footer-v1 */
+html {scroll-padding-top:110px}
+#pageTop {height:0;overflow:hidden}
+
+#contact.site-footer {
+  position:relative;
+  display:block;
+  background:#252525;
+  color:#f4f4ee;
+  border-top:1px solid #343434;
+  padding:70px 24px 36px;
+  text-align:center;
+}
+#contact.site-footer .sf-inner {
+  width:min(1120px,100%);
+  margin:0 auto;
+}
+#contact.site-footer #contactTitle {
+  max-width:100%;
+  margin:0 auto 18px;
+  color:#f4f4ee;
+  font-family:"Fraunces",Georgia,serif;
+  font-size:clamp(28px,3vw,42px);
+  font-weight:600;
+  line-height:1.2;
+  letter-spacing:-.025em;
+}
+#contact.site-footer #footerIntro {
+  max-width:920px;
+  margin:0 auto 20px;
+  color:#c4c4c4;
+  font:400 15px/1.8 "Sora",sans-serif;
+}
+#contact.site-footer .sf-nav {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:0;
+  width:fit-content;
+  max-width:100%;
+  margin:0 auto 16px;
+  padding:3px 12px;
+  background:#191919;
+}
+#contact.site-footer .sf-nav a {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:10px 18px;
+  color:#f4f4ee;
+  font:400 13px/1.5 "Sora",sans-serif;
+  letter-spacing:.025em;
+  text-decoration:none;
+  text-transform:uppercase;
+  border:0;
+}
+#contact.site-footer .sf-nav a:hover {
+  color:#a8dbb3;
+}
+#contact.site-footer .sf-socials {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin:0 auto;
+  padding:0;
+  border:0;
+}
+#contact.site-footer .sf-socials a {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:none;
+  width:52px;
+  height:52px;
+  padding:0;
+  margin:0;
+  border:1px solid transparent;
+  border-radius:50%;
+  background:#050505;
+  color:#fff;
+  font:700 24px/1 Arial,sans-serif;
+  letter-spacing:-1px;
+  text-decoration:none;
+}
+#contact.site-footer .sf-socials a:hover {
+  color:#a8dbb3;
+  border-color:#a8dbb3;
+}
+#contact.site-footer .footer-message,
+#contact.site-footer .footer-message-link {
+  display:block;
+  width:fit-content;
+  max-width:100%;
+  margin:20px auto 0;
+  color:#c6dbcb;
+  font:400 13px/1.6 "Sora",sans-serif;
+}
+#contact.site-footer .footer-message[open] {
+  width:min(620px,100%);
+}
+#contact.site-footer summary {
+  cursor:pointer;
+  padding:8px 12px;
+}
+#contact.site-footer .footer-form-panel {
+  margin-top:20px;
+  text-align:left;
+}
+#contact.site-footer #contactForm {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:24px;
+  background:#141714;
+  color:#f4f4ee;
+  border:1px solid #414d44;
+  border-radius:8px;
+}
+#contact.site-footer #contactForm .hp-field {
+  display:none;
+}
+#contact.site-footer #footerSignoff {
+  margin:65px auto 12px;
+  color:#dedede;
+  font:400 14px/1.8 "Sora",sans-serif;
+}
+#contact.site-footer small {
+  display:block;
+  color:#aaa;
+  font:400 11px/1.8 "Sora",sans-serif;
+}
+#contact.site-footer .sf-top {
+  position:absolute;
+  right:22px;
+  bottom:26px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:4px;
+  background:#a8dbb3;
+  color:#050505;
+  font:600 25px/1 sans-serif;
+  text-decoration:none;
+}
+#contact.site-footer a:focus-visible,
+#contact.site-footer summary:focus-visible {
+  outline:3px solid #a8dbb3;
+  outline-offset:5px;
+}
+#contact.site-footer [hidden] {display:none!important}
+
+#heroPortrait .hero-portrait-crop {
+  mask-image:linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,.35) 6%,
+    #000 18%,
+    #000 45%,
+    rgba(0,0,0,.88) 58%,
+    rgba(0,0,0,.38) 78%,
+    transparent 98%
+  );
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,.35) 6%,
+    #000 18%,
+    #000 45%,
+    rgba(0,0,0,.88) 58%,
+    rgba(0,0,0,.38) 78%,
+    transparent 98%
+  );
+}
+@media(max-width:600px) {
+  #contact.site-footer {padding:50px 18px 88px}
+  #contact.site-footer #footerIntro {font-size:13px}
+  #contact.site-footer .sf-nav {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    width:min(360px,100%);
+  }
+  #contact.site-footer .sf-nav a {padding:12px;font-size:12px}
+  #contact.site-footer #footerSignoff {margin-top:42px;font-size:12px}
+  #contact.site-footer .sf-top {right:18px;bottom:20px}
+}

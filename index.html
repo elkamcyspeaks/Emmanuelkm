@@ -1578,6 +1578,9 @@ html,body {
 }
 
 </style>
+<link rel="stylesheet" href="/shared-footer.css">
+<script src="/shared-footer.js"></script>
+
 
 
 
@@ -1587,6 +1590,7 @@ html,body {
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
+<div id="pageTop"></div>
 <div class="topbar">
   <div class="wrap topbar-inner">
     <div class="brand">
@@ -1843,18 +1847,23 @@ html,body {
     <div id="testimonialGrid"></div>
   </div>
 </section>
-<footer id="contact">
-  <div class="wrap contact-hero">
-    <div class="section-tag mono" id="contactTag">04 &mdash; Contact</div>
-    <h2 class="contact-title" id="contactTitle">Let's build something worth shipping.</h2>
-    <div class="contact-links mono" id="contactLinks">
-      <a href="mailto:hello@emmanuelkamal.design">hello@emmanuelkamal.design</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Instagram</a>
-      <a href="#">X / Twitter</a>
-    </div>
 
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm">
+<footer id="contact" class="site-footer">
+  <div class="sf-inner">
+    <span id="contactTag" hidden></span>
+    <h2 id="contactTitle">Let’s create something great together.</h2>
+    <p id="footerIntro">
+      Have a project, an opportunity, or an idea you’d like to explore?
+      I’d love to hear from you.
+    </p>
+    <nav class="sf-nav" aria-label="Footer navigation">
+      <a href="/#work">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/#flyers">Flyer designs</a>
+      <a id="footerCV" hidden>Resume</a>
+    </nav>
+    <div class="sf-socials" id="contactLinks"></div>
+    <details class="footer-message" id="footerMessage"><summary>Send a message ↗</summary><div class="footer-form-panel"><form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm">
       <input type="hidden" name="form-name" value="contact" />
       <p class="hp-field"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
@@ -1875,15 +1884,16 @@ html,body {
         <button type="submit" class="btn primary">Send message</button>
       </div>
       <p class="form-status mono" id="formStatus" role="status"></p>
-    </form>
+    </form></div></details>
+    <p id="footerSignoff">
+      Made with care, curiosity, and a love for good design.
+    </p>
+    <small id="contactCopyright"></small>
+    <span id="contactStatus" hidden></span>
   </div>
-  <div class="wrap">
-    <div class="statusbar mono">
-      <div class="status-left"><span class="led"></span><span id="contactStatus">OPEN TO WORK &middot; RESPONDS WITHIN 48H</span></div>
-      <div class="foot-links"><span id="contactCopyright">&copy; 2026 Emmanuel Kamal</span></div>
-    </div>
-  </div>
+  <a class="sf-top" href="#pageTop" aria-label="Back to top">↑</a>
 </footer>
+
 
 <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -2711,7 +2721,7 @@ html,body {
 
   fetch('content/portfolio.json', { cache: 'no-store' })
     .then(function(r){ if(!r.ok){ throw new Error('content file not found'); } return r.json(); })
-    .then(function(data){ renderContent(data); polishPortfolio(data); })
+    .then(function(data){ renderContent(data); polishPortfolio(data); renderSharedFooter(data); })
     .catch(function(err){ console.warn('Portfolio: using built-in fallback content —', err.message); });
 })();
 </script>
