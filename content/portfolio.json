@@ -207,22 +207,26 @@
     "email": "ekamcy@gmail.com",
     "links": [
       {
-        "label": "LinkedIn",
-        "href": "https://www.behance.net/elkamcy"
-      },
-      {
         "label": "Instagram",
         "href": "#"
       },
       {
         "label": "X / Twitter",
         "href": "#"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/emmanuel-k-b25b15231"
+      },
+      {
+        "label": "Behance",
+        "href": "https://www.behance.net/elkamcy"
       }
     ],
     "status": "OPEN TO SELECT PROJECTS",
     "copyright": "© 2026 Emmanuel K. Muh’d",
     "cv": "/content/uploads/emmanuel_kamal_muhammed_cv.pdf",
-    "phone": "08130400445"
+    "phone": "+234 813 040 0445"
   },
   "flyers": {
     "items": [
@@ -261,6 +265,74 @@
       {
         "focus": "center",
         "image": "/content/uploads/img_1880.jpg"
+      }
+    ]
+  },
+  "aboutPage": {
+    "title": "The person behind the work.",
+    "eyebrow": "ABOUT EMMANUEL",
+    "intro": "Designer, web developer, and creative based in Jos, Nigeria.",
+    "storyTitle": "A little about me.",
+    "chapters": [],
+    "photos": [
+      {
+        "image": "/content/uploads/img_3716-1.jpg",
+        "caption": "Emmanuel / Jos, Nigeria",
+        "focus": "center"
+      },
+      {
+        "image": "/content/uploads/47ef7b2b-fc54-4b06-a80f-74c30d56b724.jpg",
+        "caption": "Sharing knowledge through design training",
+        "focus": "center"
+      },
+      {
+        "image": "/content/uploads/img_0633.jpg",
+        "caption": "Sharing knowledge through design training",
+        "focus": "center"
+      }
+    ],
+    "experience": [
+      {
+        "company": "Belema Financial Technology",
+        "role": "Product Designer (UI/UX)",
+        "dates": "Aug 2023 – Aug 2026",
+        "location": "Nigeria"
+      },
+      {
+        "company": "Edatech",
+        "role": "Product Designer",
+        "dates": "Dec 2022 – Oct 2023",
+        "location": "London, United Kingdom · Remote"
+      },
+      {
+        "company": "Skill Seeds Limited",
+        "role": "UI Designer · Contract",
+        "dates": "Oct 2022 – Jul 2023",
+        "location": "Nigeria"
+      },
+      {
+        "company": "O.C.H.E",
+        "role": "Social Media Manager · Contract",
+        "dates": "Jan 2023 – Jul 2023",
+        "location": "Abuja, Nigeria"
+      },
+      {
+        "company": "Revelation City Music",
+        "role": "Graphic Designer · Part-time",
+        "dates": "Apr 2021 – Aug 2026",
+        "location": "Nigeria"
+      },
+      {
+        "company": "Faithmoves Foundation",
+        "role": "Brand Designer & Social Media Manager",
+        "dates": "Mar 2018 – Aug 2023",
+        "location": "Kaduna, Nigeria"
+      },
+      {
+        "company": "Abba’s House Church",
+        "role": "Brand Designer, then Product Designer",
+        "dates": "Mar 2018 – Jan 2023",
+        "location": "Bauchi, Nigeria"
       }
     ]
   }

@@ -78,6 +78,39 @@ collections:
                   - { label: "Key", name: "key", widget: "string" }
                   - { label: "Value", name: "value", widget: "string" }
 
+          - label: "About page"
+            name: "aboutPage"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "title", widget: "string"}
+              - {label: "Introduction", name: "intro", widget: "text"}
+              - {label: "Story heading", name: "storyTitle", widget: "string"}
+              - label: "Photo strip (first three displayed)"
+                name: "photos"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Image", name: "image", widget: "image"}
+                  - {label: "Caption", name: "caption", widget: "string"}
+                  - {label: "Focus", name: "focus", widget: "select", options: [top, center, bottom, left, right], default: center}
+              - label: "Story sections (journey, interests, aspirations)"
+                name: "chapters"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Heading", name: "title", widget: "string"}
+                  - {label: "Text", name: "body", widget: "text"}
+              - label: "Professional journey"
+                name: "experience"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Organisation", name: "company", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Dates", name: "dates", widget: "string"}
+                  - {label: "Location", name: "location", widget: "string", required: false}
+
           - label: "Work"
             name: "work"
             widget: "object"
