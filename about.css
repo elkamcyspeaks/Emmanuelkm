@@ -186,3 +186,30 @@ dd {margin:7px 0 0;color:var(--muted);font-size:14px}
 @media(prefers-reduced-motion:reduce) {
   html {scroll-behavior:auto}
 }
+
+/* Unified black and mint palette */
+:root {
+  color-scheme:dark;
+  --bg:#050505;
+  --panel:#050505;
+  --ink:#f3f3ed;
+  --muted:#b3bbb5;
+  --accent:#a8dbb3;
+  --line:#2a332d;
+}
+html,body,header,main,.footer {
+  background:#050505;
+}
+.photo {
+  background:#101310;
+  border-color:#414d44;
+}
+.button.primary {
+  background:var(--accent);
+  color:#050505;
+  border-color:var(--accent);
+}
+.button.primary:hover {
+  background:#c2ebca;
+  border-color:#c2ebca;
+}

@@ -1389,6 +1389,196 @@
   }
 }
 </style>
+<style id="blackMintTheme">
+
+:root {
+  color-scheme:dark;
+  --bg:#050505;
+  --bg-raised:#101310;
+  --ink:#f3f3ed;
+  --muted:#b3bbb5;
+  --line:#2a332d;
+  --line-strong:#414d44;
+  --accent:#a8dbb3;
+  --accent-ink:#050505;
+  --guide:#a8dbb3;
+  --shadow:none;
+}
+html,body {
+  background:#050505;
+  color:var(--ink);
+}
+#stage,
+#work,
+#flyers,
+#trainingMentorship,
+#skills,
+#testimonials,
+#contact,
+#contact .contact-hero,
+.hero-companies,
+.statusbar {
+  background:#050505;
+}
+.topbar,
+.topbar .navlinks,
+.topbar .mobile-menu-toggle {
+  background:#050505;
+  color:var(--ink);
+  border-color:var(--line);
+}
+.topbar .brand,
+.topbar .brand-mark,
+#stage #heroEyebrow {
+  color:var(--accent);
+}
+.topbar .brand-mark {
+  border-color:var(--accent);
+}
+.topbar .navlinks a {
+  color:var(--muted);
+}
+.topbar .navlinks a:hover {
+  color:var(--accent);
+  background:transparent;
+}
+#stage #heroName,
+#stage #heroSignature {
+  color:var(--ink);
+}
+#stage #heroRole {
+  color:var(--muted);
+}
+#stage .btn.primary {
+  color:#050505;
+  background:var(--accent);
+  border-color:var(--accent);
+}
+#stage .btn.primary:hover {
+  background:#c2ebca;
+  border-color:#c2ebca;
+}
+#stage .btn:not(.primary) {
+  color:var(--ink);
+  background:transparent;
+  border-color:#75867b;
+}
+#stage .btn:not(.primary):hover {
+  color:var(--accent);
+  border-color:var(--accent);
+  background:#111a14;
+}
+#stage a:focus-visible,
+.topbar a:focus-visible,
+.topbar button:focus-visible {
+  outline-color:var(--accent);
+}
+#skillsLayers .layer:last-child {
+  background:#101310;
+  border:1px solid var(--line);
+  color:var(--ink);
+}
+#skillsLayers .layer:last-child .layer-head span,
+#skillsLayers .layer:last-child li {
+  color:var(--ink);
+}
+#skillsLayers .layer:last-child li {
+  border-color:var(--line-strong);
+}
+#contact #contactForm,
+.work-card,
+.flyer-card,
+.testimonial-card,
+.modal-card,
+#flyerDialog {
+  background:var(--bg-raised);
+  color:var(--ink);
+  border-color:var(--line);
+}
+#contactForm input,
+#contactForm textarea {
+  color:var(--ink);
+  background:#050505;
+  border-color:var(--line-strong);
+}
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+  color:var(--muted);
+}
+
+/* Close portrait crop, with the fade applied after zooming. */
+#heroPortrait .hero-portrait-crop {
+  position:relative;
+  width:100%;
+  height:470px;
+  overflow:hidden;
+  background:#050505;
+  mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 45%,
+    rgba(0,0,0,.88) 58%,
+    rgba(0,0,0,.38) 78%,
+    transparent 98%
+  );
+  -webkit-mask-image:linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 45%,
+    rgba(0,0,0,.88) 58%,
+    rgba(0,0,0,.38) 78%,
+    transparent 98%
+  );
+}
+#heroPortrait .hero-portrait-crop img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top!important;
+  transform:scale(1.7);
+  transform-origin:center top;
+  filter:grayscale(1) contrast(1.18) brightness(.87);
+  mask-image:none;
+  -webkit-mask-image:none;
+}
+#heroPortrait .hero-portrait-crop:after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    #050505 0%,
+    rgba(5,5,5,.55) 8%,
+    transparent 28%,
+    transparent 72%,
+    rgba(5,5,5,.55) 92%,
+    #050505 100%
+  );
+}
+#heroPortrait:after {
+  display:none;
+}
+#heroSignature {
+  margin:-12px 10px 18px 0;
+}
+@media(max-width:960px) {
+  #heroPortrait .hero-portrait-crop {
+    height:420px;
+  }
+}
+@media(max-width:760px) {
+  #heroPortrait .hero-portrait-crop {
+    height:350px;
+  }
+  #heroPortrait .hero-portrait-crop img {
+    transform:scale(1.6);
+  }
+}
+
+</style>
+
 
 
 
@@ -1437,9 +1627,9 @@
   <div class="wrap">
     <div class="canvas-inner">
 <figure id="heroPortrait">
-  <img id="heroPortraitImage" src="/content/uploads/img_3716-1.jpg"
+  <div class="hero-portrait-crop"><img id="heroPortraitImage" src="/content/uploads/img_3716-1.jpg"
     alt="Emmanuel" width="600" height="750"
-    fetchpriority="high" decoding="async">
+    fetchpriority="high" decoding="async"></div>
   <figcaption id="heroSignature">Hello, I’m Emmanuel!</figcaption>
 </figure>
 
