@@ -1612,7 +1612,7 @@ html,body {
 
       <a href="#work">Work</a>
       <a href="/about.html">About</a>
-      <a href="#skills">Skills</a>
+      <a href="/playground.html">Playground</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -1744,28 +1744,9 @@ html,body {
 
 
 
-<section id="flyers" hidden>
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="section-tag mono">Graphic design</div>
-        <h2 class="section-title">Flyer Designs</h2>
-      </div>
-      <p class="section-note">Visual stories for events, brands, and communities.</p>
-    </div>
-    <div class="flyer-grid" id="flyerGrid"></div>
-  </div>
-</section>
 
-<dialog id="flyerDialog" class="flyer-dialog" aria-labelledby="flyerHeading">
-  <button type="button" class="flyer-close" aria-label="Close flyer">Close ×</button>
-  <img id="flyerFullImage" class="flyer-full-image" alt="">
-  <div class="flyer-details">
-    <h2 id="flyerHeading"></h2>
-    <p id="flyerDescription"></p>
-    <a id="flyerVisit" class="btn" target="_blank" rel="noopener noreferrer" hidden>Visit project ↗</a>
-  </div>
-</dialog>
+
+
 
 
 <section id="trainingMentorship" hidden>
@@ -1784,56 +1765,7 @@ html,body {
     </div>
   </div>
 </section>
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="section-tag mono" id="skillsTag">03 &mdash; Skills &amp; tools</div>
-        <h2 class="section-title" id="skillsTitle">The layers panel.</h2>
-      </div>
-      <p class="section-note" id="skillsNote">Grouped the way a project actually gets made.</p>
-    </div>
 
-    <div class="layers" id="skillsLayers">
-      <div class="layer">
-        <div class="layer-head"><span class="sw" style="background:var(--accent)"></span><span>Design</span></div>
-        <ul class="mono">
-          <li>Figma <b>UI</b></li>
-          <li>FigJam <b>FLOW</b></li>
-          <li>Illustrator <b>VEC</b></li>
-          <li>Photoshop <b>RASTER</b></li>
-        </ul>
-      </div>
-      <div class="layer">
-        <div class="layer-head"><span class="sw" style="background:var(--guide)"></span><span>Build</span></div>
-        <ul class="mono">
-          <li>React <b>JS</b></li>
-          <li>Next.js <b>SSR</b></li>
-          <li>Tailwind <b>CSS</b></li>
-          <li>Framer <b>PROTO</b></li>
-        </ul>
-      </div>
-      <div class="layer">
-        <div class="layer-head"><span class="sw" style="background:#8B6EFF"></span><span>AI &amp; automation</span></div>
-        <ul class="mono">
-          <li>Midjourney <b>IMG</b></li>
-          <li>Runway <b>VID</b></li>
-          <li>ComfyUI <b>FLOW</b></li>
-          <li>Claude / GPT <b>COPILOT</b></li>
-        </ul>
-      </div>
-      <div class="layer">
-        <div class="layer-head"><span class="sw" style="background:#3FBF6B"></span><span>Direction</span></div>
-        <ul class="mono">
-          <li>Brand strategy <b>DIR</b></li>
-          <li>Design systems <b>SYS</b></li>
-          <li>Workshops <b>FACIL</b></li>
-          <li>Naming <b>WORDS</b></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <section id="testimonials" hidden>
@@ -1848,6 +1780,18 @@ html,body {
   </div>
 </section>
 
+
+<section id="homeJourney" aria-labelledby="journeyHeading">
+  <div class="wrap">
+    <h2 id="journeyHeading">My Professional Journey</h2>
+    <div id="journeyRows"></div>
+    <a class="journey-more" href="/about.html#journey">
+      See full work experience <span aria-hidden="true">↗</span>
+    </a>
+    <div class="journey-stats" id="journeyStats"></div>
+  </div>
+</section>
+
 <footer id="contact" class="site-footer">
   <div class="sf-inner">
     <span id="contactTag" hidden></span>
@@ -1859,7 +1803,7 @@ html,body {
     <nav class="sf-nav" aria-label="Footer navigation">
       <a href="/#work">Work</a>
       <a href="/about.html">About</a>
-      <a href="/#flyers">Flyer designs</a>
+      <a href="/playground.html">Playground</a>
       <a id="footerCV" hidden>Resume</a>
     </nav>
     <div class="sf-socials" id="contactLinks"></div>
@@ -2535,70 +2479,7 @@ html,body {
 
 
     // Flyer gallery
-    var flyerItems = ((data.flyers || {}).items || []).filter(function(item){
-      return item.image;
-    });
-    var flyerSection = document.getElementById('flyers');
-    var flyerGrid = document.getElementById('flyerGrid');
-    var flyerDialog = document.getElementById('flyerDialog');
-    flyerGrid.replaceChildren();
-    flyerSection.hidden = flyerItems.length === 0;
-
-    flyerDialog.querySelector('.flyer-close').onclick = function(){
-      flyerDialog.close();
-    };
-    flyerDialog.onclick = function(event){
-      if(event.target !== flyerDialog) return;
-      var bounds = flyerDialog.getBoundingClientRect();
-      if(event.clientX < bounds.left || event.clientX > bounds.right ||
-         event.clientY < bounds.top || event.clientY > bounds.bottom){
-        flyerDialog.close();
-      }
-    };
-
-    flyerItems.forEach(function(item){
-      var title = item.title || 'Flyer design';
-      var card = document.createElement('button');
-      card.type = 'button';
-      card.className = 'flyer-card';
-      card.setAttribute('aria-label', 'View ' + title);
-      card.setAttribute('aria-haspopup', 'dialog');
-
-      var image = document.createElement('img');
-      image.src = item.image;
-      image.alt = '';
-      image.loading = 'lazy';
-      image.decoding = 'async';
-
-      var caption = document.createElement('span');
-      caption.className = 'flyer-caption';
-      caption.textContent = title;
-      card.append(image, caption);
-
-      card.onclick = function(){
-        var fullImage = document.getElementById('flyerFullImage');
-        fullImage.src = item.image;
-        fullImage.alt = title;
-        document.getElementById('flyerHeading').textContent = title;
-        document.getElementById('flyerDescription').textContent = item.description || '';
-        var visit = document.getElementById('flyerVisit');
-        visit.hidden = true;
-        visit.removeAttribute('href');
-        try {
-          var url = new URL(item.link || '');
-          if(url.protocol === 'https:' || url.protocol === 'http:'){
-            visit.href = url.href;
-            visit.hidden = false;
-          }
-        } catch(error) {}
-        flyerDialog.showModal();
-        flyerDialog.scrollTop = 0;
-      };
-      flyerGrid.appendChild(card);
-    });
-
-
-    // Training count and gallery
+// Training count and gallery
     var training = data.training || {};
     var trainingSection = document.getElementById('trainingMentorship');
     var gallery = document.getElementById('trainingPhotos');
@@ -2662,7 +2543,7 @@ html,body {
 
     setupTrainingSlider();
 
-    if(data.skills){
+    if(data.skills && document.getElementById('skillsLayers')){
       var sk = data.skills;
       if(sk.sectionTag){ document.getElementById('skillsTag').textContent = sk.sectionTag; }
       if(sk.title){ document.getElementById('skillsTitle').textContent = sk.title; }

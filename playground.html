@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Playground — EmmanuelKM</title>
+  <meta name="description" content="Flyer designs and visual explorations by Emmanuel, a designer based in Jos, Nigeria.">
+  <link rel="canonical" href="https://emmanuelkm.netlify.app/playground.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Sora:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/about.css">
+
+<link rel="stylesheet" href="/shared-footer.css">
+<script src="/shared-footer.js"></script>
+<style>
+  #flyers[hidden], #flyerVisit[hidden] { display:none; }
+  .flyer-grid {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:22px;
+  }
+  .flyer-card {
+    padding:0; overflow:hidden; cursor:pointer;
+    text-align:left; font:inherit; color:var(--ink);
+    background:var(--bg-raised);
+    border:1px solid var(--line-strong); border-radius:2px;
+  }
+  .flyer-card:hover { border-color:var(--accent); }
+  .flyer-card:focus-visible, .flyer-close:focus-visible {
+    outline:2px solid var(--accent); outline-offset:4px;
+  }
+  .flyer-card img {
+    display:block; width:100%; aspect-ratio:4/5;
+    object-fit:contain; background:var(--bg);
+  }
+  .flyer-caption { display:block; padding:18px; }
+  .flyer-dialog {
+    width:calc(100% - 32px); max-width:960px;
+    max-height:90vh; margin:auto; padding:16px;
+    overflow:auto; color:var(--ink);
+    background:var(--bg-raised);
+    border:1px solid var(--line-strong);
+  }
+  .flyer-dialog::backdrop { background:rgba(0,0,0,.8); }
+  .flyer-close {
+    display:block; margin:0 0 14px auto; padding:8px 12px;
+    font:inherit; cursor:pointer; color:var(--ink);
+    background:var(--bg); border:1px solid var(--line-strong);
+  }
+  .flyer-full-image {
+    display:block; width:100%; max-height:70vh; object-fit:contain;
+  }
+  .flyer-details { padding:20px 4px 4px; }
+  .flyer-details p {
+    margin:12px 0 20px; color:var(--muted); white-space:pre-line;
+  }
+  @media(max-width:900px) {
+    .flyer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  }
+  @media(max-width:600px) {
+    .flyer-grid { grid-template-columns:1fr; }
+  }
+
+
+  /* Mobile navigation */
+  .mobile-menu-toggle { display:none; }
+  section[id], footer[id] { scroll-margin-top:80px; }
+  @media(max-width:760px) {
+    .topbar { background:var(--bg); }
+    .topbar .topbar-inner {
+      height:64px; padding:0 18px; flex-wrap:nowrap; gap:16px;
+    }
+    .topbar .brand { min-width:0; gap:10px; }
+    .topbar .brand-mark { flex-shrink:0; }
+    .topbar #brandName {
+      display:block; overflow:hidden; white-space:nowrap;
+      text-overflow:ellipsis; font-size:14px;
+    }
+    .mobile-menu-toggle {
+      display:inline-flex; align-items:center; gap:8px;
+      flex-shrink:0; min-height:44px; padding:8px 12px;
+      color:var(--ink); background:var(--bg-raised);
+      border:1px solid var(--line-strong); border-radius:4px;
+      font:inherit; font-size:12px; cursor:pointer;
+    }
+    .topbar .navlinks {
+      display:none; position:absolute;
+      top:100%; left:0; right:0; width:auto;
+      padding:12px 18px 18px; gap:0;
+      max-height:calc(100dvh - 64px); overflow-y:auto;
+      background:var(--bg);
+      border-bottom:1px solid var(--line-strong);
+      box-shadow:0 12px 20px rgba(0,0,0,.08);
+    }
+    .topbar.menu-open .navlinks {
+      display:flex; flex-direction:column;
+    }
+    .topbar .navlinks a {
+      display:flex; align-items:center; min-height:48px;
+      padding:12px; color:var(--ink); font-size:13px;
+      border-bottom:1px solid var(--line);
+    }
+    .topbar .navlinks a:last-child { border-bottom:0; }
+    .topbar .navlinks a:hover { background:var(--bg-raised); }
+  }
+
+
+  /* Rotating photo-frame design elements */
+  #aboutPortrait::after { content:none; }
+  #portraitDesignElements {
+    position:absolute; inset:0; z-index:2;
+    pointer-events:none;
+  }
+  .portrait-symbol {
+    position:absolute; width:30px; height:30px;
+    display:grid; place-items:center;
+    color:var(--accent); background:var(--bg-raised);
+    border:1px solid var(--line-strong); border-radius:50%;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+  }
+  .portrait-symbol svg {
+    display:block; width:20px; height:20px;
+    transform-origin:center;
+    animation:portrait-symbol-spin 18s linear infinite;
+  }
+  .symbol-1 { top:12px; left:12px; }
+  .symbol-2 { top:12px; right:12px; color:var(--guide); }
+  .symbol-3 { top:calc(50% - 15px); left:10px; }
+  .symbol-4 { top:calc(50% - 15px); right:10px; color:var(--guide); }
+  .symbol-5 { bottom:12px; left:12px; color:var(--guide); }
+  .symbol-6 { bottom:12px; right:12px; }
+  .symbol-2 svg, .symbol-4 svg, .symbol-6 svg {
+    animation-direction:reverse; animation-duration:24s;
+  }
+  .symbol-3 svg { animation-delay:-6s; }
+  .symbol-5 svg { animation-delay:-12s; }
+  @keyframes portrait-symbol-spin {
+    to { transform:rotate(360deg); }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .portrait-symbol svg { animation:none; }
+  }
+
+
+  /* Tiny design symbols following the original border */
+  #aboutPortrait::after { content:none; }
+  #portraitDesignElements {
+    position:absolute; inset:14px; z-index:2;
+    pointer-events:none;
+  }
+  .portrait-micro-symbol {
+    position:absolute; width:9px; height:9px;
+    transform:translate(-50%,-50%);
+    color:var(--accent); opacity:.75;
+  }
+  .portrait-micro-symbol svg {
+    display:block; width:100%; height:100%;
+    transform-origin:center;
+    animation:portrait-micro-spin var(--duration) linear infinite;
+    animation-delay:var(--delay);
+    animation-direction:var(--direction);
+  }
+  @keyframes portrait-micro-spin {
+    to { transform:rotate(360deg); }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .portrait-micro-symbol svg { animation:none; }
+  }
+
+
+  /* Simplified skills and tools */
+  #skillsLayers {
+    display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr);
+    gap:48px; border:0; background:transparent; box-shadow:none;
+  }
+  #skillsLayers .layer {
+    min-width:0; padding:0; border:0;
+  }
+  #skillsLayers .layer-head {
+    margin-bottom:24px; padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+  #skillsLayers .layer-head .sw { display:none; }
+  #skillsLayers .layer-head span {
+    font-family:inherit; font-size:14px; font-weight:600;
+    text-transform:none; letter-spacing:0; color:var(--ink);
+  }
+  #skillsLayers ul { font-family:inherit; }
+  #skillsLayers .layer:first-child ul {
+    display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px 28px;
+  }
+  #skillsLayers li {
+    display:block; font-size:14px; line-height:1.5;
+    color:var(--ink);
+  }
+  #skillsLayers li::after { content:none; }
+  #skillsLayers li b {
+    display:block; margin-top:6px; font-family:inherit;
+    font-size:12px; line-height:1.65; font-weight:400;
+    color:var(--muted);
+  }
+  #skillsLayers .layer:last-child ul {
+    display:flex; flex-direction:row; flex-wrap:wrap; gap:10px;
+  }
+  #skillsLayers .layer:last-child li {
+    padding:9px 13px; border:1px solid var(--line);
+    border-radius:4px; background:var(--bg-raised);
+    font-size:13px;
+  }
+  #skillsLayers .layer:last-child li b { display:none; }
+  @media(max-width:760px) {
+    #skillsLayers { grid-template-columns:1fr; gap:32px; }
+  }
+  @media(max-width:480px) {
+    #skillsLayers .layer:first-child ul { grid-template-columns:1fr; gap:20px; }
+  }
+
+
+  /* Portfolio finishing touches */
+  #testimonials[hidden] { display:none; }
+  #testimonialGrid {
+    display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;
+  }
+  #testimonialGrid figure {
+    margin:0; padding:28px; background:var(--bg-raised);
+    border:1px solid var(--line); border-radius:4px;
+  }
+  #testimonialGrid blockquote { margin:0 0 20px; font-size:16px; line-height:1.7; }
+  #testimonialGrid figcaption { font-size:12px; color:var(--muted); }
+  #projectCaseStudy > div { margin:24px 0; }
+  #projectCaseStudy h4 { margin:0 0 8px; font-size:16px; }
+  #projectCaseStudy p {
+    font-size:14px; line-height:1.7; color:var(--muted); white-space:pre-line;
+  }
+  #projectCaseStudy figure { margin:24px 0; }
+  #projectCaseStudy img { display:block; width:100%; height:auto; }
+  #projectCaseStudy figcaption { margin-top:8px; font-size:12px; color:var(--muted); }
+  #cursorDot, #cursorRing, #trail, #readout { display:none !important; }
+  html.custom-cursor { cursor:auto; }
+  html.custom-cursor a, html.custom-cursor button { cursor:pointer; }
+  #workGrid .work-card { transform:none !important; }
+  .selection-box::before { animation:none !important; }
+  @media(max-width:680px) {
+    #testimonialGrid { grid-template-columns:1fr; }
+  }
+
+
+:root{--bg-raised:#101310;--line-strong:#414d44}
+.play-intro{padding:80px 0 38px}
+.play-intro small{color:#a8dbb3;letter-spacing:.15em}
+.play-intro h1{font-size:clamp(48px,8vw,90px);margin:18px 0}
+.play-intro p{max-width:580px;color:#b3bbb5;line-height:1.8}
+#flyers{padding:0 0 80px;border:0}
+#flyers>.wrap{width:100%;max-width:none;padding:0}
+.flyer-card{border-radius:16px;transition:border-color .2s}
+.flyer-card img{aspect-ratio:4/5}
+.flyer-dialog{border-radius:18px}
+.flyer-dialog h2{font-size:28px}
+.flyer-dialog a{color:#a8dbb3}
+</style></head><body><div id="pageTop"></div><a class="skip" href="#main">Skip to content</a><header>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="EmmanuelKM home">
+        <span class="monogram" id="brandMark">EK</span>
+        <span id="brandName">EmmanuelKM</span>
+      </a>
+      <button class="menu" id="menu"
+        aria-expanded="false" aria-controls="navigation">Menu</button>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="/#work">Work</a>
+        <a href="/about.html">About</a>
+        <a href="/playground.html" aria-current="page">Playground</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header><main id="main" class="wrap"><div class="play-intro"><small>DESIGN EXPLORATIONS</small><h1>Playground.</h1><p>A collection of flyer designs and visual stories for brands, events, and communities. Select a design to take a closer look.</p></div><section id="flyers" hidden>
+  <div class="wrap">
+    <div class="flyer-grid" id="flyerGrid"></div>
+  </div>
+</section><p id="playEmpty" hidden>New designs are on the way.</p><noscript>Please enable JavaScript to browse the gallery.</noscript></main><dialog id="flyerDialog" class="flyer-dialog" aria-labelledby="flyerHeading">
+  <button type="button" class="flyer-close" aria-label="Close flyer">Close ×</button>
+  <img id="flyerFullImage" class="flyer-full-image" alt="">
+  <div class="flyer-details">
+    <h2 id="flyerHeading"></h2>
+    <p id="flyerDescription"></p>
+    <a id="flyerVisit" class="btn" target="_blank" rel="noopener noreferrer" hidden>Visit project ↗</a>
+  </div>
+</dialog><footer id="contact" class="site-footer">
+  <div class="sf-inner">
+    <span id="contactTag" hidden></span>
+    <h2 id="contactTitle">Let’s create something great together.</h2>
+    <p id="footerIntro">
+      Have a project, an opportunity, or an idea you’d like to explore?
+      I’d love to hear from you.
+    </p>
+    <nav class="sf-nav" aria-label="Footer navigation">
+      <a href="/#work">Work</a>
+      <a href="/about.html">About</a>
+      <a href="/playground.html">Playground</a>
+      <a id="footerCV" hidden>Resume</a>
+    </nav>
+    <div class="sf-socials" id="social"></div>
+    <a class="footer-message-link" id="email" href="/#footerMessage">Send a message ↗</a>
+    <p id="footerSignoff">
+      Made with care, curiosity, and a love for good design.
+    </p>
+    <small id="copyright"></small>
+    <span id="contactStatus" hidden></span>
+  </div>
+  <a class="sf-top" href="#pageTop" aria-label="Back to top">↑</a>
+</footer><script id="playSeed" type="application/json">{"brand": {"initials": "EK", "name": "EmmanuelKM"}, "hero": {"eyebrow": "PRODUCT & UI/UX DESIGNER", "name": "Emmanuel K. Muh’d", "role": "I’m Emmanuel, a designer and web developer based in Jos, Nigeria. With 7+ years across product and brand design, I turn ideas into clear interfaces, working websites, and thoughtful visual experiences.", "disciplines": ["UI/UX & Product Design", "Web Design & Development", "AI-Assisted Creative Solutions", "Graphic Design", "Creative Direction & Strategy"], "primaryCta": {"label": "View selected work", "href": "#work"}, "secondaryCta": {"label": "Let’s talk", "href": "#contact"}, "headline": "I make digital experiences feel simple.", "photo": "/content/uploads/img_3716-1.jpg", "photoFocus": "top", "signature": "Hello, I’m Emmanuel!", "companies": ["Belema Fintech", "Edatech", "Skill Seeds", "Revelation City Music"]}, "about": {"frameLabel": "Frame — Profile", "bio": ["I'm Emmanuel, a UI/UX designer and creative based in Jos, Nigeria. I design digital products, build websites, and create visual identities and graphics that help businesses communicate clearly.", "My work brings together interface design, branding, and AI-assisted creative production. I use tools such as Figma, Canva, CorelDRAW, ChatGPT, and Claude to explore ideas and develop them into finished work."], "initials": "EK", "photo": "/content/uploads/img_3716-1.jpg", "note": "Based in Jos. Working across digital and visual design.", "sectionTag": "01 — About", "specs": [{"key": "LOCATION", "value": "Jos, Plateau State, Nigeria · WAT (UTC+1)"}, {"key": "FOCUS", "value": "Product design, design systems, Web Design & Development, applied AI"}], "title": "A little about me.", "frameRatio": "4:5"}, "work": {"sectionTag": "02 — Selected work", "title": "Selected Projects", "note": "A selection of websites and digital experiences I've designed.", "items": [{"frame": "FRAME 01", "published": true, "title": "Ineba Gogo MFB", "tags": ["Fintech", "Design systems"], "caseStudy": {"role": "Website Designer — responsible for the website’s visual design and interface layouts.", "problem": "Ineba Gogo Microfinance Bank needed a new website where prospective customers could find the business, understand its services, and learn how to open an account. The design needed to introduce the bank clearly and make its personal and business banking offerings easy to explore.", "decisions": "I organised the content into distinct sections covering the bank, its services, its values, and its banking products. This gives visitors a clear path from learning about the business to exploring a relevant service.\n\nThe interface combines dark backgrounds, lighter content sections, and bright accents to distinguish information and highlight calls to action. Product cards separate personal and business banking, while icons support the service descriptions and values.\n\nOn mobile, the content follows a single-column layout with stacked cards and a compact navigation menu.", "result": "The new website gave people a place to discover the bank, understand what it offers, and find a route to opening an account. It established an online presence that supports both learning about the business and taking the next step towards becoming a customer.", "gallery": [{"image": "/content/uploads/img_1887.jpg", "caption": "Mobile overview introducing the bank and its financial services"}, {"image": "/content/uploads/img_1888.jpg", "caption": "Core values presented as individual cards on mobile."}, {"image": "/content/uploads/img_1889.jpg", "caption": "Mobile product cards for exploring personal and business banking."}]}, "link": "https://igmfb.com/", "image": "/content/uploads/screenshot-2026-09-25-at-11.08.40 am.png", "description": "A new website for Ineba Gogo Microfinance Bank, helping visitors discover the bank, understand its services, and take the next step towards opening an account.", "category": "UI/UX & PRODUCT"}, {"frame": "FRAME 02", "category": "FINTECH WEBSITE DESIGN ", "title": "Belema Fintech Website", "description": "I designed the Belema Fintech website to showcase its payment solutions and build confidence with potential business clients. The design pairs a dark interface with vibrant lime accents, bold typography, and technology-inspired imagery to create a modern visual identity. Clear navigation, prominent trust indicators, and a focused “Talk to Sales” call to action help visitors explore the company’s offerings and connect with its team.", "tags": ["Fintech", "Website design"], "link": "https://belemafintech.com/", "image": "/content/uploads/screenshot-2026-09-25-at-12.29.29 pm.png"}, {"frame": "FRAME 03", "category": "AI & GRAPHIC DESIGN", "title": "Generative brand toolkit", "description": "An internal tool that turns a brand's tokens into on-demand social templates, pairing a layout model with a human-in-the-loop review step.", "tags": ["AI tooling", "Brand systems"], "link": "#contact", "published": false}, {"frame": "FRAME 04", "category": "CREATIVE DIRECTION", "title": "Product launch direction", "description": "Creative direction for a fintech product launch — naming, visual system, and the campaign that introduced it to market.", "tags": ["Strategy", "Campaign"], "link": "#contact", "published": false}]}, "skills": {"sectionTag": "Skills & tools", "title": "What I do. What I use.", "note": "Design, development, and creative production.", "groups": [{"name": "My skills", "swatch": "accent", "items": [{"label": "UI/UX Design", "tag": "Clear, easy-to-use digital experiences."}, {"label": "Website Design & Development", "tag": "Designing and building working websites."}, {"label": "Graphic Design", "tag": "Flyers, campaign visuals, and social media designs."}, {"label": "AI-Assisted Creative Production", "tag": "Images, videos, and visual content created with AI."}, {"label": "Brand Identity Design", "tag": "Logos, colours, typography, and brand guidelines."}, {"label": "Design Systems", "tag": "Reusable components and consistent interface styles."}, {"label": "Prototyping & Interaction Design", "tag": "Interactive demos, transitions, and animations."}, {"label": "Creative Direction", "tag": "Guiding a project's visual style and creative approach."}]}, {"name": "Tools I use", "swatch": "accent", "items": [{"label": "Figma", "tag": "Figma"}, {"label": "Canva", "tag": "Canva"}, {"label": "CorelDRAW", "tag": "CorelDRAW"}, {"label": "ChatGPT", "tag": "ChatGPT"}, {"label": "Claude", "tag": "Claude"}, {"label": "Google Flow", "tag": "Google Flow"}, {"label": "Google AI Studio", "tag": "Google AI Studio"}]}]}, "contact": {"sectionTag": "04 — Contact", "title": "Let’s create something great together.", "email": "ekamcy@gmail.com", "links": [{"label": "Instagram", "href": "#"}, {"label": "X / Twitter", "href": "#"}, {"label": "LinkedIn", "href": "https://www.linkedin.com/in/emmanuel-k-b25b15231"}, {"label": "Behance", "href": "https://www.behance.net/elkamcy"}], "status": "OPEN TO SELECT PROJECTS", "copyright": "© 2026 Emmanuel K. Muh’d", "cv": "/content/uploads/emmanuel_kamal_muhammed_cv.pdf", "phone": "+234 813 040 0445", "footerIntro": "Have a project, an opportunity, or an idea you’d like to explore? I’d love to hear from you.", "footerSignoff": "Made with care, curiosity, and a love for good design."}, "flyers": {"items": [{"image": "/content/uploads/mauludd.png", "title": "Maulud Flyer Design"}]}, "training": {"title": "Training & Mentorship.", "count": 60, "showPlus": true, "introduction": "I believe knowledge becomes more valuable when shared. Through training and mentorship, I help aspiring designers build practical skills, find their confidence, and take their next step.", "photos": [{"focus": "center", "image": "/content/uploads/47ef7b2b-fc54-4b06-a80f-74c30d56b724.jpg"}, {"focus": "center", "image": "/content/uploads/img_0633.jpg"}, {"focus": "center", "image": "/content/uploads/59e5b7ad-2c59-4bef-b345-a58ae338b1af.jpg"}, {"focus": "center", "image": "/content/uploads/img_1878.jpg"}, {"focus": "center", "image": "/content/uploads/img_1879.jpg"}, {"focus": "center", "image": "/content/uploads/img_1880.jpg"}]}, "aboutPage": {"title": "The person behind the work.", "eyebrow": "ABOUT EMMANUEL", "intro": "Designer, web developer, and creative based in Jos, Nigeria.", "storyTitle": "A little about me.", "chapters": [], "photos": [{"image": "/content/uploads/img_3716-1.jpg", "caption": "Emmanuel / Jos, Nigeria", "focus": "center"}, {"image": "/content/uploads/47ef7b2b-fc54-4b06-a80f-74c30d56b724.jpg", "caption": "Sharing knowledge through design training", "focus": "center"}, {"image": "/content/uploads/img_0633.jpg", "caption": "Sharing knowledge through design training", "focus": "center"}], "experience": [{"company": "Belema Financial Technology", "role": "Product Designer (UI/UX)", "dates": "Aug 2023 – Aug 2026", "location": "Nigeria"}, {"company": "Edatech", "role": "Product Designer", "dates": "Dec 2022 – Oct 2023", "location": "London, United Kingdom · Remote"}, {"company": "Skill Seeds Limited", "role": "UI Designer · Contract", "dates": "Oct 2022 – Jul 2023", "location": "Nigeria"}, {"company": "O.C.H.E", "role": "Social Media Manager · Contract", "dates": "Jan 2023 – Jul 2023", "location": "Abuja, Nigeria"}, {"company": "Revelation City Music", "role": "Graphic Designer · Part-time", "dates": "Apr 2021 – Aug 2026", "location": "Nigeria"}, {"company": "Faithmoves Foundation", "role": "Brand Designer & Social Media Manager", "dates": "Mar 2018 – Aug 2023", "location": "Kaduna, Nigeria"}, {"company": "Abba’s House Church", "role": "Brand Designer, then Product Designer", "dates": "Mar 2018 – Jan 2023", "location": "Bauchi, Nigeria"}]}}</script><script>
+(function(){
+  const menu=document.getElementById('menu');
+  const nav=document.getElementById('navigation');
+  function closeMenu(){
+    nav.classList.remove('open');
+    menu.setAttribute('aria-expanded','false');
+  }
+  menu.onclick=()=>{
+    menu.setAttribute('aria-expanded',String(nav.classList.toggle('open')));
+  };
+  nav.addEventListener('click',closeMenu);
+  document.addEventListener('click',event=>{
+    if(!nav.contains(event.target)&&!menu.contains(event.target))closeMenu();
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&nav.classList.contains('open')){
+      closeMenu();menu.focus();
+    }
+  });
+  function render(data){
+
+    var flyerItems = ((data.flyers || {}).items || []).filter(function(item){
+      return item.image;
+    });
+    var flyerSection = document.getElementById('flyers');
+    var flyerGrid = document.getElementById('flyerGrid');
+    var flyerDialog = document.getElementById('flyerDialog');
+    flyerGrid.replaceChildren();
+    flyerSection.hidden = flyerItems.length === 0;
+
+    flyerDialog.querySelector('.flyer-close').onclick = function(){
+      flyerDialog.close();
+    };
+    flyerDialog.onclick = function(event){
+      if(event.target !== flyerDialog) return;
+      var bounds = flyerDialog.getBoundingClientRect();
+      if(event.clientX < bounds.left || event.clientX > bounds.right ||
+         event.clientY < bounds.top || event.clientY > bounds.bottom){
+        flyerDialog.close();
+      }
+    };
+
+    flyerItems.forEach(function(item){
+      var title = item.title || 'Flyer design';
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'flyer-card';
+      card.setAttribute('aria-label', 'View ' + title);
+      card.setAttribute('aria-haspopup', 'dialog');
+
+      var image = document.createElement('img');
+      image.src = item.image;
+      image.alt = '';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+
+      var caption = document.createElement('span');
+      caption.className = 'flyer-caption';
+      caption.textContent = title;
+      card.append(image, caption);
+
+      card.onclick = function(){
+        var fullImage = document.getElementById('flyerFullImage');
+        fullImage.src = item.image;
+        fullImage.alt = title;
+        document.getElementById('flyerHeading').textContent = title;
+        document.getElementById('flyerDescription').textContent = item.description || '';
+        var visit = document.getElementById('flyerVisit');
+        visit.hidden = true;
+        visit.removeAttribute('href');
+        try {
+          var url = new URL(item.link || '');
+          if(url.protocol === 'https:' || url.protocol === 'http:'){
+            visit.href = url.href;
+            visit.hidden = false;
+          }
+        } catch(error) {}
+        flyerDialog.showModal();
+        flyerDialog.scrollTop = 0;
+      };
+      flyerGrid.appendChild(card);
+    });
+
+
+    
+    document.getElementById('playEmpty').hidden=flyerItems.length>0;
+    const brand=data.brand||{};
+    document.getElementById('brandName').textContent=brand.name||'EmmanuelKM';
+    document.getElementById('brandMark').textContent=brand.initials||'EK';
+    const contact=data.contact||{};
+    document.getElementById('contactTitle').textContent=contact.title||'Let’s create something great together.';
+    document.getElementById('copyright').textContent=contact.copyright||'';
+    renderSharedFooter(data);
+  }
+  render(JSON.parse(document.getElementById('playSeed').textContent));
+  fetch('/content/portfolio.json',{cache:'no-store'})
+    .then(r=>{if(!r.ok)throw Error('Content unavailable');return r.json()})
+    .then(render).catch(()=>{});
+})();
+</script></body></html>
