@@ -1209,6 +1209,187 @@
     border-radius:2px;
   }
 </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap">
+<style id="portraitHeroStyle">
+/* portrait-hero-v1 */
+.topbar {
+  background:#050505;
+  border-color:#252525;
+  color:#fff;
+  backdrop-filter:none;
+}
+.topbar .topbar-inner {height:100px}
+.topbar .brand {color:#e9589c;font-size:20px;font-weight:700}
+.topbar .brand-mark {
+  width:36px;height:36px;border-color:#e9589c;font-size:14px;
+}
+.topbar .navlinks a {
+  color:#d3d3d3;text-transform:none;letter-spacing:0;
+  font-size:14px;padding:12px 0;
+}
+.topbar .navlinks a:hover {color:#f57bb3}
+#stage {background:#050505;color:#fff;border:0}
+#stage>.ruler-x,
+#stage>.ruler-y,
+#stage>canvas,
+#stage>.readout,
+#stage>.guide-x,
+#stage>.guide-y,
+#stage>.guide-tag-x,
+#stage>.guide-tag-y {display:none!important}
+
+#stage .canvas-inner {
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.45fr);
+  grid-template-rows:auto auto auto;
+  column-gap:60px;
+  align-content:center;
+  margin:0;
+  padding:66px 0 72px;
+  min-height:680px;
+}
+#heroPortrait {
+  grid-column:1;grid-row:1/4;align-self:center;
+  position:relative;margin:0;min-width:0;
+}
+#heroPortrait img {
+  display:block;width:100%;height:520px;
+  object-fit:cover;object-position:center top;
+  filter:grayscale(1) contrast(1.12);
+  mask-image:linear-gradient(to bottom,#000 70%,transparent 98%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent 98%);
+}
+#heroPortrait:after {
+  content:"";position:absolute;inset:0 0 55px;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,#050505 0%,transparent 12%,transparent 88%,#050505 100%
+  );
+}
+#heroSignature {
+  position:relative;z-index:1;color:#fff;text-align:right;
+  font:32px/1.3 "Caveat",cursive;
+  transform:rotate(-7deg);
+  margin:-16px 10px 18px 0;
+}
+#stage #heroEyebrow {
+  grid-column:2;grid-row:1;align-self:end;
+  margin:0 0 20px;color:#ef74aa;
+  font:500 12px/1.7 "Sora",sans-serif;
+  letter-spacing:.22em;text-transform:uppercase;animation:none;
+}
+#stage #heroEyebrow:before {display:none}
+#stage #tiltBox {
+  grid-column:2;grid-row:2;
+  max-width:none;width:100%;padding:0;margin:0;
+  border:0;background:none;box-shadow:none;
+  transform:none!important;animation:none;
+}
+#stage #tiltBox:before,
+#stage #tiltBox:after,
+#stage .handle,
+#stage .coord-tag,
+#stage #heroChips {display:none!important}
+
+#stage #heroName {
+  color:#fff;font-family:"Fraunces",Georgia,serif;
+  font-size:clamp(42px,4.7vw,70px);font-weight:600;
+  line-height:1.06;letter-spacing:-.045em;
+  max-width:760px;margin:0 0 28px;
+}
+#stage #heroRole {
+  font-family:"Sora",sans-serif;font-style:normal;
+  font-size:clamp(15px,1.35vw,18px);font-weight:400;
+  line-height:1.7;max-width:700px;color:#bdbdbd;margin:0;
+}
+#stage .cta-row {
+  grid-column:2;grid-row:3;align-self:start;
+  display:flex;gap:16px;flex-wrap:wrap;
+  margin:28px 0 0;animation:none;
+}
+#stage .btn {
+  min-height:50px;border:1px solid #e8e8e8;
+  border-radius:999px;padding:13px 24px;
+  background:transparent;color:#fff;font-size:14px;
+  transform:none;box-shadow:none;
+}
+#stage .btn.primary {
+  background:#e9589c;color:#080808;
+  border-color:#e9589c;font-weight:600;
+}
+#stage .btn.primary:after {content:"↘";margin-left:10px}
+#stage .btn:not(.primary):after {content:"↗";margin-left:10px}
+#stage .btn:hover {
+  background:#fff;color:#080808;border-color:#fff;
+}
+#stage a:focus-visible,
+.topbar a:focus-visible,
+.topbar button:focus-visible {
+  outline:3px solid #ff9bc8;outline-offset:5px;
+}
+.hero-companies {background:#050505;color:#fff;padding:0 0 40px}
+.hero-companies[hidden] {display:none}
+.hero-companies .wrap {
+  border-top:1px solid #353535;padding-top:22px;
+}
+.hero-companies p {font-size:12px;color:#aaa;margin:0 0 24px}
+#heroCompanies {
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+}
+#heroCompanies span {
+  font:600 clamp(15px,1.7vw,22px)/1.35 "Sora",sans-serif;
+  color:#dedede;max-width:220px;
+}
+@media(max-width:960px) {
+  #stage .canvas-inner {column-gap:30px;min-height:600px}
+  #heroPortrait img {height:460px}
+  #stage #heroName {font-size:46px}
+}
+@media(max-width:760px) {
+  .topbar .topbar-inner {height:74px}
+  .topbar .mobile-menu-toggle,
+  .topbar .navlinks {
+    background:#090909;color:#fff;border-color:#333;
+  }
+  .topbar .navlinks a {color:#eee;border-color:#333}
+  .topbar .navlinks a:hover {background:#202020}
+  .topbar #brandName {font-size:16px}
+  #stage .canvas-inner {
+    display:flex;flex-direction:column;min-height:0;
+    padding:48px 0 50px;margin:0;
+  }
+  #stage #heroEyebrow {
+    order:0;align-self:flex-start;
+    font-size:10px;letter-spacing:.16em;
+  }
+  #stage #tiltBox {order:1}
+  #stage #heroName {
+    font-size:clamp(39px,9vw,58px);max-width:600px;
+  }
+  #stage #heroRole {font-size:15px}
+  #heroPortrait {
+    order:2;width:min(330px,100%);margin:28px auto 0;
+  }
+  #heroPortrait img {height:350px}
+  #heroSignature {font-size:30px}
+  #stage .cta-row {order:3;margin:22px 0 0;width:100%}
+  #stage .btn {
+    flex:1;padding:12px 16px;white-space:nowrap;
+  }
+  #heroCompanies {
+    display:grid;grid-template-columns:1fr 1fr;gap:22px;
+  }
+  #heroCompanies span {font-size:16px}
+  .hero-companies {padding-bottom:35px}
+}
+@media(prefers-reduced-motion:reduce) {
+  #stage *,#stage *:before,#stage *:after {
+    animation:none!important;transition:none!important;
+  }
+}
+</style>
+
 
 
 
@@ -1255,6 +1436,13 @@
 
   <div class="wrap">
     <div class="canvas-inner">
+<figure id="heroPortrait">
+  <img id="heroPortraitImage" src="/content/uploads/img_3716-1.jpg"
+    alt="Emmanuel" width="600" height="750"
+    fetchpriority="high" decoding="async">
+  <figcaption id="heroSignature">Hello, I’m Emmanuel!</figcaption>
+</figure>
+
       <div class="eyebrow mono" id="heroEyebrow">BASED IN LAGOS, NIGERIA &middot; OPEN TO SELECT PROJECTS</div>
 
       <div class="selection-box" id="tiltBox">
@@ -1280,6 +1468,14 @@
         <a class="btn" href="#contact" id="ctaSecondary">Get in touch</a>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="hero-companies" id="heroCompanyStrip">
+  <div class="wrap">
+    <p>Teams I’ve worked with</p>
+    <div id="heroCompanies"></div>
   </div>
 </div>
 
@@ -1981,7 +2177,40 @@
     show(0);
   }
 
+
+  function renderPortraitHero(data){
+    var h = data.hero || {};
+    var image = document.getElementById('heroPortraitImage');
+    var source = h.photo || (data.about || {}).photo;
+    if(source) image.src = source;
+    image.alt = h.name || 'Emmanuel';
+
+    var focus = {
+      top:'center top',
+      center:'center center',
+      bottom:'center bottom'
+    };
+    image.style.objectPosition = focus[h.photoFocus] || 'center top';
+
+    document.getElementById('heroSignature').textContent =
+      h.signature || 'Hello, I’m Emmanuel!';
+
+    var list = document.getElementById('heroCompanies');
+    list.replaceChildren();
+
+    (h.companies || []).forEach(function(name){
+      var item = document.createElement('span');
+      item.textContent = name;
+      list.appendChild(item);
+    });
+
+    document.getElementById('heroCompanyStrip').hidden =
+      !list.children.length;
+  }
+
   function renderContent(data){
+    renderPortraitHero(data);
+
     if(data.brand){
       var mark = document.getElementById('brandMark');
       if(data.brand.logo){
@@ -2002,7 +2231,7 @@
       var h = data.hero;
       if(h.eyebrow){ document.getElementById('heroEyebrow').textContent = h.eyebrow; }
       if(h.name){
-        document.getElementById('heroName').textContent = h.name;
+        document.getElementById('heroName').textContent = h.headline || h.name;
         document.title = h.name;
       }
       if(h.role){ document.getElementById('heroRole').textContent = h.role; }

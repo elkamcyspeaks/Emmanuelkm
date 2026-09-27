@@ -4,9 +4,9 @@
     "name": "EmmanuelKM"
   },
   "hero": {
-    "eyebrow": "BASED IN JOS, PLATEAU STATE, NIGERIA · OPEN TO SELECT PROJECTS",
+    "eyebrow": "PRODUCT & UI/UX DESIGNER",
     "name": "Emmanuel K. Muh’d",
-    "role": "Product & UI/UX designer building interfaces, design systems, and the AI-assisted tools that speed up creative work.",
+    "role": "I’m Emmanuel, a designer and web developer based in Jos, Nigeria. With 7+ years across product and brand design, I turn ideas into clear interfaces, working websites, and thoughtful visual experiences.",
     "disciplines": [
       "UI/UX & Product Design",
       "Web Design & Development",
@@ -19,9 +19,19 @@
       "href": "#work"
     },
     "secondaryCta": {
-      "label": "Get in touch",
+      "label": "Let’s talk",
       "href": "#contact"
-    }
+    },
+    "headline": "I make digital experiences feel simple.",
+    "photo": "/content/uploads/img_3716-1.jpg",
+    "photoFocus": "top",
+    "signature": "Hello, I’m Emmanuel!",
+    "companies": [
+      "Belema Fintech",
+      "Edatech",
+      "Skill Seeds",
+      "Revelation City Music"
+    ]
   },
   "about": {
     "frameLabel": "Frame — Profile",

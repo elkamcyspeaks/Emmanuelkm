@@ -28,6 +28,16 @@ collections:
               - { label: "Eyebrow line", name: "eyebrow", widget: "string" }
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Role / tagline", name: "role", widget: "text" }
+              - { label: "Hero headline", name: "headline", widget: "string" }
+              - { label: "Hero portrait", name: "photo", widget: "image", required: false }
+              - { label: "Portrait focus", name: "photoFocus", widget: "select", options: [top, center, bottom], default: top }
+              - { label: "Handwritten greeting", name: "signature", widget: "string" }
+              - label: "Teams I have worked with"
+                name: "companies"
+                widget: "list"
+                required: false
+                field: { label: "Company", name: "value", widget: "string" }
+
               - label: "Disciplines"
                 name: "disciplines"
                 widget: "list"
