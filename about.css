@@ -213,3 +213,29 @@ html,body,header,main,.footer {
   background:#c2ebca;
   border-color:#c2ebca;
 }
+
+/* mobile-readability-v1 */
+@media(max-width:600px){
+  .photos{
+    display:flex;gap:18px;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x proximity;
+    padding:24px 4px 20px;
+    margin:36px 0 44px;
+  }
+  .photos .photo,
+  .photos .photo:nth-child(2),
+  .photos .photo:nth-child(3){
+    flex:0 0 80%;
+    min-width:0;
+    transform:none;
+    scroll-snap-align:start;
+    padding:10px 10px 0;
+  }
+  .photos .photo figcaption{
+    font-size:13px;
+    line-height:1.6;
+    min-height:54px;
+    overflow-wrap:anywhere;
+  }
+}

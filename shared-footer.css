@@ -209,3 +209,14 @@ html {scroll-padding-top:110px}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto!important}
 }
+
+/* mobile-form-readability-v1 */
+@media(max-width:600px){
+  #contact #contactForm input,
+  #contact #contactForm textarea{
+    font-size:16px;
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+}
