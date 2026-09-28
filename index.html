@@ -1632,7 +1632,7 @@ html,body {
   <div class="wrap">
     <div class="canvas-inner">
 <figure id="heroPortrait">
-  <div class="hero-portrait-crop"><img id="heroPortraitImage" src="/content/uploads/img_3716-1.jpg"
+  <div class="hero-portrait-crop"><img id="heroPortraitImage" src="/.netlify/images?url=%2Fcontent%2Fuploads%2Fimg_3716-1.jpg&amp;w=1200&amp;q=85&amp;fm=webp"
     alt="Emmanuel" width="600" height="750"
     fetchpriority="high" decoding="async"></div>
   <figcaption id="heroSignature">Hello, I’m Emmanuel!</figcaption>
@@ -2277,7 +2277,7 @@ html,body {
       thumbnail.alt = '';
       thumbnail.loading = 'lazy';
       thumbnail.decoding = 'async';
-      thumbnail.dataset.source = original.src;
+      thumbnail.dataset.source = portfolioImageUrl(original.closest('a').href, 240);
       thumbnail.style.objectPosition = original.style.objectPosition;
       button.appendChild(thumbnail);
 
@@ -2327,7 +2327,7 @@ html,body {
     var h = data.hero || {};
     var image = document.getElementById('heroPortraitImage');
     var source = h.photo || (data.about || {}).photo;
-    if(source) image.src = source;
+    if(source) image.src = portfolioImageUrl(source, 1200);
     image.alt = h.name || 'Emmanuel';
 
     var focus = {
@@ -2442,7 +2442,7 @@ html,body {
           var card = el('article', 'work-card');
           if(item.image){
             var preview = el('img', 'work-image');
-            preview.src = item.image;
+            preview.src = portfolioImageUrl(item.image, 1920);
             preview.alt = (item.title || 'Project') + ' design preview';
             preview.loading = 'lazy';
             preview.decoding = 'async';
@@ -2517,7 +2517,7 @@ html,body {
         'Open full photo: ' + (photo.caption || 'Training session'));
 
       var image = document.createElement('img');
-      image.src = source;
+      image.src = portfolioImageUrl(source, 1200);
       image.alt = photo.caption || 'Training session';
       image.loading = 'lazy';
       image.decoding = 'async';

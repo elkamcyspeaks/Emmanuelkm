@@ -58,7 +58,7 @@
     $('photos').innerHTML = photos.map((photo,index) => `
       <figure class="photo">
         <img
-          src="${esc(url(photo.image))}"
+          src="${esc(portfolioImageUrl(url(photo.image), 1200))}"
           alt="${esc(photo.caption || 'Emmanuel')}"
           style="object-position:${focusMap[photo.focus] || 'center'}"
           ${index ? 'loading="lazy"' : 'fetchpriority="high"'}

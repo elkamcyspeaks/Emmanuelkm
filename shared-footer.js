@@ -63,17 +63,38 @@ window.addEventListener('DOMContentLoaded', openFooterMessage);
 
 
 // separate-page-content-v1
+// loading-speed-v1
+let portfolioContentRequest;
 async function fetchPortfolioContent(){
-  const parts = await Promise.all([
-    '/content/portfolio.json',
-    '/content/about.json',
-    '/content/playground.json'
-  ].map(async path => {
-    const response = await fetch(path, {cache:'no-store'});
-    if(!response.ok) throw new Error('Could not load ' + path);
-    return response.json();
-  }));
-  return new Response(JSON.stringify(Object.assign({}, ...parts)), {
+  if(!portfolioContentRequest){
+    portfolioContentRequest = Promise.all([
+      '/content/portfolio.json',
+      '/content/about.json',
+      '/content/playground.json'
+    ].map(async path => {
+      const response = await fetch(path, {cache:'no-cache'});
+      if(!response.ok) throw new Error('Could not load ' + path);
+      return response.json();
+    })).then(parts => JSON.stringify(Object.assign({}, ...parts)))
+      .catch(error => {
+        portfolioContentRequest = null;
+        throw error;
+      });
+  }
+  return new Response(await portfolioContentRequest, {
     headers: {'Content-Type':'application/json'}
   });
+}
+function portfolioImageUrl(source, width){
+  if(!source) return source;
+  try {
+    const url = new URL(source, location.origin);
+    if(url.origin !== location.origin ||
+       !url.pathname.startsWith('/content/uploads/') ||
+       !/\.(jpe?g|png|webp)$/i.test(url.pathname)) return source;
+    const params = new URLSearchParams({
+      url:url.pathname, w:String(width), q:'85', fm:'webp'
+    });
+    return '/.netlify/images?' + params;
+  } catch { return source; }
 }
