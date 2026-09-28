@@ -75,14 +75,17 @@
     $('copyright').textContent=(data.contact||{}).copyright||'';
 
     const items=((data.work||{}).items||[]).filter(p=>p.published!==false);
-    const slug=new URLSearchParams(location.search).get('project');
+    const slug=document.documentElement.dataset.project || new URLSearchParams(location.search).get('project');
     const item=items.find(p=>p.slug===slug);
     if(!item){
+      $('caseArticle').hidden=true;
+      $('caseStatus').hidden=false;
       $('caseStatus').textContent=
         'This project is unavailable. Please choose a project from Selected Work.';
       return;
     }
 
+    ['caseCover','caseFacts','caseContents','caseSections'].forEach(id=>$(id).replaceChildren());
     const study=item.caseStudy||{};
     document.title=item.title+' — EmmanuelKM';
     document.querySelector('meta[name="description"]').content=
@@ -146,7 +149,7 @@
     $('caseContents').hidden=!$('caseContents').children.length;
     if(items.length>1){
       const next=items[(items.indexOf(item)+1)%items.length];
-      $('nextProject').href='/project.html?project='+encodeURIComponent(next.slug);
+      $('nextProject').href='/projects/'+encodeURIComponent(next.slug);
       $('nextProject').textContent='Next project: '+next.title+' ↗';
       $('nextProject').hidden=false;
     }
