@@ -119,7 +119,7 @@
         "frame": "FRAME 02",
         "category": "FINTECH WEBSITE DESIGN ",
         "title": "Belema Fintech Website",
-        "description": "I designed the Belema Fintech website to showcase its payment solutions and build confidence with potential business clients. The design pairs a dark interface with vibrant lime accents, bold typography, and technology-inspired imagery to create a modern visual identity. Clear navigation, prominent trust indicators, and a focused “Talk to Sales” call to action help visitors explore the company’s offerings and connect with its team.",
+        "description": "A redesign of Belema Fintech’s website, giving its payment products and services a clearer, more professional presentation.",
         "tags": [
           "Fintech",
           "Website design"
@@ -128,7 +128,63 @@
         "image": "/content/uploads/screenshot-2026-09-25-at-12.29.29 pm.png",
         "slug": "belema-fintech-website",
         "caseStudy": {
-          "sections": []
+          "sections": [
+            {
+              "heading": "The brief",
+              "body": "Belema Fintech wanted its existing website to look better and feel more presentable, while showing the full range of its services and products.\n\nMy responsibility was the website’s design. The focus was on improving the visual presentation and organising information so visitors could understand the business and explore its offerings.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            },
+            {
+              "heading": "Giving the content a clear hierarchy",
+              "body": "The design uses large headings to establish the main message, followed by supporting copy and smaller groups of information. In the services section, icons and short headings separate the company’s key benefits into distinct points.\n\nLight backgrounds give the content room to breathe, while green accents and a colourful illustration connect the section to the brand. This creates a clear visual order for visitors scanning the page.",
+              "layout": "full",
+              "visible": true,
+              "images": [
+                {
+                  "image": "/content/uploads/belema-case-services.png",
+                  "caption": "The services section groups key benefits beneath a prominent heading, with supporting icons and an illustration.",
+                  "alt": "Belema Fintech services section with benefit descriptions on the left and a colourful infrastructure illustration on the right."
+                }
+              ]
+            },
+            {
+              "heading": "Introducing the business",
+              "body": "The About page pairs a clear statement of what Belema does with a more detailed company introduction. The two-column layout separates the headline from the explanation, keeping each easy to scan.\n\nA company-logo strip sits below the introduction, adding visual context to the business presentation without competing with the main message.",
+              "layout": "full",
+              "visible": true,
+              "images": [
+                {
+                  "image": "/content/uploads/belema-case-about.png",
+                  "caption": "The About page combines a bold introduction, supporting company information and a company-logo strip.",
+                  "alt": "Belema Fintech About page showing a large headline, company description and logos beneath the introduction."
+                }
+              ]
+            },
+            {
+              "heading": "Making products and contact details easy to find",
+              "body": "The main navigation groups the website into familiar destinations: Home, About Us, Products, Resources and Contact Us.\n\nThe footer provides another route to the product pages and brings together company information, support links, contact details and office locations. Its dark green background and lime brand mark create a distinct ending to the page.",
+              "layout": "full",
+              "visible": true,
+              "images": [
+                {
+                  "image": "/content/uploads/belema-case-footer.png",
+                  "caption": "The footer organises product links, company information and contact details into separate columns.",
+                  "alt": "Dark green Belema Fintech footer with product links, contact information, office addresses and social links."
+                }
+              ]
+            },
+            {
+              "heading": "The outcome",
+              "body": "The redesigned website gave Belema Fintech a more polished presentation of its products, services and company information.\n\nI also observed higher search rankings after launch. This is a qualitative observation; the case study does not attribute that improvement to visual design alone.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            }
+          ],
+          "role": "Website Designer — responsible for the visual design and interface layouts.",
+          "summary": "I redesigned Belema Fintech’s website to give the business a more polished online presence and present its products and services clearly. The design brings together structured content, bold typography and the brand’s green palette to help visitors explore what the company offers."
         }
       },
       {
