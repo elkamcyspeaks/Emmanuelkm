@@ -39,6 +39,7 @@
     "note": "A selection of websites and digital experiences I've designed.",
     "items": [
       {
+        "slug": "ineba-gogo-mfb",
         "frame": "FRAME 01",
         "published": true,
         "title": "Ineba Gogo MFB",
@@ -112,21 +113,16 @@
         "link": "https://igmfb.com/",
         "image": "/content/uploads/screenshot-2026-09-25-at-11.08.40 am.png",
         "description": "A new website for Ineba Gogo Microfinance Bank, helping visitors discover the bank, understand its services, and take the next step towards opening an account.",
-        "category": "UI/UX & PRODUCT",
-        "slug": "ineba-gogo-mfb"
+        "category": "UI/UX & PRODUCT"
       },
       {
+        "slug": "belema-fintech-website",
         "frame": "FRAME 02",
-        "category": "FINTECH WEBSITE DESIGN ",
         "title": "Belema Fintech Website",
-        "description": "A redesign of Belema Fintech’s website, giving its payment products and services a clearer, more professional presentation.",
         "tags": [
           "Fintech",
           "Website design"
         ],
-        "link": "https://belemafintech.com/",
-        "image": "/content/uploads/screenshot-2026-09-25-at-12.29.29 pm.png",
-        "slug": "belema-fintech-website",
         "caseStudy": {
           "sections": [
             {
@@ -185,39 +181,43 @@
           ],
           "role": "Website Designer — responsible for the visual design and interface layouts.",
           "summary": "I redesigned Belema Fintech’s website to give the business a more polished online presence and present its products and services clearly. The design brings together structured content, bold typography and the brand’s green palette to help visitors explore what the company offers."
-        }
+        },
+        "link": "https://belemafintech.com/",
+        "image": "/content/uploads/screenshot-2026-09-25-at-12.29.29 pm.png",
+        "description": "A redesign of Belema Fintech’s website, giving its payment products and services a clearer, more professional presentation.",
+        "category": "FINTECH WEBSITE DESIGN "
       },
       {
+        "slug": "generative-brand-toolkit",
         "frame": "FRAME 03",
-        "category": "AI & GRAPHIC DESIGN",
+        "published": false,
         "title": "Generative brand toolkit",
-        "description": "An internal tool that turns a brand's tokens into on-demand social templates, pairing a layout model with a human-in-the-loop review step.",
         "tags": [
           "AI tooling",
           "Brand systems"
         ],
-        "link": "#contact",
-        "published": false,
-        "slug": "generative-brand-toolkit",
         "caseStudy": {
           "sections": []
-        }
+        },
+        "link": "#contact",
+        "description": "An internal tool that turns a brand's tokens into on-demand social templates, pairing a layout model with a human-in-the-loop review step.",
+        "category": "AI & GRAPHIC DESIGN"
       },
       {
+        "slug": "product-launch-direction",
         "frame": "FRAME 04",
-        "category": "CREATIVE DIRECTION",
+        "published": false,
         "title": "Product launch direction",
-        "description": "Creative direction for a fintech product launch — naming, visual system, and the campaign that introduced it to market.",
         "tags": [
           "Strategy",
           "Campaign"
         ],
-        "link": "#contact",
-        "published": false,
-        "slug": "product-launch-direction",
         "caseStudy": {
           "sections": []
-        }
+        },
+        "link": "#contact",
+        "description": "Creative direction for a fintech product launch — naming, visual system, and the campaign that introduced it to market.",
+        "category": "CREATIVE DIRECTION"
       }
     ]
   },
@@ -293,7 +293,7 @@
         "label": "Projects Completed"
       },
       {
-        "value": "100+",
+        "value": "200+",
         "label": "People trained"
       },
       {
