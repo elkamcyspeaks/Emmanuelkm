@@ -198,7 +198,7 @@
           "Mobile UI/UX",
           "Client project"
         ],
-        "image": "/content/uploads/food-couriers-home.png",
+        "image": "/content/uploads/food-couriers-home-revised.png",
         "description": "A food-delivery app design bringing meal discovery, product details and order review into a connected mobile experience.",
         "link": "https://www.figma.com/design/k84sYMbHJoUWr68UvyMFuV/Food-Couriers---Food-Delivery-App---UI-UX-Design-Case-Study--Community-?node-id=1-6067",
         "linkLabel": "View design on Figma",
@@ -206,7 +206,7 @@
           "role": "UI/UX Designer",
           "tools": "Figma",
           "summary": "Food Couriers is a client food-delivery app project I designed in Figma. The work explores the journey from browsing meals to reviewing an order, supported by research involving 20 participants. I delivered the completed interface designs to the client.",
-          "cover": "/content/uploads/food-couriers-welcome.png",
+          "cover": "/content/uploads/food-couriers-welcome-revised.png",
           "sections": [
             {
               "heading": "The brief",
@@ -229,12 +229,12 @@
               "visible": true,
               "images": [
                 {
-                  "image": "/content/uploads/food-couriers-home.png",
+                  "image": "/content/uploads/food-couriers-home-revised.png",
                   "caption": "Meal discovery combines search, categories, offers and food cards.",
                   "alt": "Food Couriers home screen with food categories, a promotional banner and meal cards."
                 },
                 {
-                  "image": "/content/uploads/food-couriers-details.png",
+                  "image": "/content/uploads/food-couriers-details-revised.png",
                   "caption": "The detail screen brings the selected meal into focus.",
                   "alt": "Food Couriers meal-detail screen with a large burger photograph and product information."
                 }
@@ -247,12 +247,12 @@
               "visible": true,
               "images": [
                 {
-                  "image": "/content/uploads/food-couriers-checkout.png",
+                  "image": "/content/uploads/food-couriers-checkout-revised.png",
                   "caption": "Order review groups meal selections, quantities and a price summary.",
                   "alt": "Food Couriers order screen showing three food items, quantity controls and an order summary."
                 },
                 {
-                  "image": "/content/uploads/food-couriers-profile.png",
+                  "image": "/content/uploads/food-couriers-profile-revised.png",
                   "caption": "Profile information is organised into personal and contact sections.",
                   "alt": "Food Couriers profile screen with an avatar, personal information, contact details and an edit button."
                 }
