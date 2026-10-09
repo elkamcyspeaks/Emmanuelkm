@@ -188,6 +188,94 @@
         "category": "FINTECH WEBSITE DESIGN "
       },
       {
+        "slug": "food-couriers",
+        "frame": "FRAME 03",
+        "published": true,
+        "title": "Food Couriers",
+        "category": "MOBILE APP · UI/UX DESIGN",
+        "tags": [
+          "Food delivery",
+          "Mobile UI/UX",
+          "Client project"
+        ],
+        "image": "/content/uploads/food-couriers-home.png",
+        "description": "A food-delivery app design bringing meal discovery, product details and order review into a connected mobile experience.",
+        "link": "https://www.figma.com/design/k84sYMbHJoUWr68UvyMFuV/Food-Couriers---Food-Delivery-App---UI-UX-Design-Case-Study--Community-?node-id=1-6067",
+        "linkLabel": "View design on Figma",
+        "caseStudy": {
+          "role": "UI/UX Designer",
+          "tools": "Figma",
+          "summary": "Food Couriers is a client food-delivery app project I designed in Figma. The work explores the journey from browsing meals to reviewing an order, supported by research involving 20 participants. I delivered the completed interface designs to the client.",
+          "cover": "/content/uploads/food-couriers-welcome.png",
+          "sections": [
+            {
+              "heading": "The brief",
+              "body": "The project centred on a mobile food-delivery experience. The design needed to bring food discovery, meal information and order review into a connected journey.\n\nMy responsibility was the app's UI/UX design. I developed the interface screens and their visual presentation for delivery to the client.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            },
+            {
+              "heading": "Research and the core journeys",
+              "body": "The research phase involved 20 participants. The project presentation also documented task flows for getting started with the app and placing a food order.\n\nThese flows frame the experience around two practical tasks: reaching the home screen and moving from selecting a meal to reviewing an order. The final screens show how those tasks connect across the app.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            },
+            {
+              "heading": "From browsing to choosing a meal",
+              "body": "The home screen brings together the delivery location, search, food categories, promotional offers and meal cards. Images, prices and ratings give people information to compare while browsing.\n\nThe food-detail screen gives the selected meal more space, pairing a large image with its name, supporting information and a prominent action at the bottom. This creates a visual transition from exploring several options to considering one item.",
+              "layout": "gallery",
+              "visible": true,
+              "images": [
+                {
+                  "image": "/content/uploads/food-couriers-home.png",
+                  "caption": "Meal discovery combines search, categories, offers and food cards.",
+                  "alt": "Food Couriers home screen with food categories, a promotional banner and meal cards."
+                },
+                {
+                  "image": "/content/uploads/food-couriers-details.png",
+                  "caption": "The detail screen brings the selected meal into focus.",
+                  "alt": "Food Couriers meal-detail screen with a large burger photograph and product information."
+                }
+              ]
+            },
+            {
+              "heading": "Reviewing the order and managing a profile",
+              "body": "The order screen groups selected meals into separate rows with quantity controls. A summary area beneath the items brings the price breakdown and order action together.\n\nThe profile screen separates personal information from contact details and provides an edit action. Both screens use grouped information and clear headings to make their content easier to scan.",
+              "layout": "gallery",
+              "visible": true,
+              "images": [
+                {
+                  "image": "/content/uploads/food-couriers-checkout.png",
+                  "caption": "Order review groups meal selections, quantities and a price summary.",
+                  "alt": "Food Couriers order screen showing three food items, quantity controls and an order summary."
+                },
+                {
+                  "image": "/content/uploads/food-couriers-profile.png",
+                  "caption": "Profile information is organised into personal and contact sections.",
+                  "alt": "Food Couriers profile screen with an avatar, personal information, contact details and an edit button."
+                }
+              ]
+            },
+            {
+              "heading": "A consistent visual language",
+              "body": "The interface combines pink and red accents with light backgrounds, rounded cards and food photography. Poppins typography provides a consistent style across headings, labels and supporting text.\n\nFood illustrations and decorative line drawings give the app a recognisable character. Stronger accent colours draw attention to primary actions and selected navigation elements.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            },
+            {
+              "heading": "Delivery and reflection",
+              "body": "I delivered the completed interface designs to the client, covering the welcome experience, meal discovery, food details, order review and profile management.\n\nLooking back, my next iteration would focus on interface-copy consistency, accurate price calculations and task-based usability testing of the ordering flow. These checks would help refine the design before implementation.",
+              "layout": "full",
+              "visible": true,
+              "images": []
+            }
+          ]
+        }
+      },
+      {
         "slug": "generative-brand-toolkit",
         "frame": "FRAME 03",
         "published": false,

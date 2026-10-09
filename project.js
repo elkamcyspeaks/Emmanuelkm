@@ -104,6 +104,7 @@
     const url=item.link?safe(item.link):'';
     if(url&&/^https?:\/\//i.test(item.link)){
       $('visitProject').href=url;
+      $('visitProject').textContent=(item.linkLabel||'Visit live project')+' ↗';
       $('visitProject').hidden=false;
     }
 
