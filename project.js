@@ -96,7 +96,8 @@
 
     const cover=figure({
       image:study.cover||item.image,
-      alt:item.title+' design preview'
+      alt:study.coverAlt||item.title+' design preview',
+      caption:study.coverCaption||''
     },true);
     if(cover)$('caseCover').append(cover);
     else $('caseCover').hidden=true;
