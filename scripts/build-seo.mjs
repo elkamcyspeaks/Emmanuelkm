@@ -119,7 +119,7 @@ for(const item of items){
   const figure=p=>p.image&&absolute(p.image)?
     `<figure><a href="${esc(absolute(p.image))}" target="_blank" rel="noopener noreferrer"><img src="${esc(absolute(p.image))}" alt="${esc(p.alt||p.caption||item.title+' design preview')}" loading="lazy" decoding="async"></a>${p.caption?'<figcaption>'+esc(p.caption)+'</figcaption>':''}</figure>`:'';
 
-  fill('caseCover',figure({image:study.cover||item.image}));
+  fill('caseCover',figure({image:study.cover||item.image,alt:study.coverAlt,caption:study.coverCaption}));
   fill('caseFacts',[
     ['My role',study.role],
     ['Timeline',study.timeline],
