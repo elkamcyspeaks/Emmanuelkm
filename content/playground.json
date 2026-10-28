@@ -2,6 +2,76 @@
   "flyers": {
     "items": [
       {
+        "image": "/content/uploads/playground-20261028/kuppid-a-little-in-common.webp",
+        "title": "Kuppid — A Little in Common",
+        "description": "A social graphic for Kuppid, pairing a warm portrait with bold purple typography and a bright yellow background.",
+        "link": "https://kuppid.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/ochaworth-pink-walk.webp",
+        "title": "Ochaworth — Pink Walk & Social Justice Panel",
+        "description": "A breast cancer awareness campaign flyer with a pink colour palette, a clear event hierarchy and a prominent portrait.",
+        "link": "https://ochaworth.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/belema-think-before-you-prompt.webp",
+        "title": "Belema Fintech — Think Before You Prompt",
+        "description": "An AI-safety awareness graphic using a friendly character, green accents and a structured checklist about protecting sensitive information.",
+        "link": "https://belemafintech.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/kuppid-community-milestone.webp",
+        "title": "Kuppid — Community Milestone",
+        "description": "A social graphic celebrating Kuppid’s 200+ registered-user milestone, with oversized type and the brand’s purple and yellow palette.",
+        "link": "https://kuppid.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/ochaworth-pink-afternoon-tea.webp",
+        "title": "Ochaworth — Pink Afternoon Tea",
+        "description": "An invitation design combining layered typography, floral details and tea imagery for a breast cancer awareness gathering.",
+        "link": "https://ochaworth.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/ochaworth-independence-day.webp",
+        "title": "Ochaworth — Independence Day",
+        "description": "A Nigerian Independence Day greeting built around green and white, a portrait and a flowing flag-inspired composition.",
+        "link": "https://ochaworth.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/ochaworth-pink-walk-countdown.webp",
+        "title": "Ochaworth — One Day to Go",
+        "description": "A countdown variation for the Pink Walk campaign, bringing the remaining time forward while retaining the event’s visual identity.",
+        "link": "https://ochaworth.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/ochaworth-thank-you-campaign-collage.webp",
+        "title": "Ochaworth — Thank You, Campaign Collage",
+        "description": "A post-event appreciation design combining a bold thank-you message with a collage of photographs from the Pink Walk.",
+        "link": "https://ochaworth.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/ochaworth-thank-you-editorial.webp",
+        "title": "Ochaworth — Thank You, Editorial Layout",
+        "description": "A softer appreciation flyer pairing editorial typography, pink ribbon details and a structured collage of community photographs.",
+        "link": "https://ochaworth.com/",
+        "motion": "tilt"
+      },
+      {
+        "image": "/content/uploads/playground-20261028/ochaworth-thank-you-script.webp",
+        "title": "Ochaworth — Thank You, Script Layout",
+        "description": "A campaign thank-you design with layered photo panels, flowing script lettering and a soft pink background.",
+        "link": "https://ochaworth.com/",
+        "motion": "tilt"
+      },
+      {
         "image": "/content/uploads/mauludd.png",
         "title": "Maulud Flyer Design",
         "motion": "tilt"
